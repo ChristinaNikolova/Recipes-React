@@ -17,5 +17,9 @@
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services\Recipes.Services.Mapping\Recipes.Services.Mapping.csproj" />
+    <ProjectReference Include="..\Recipes.Web.Models\Recipes.Web.Models.csproj" />
+  </ItemGroup>
   
 </Project>
