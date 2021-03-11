@@ -6,6 +6,9 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Recipes\IRecipesService.cs~RF6abf8d8.TMP" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
@@ -15,6 +18,12 @@
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\Recipes.Data.Common\Recipes.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\Recipes.Data.Models\Recipes.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Recipes.Common\Recipes.Common.csproj" />
+    <ProjectReference Include="..\Recipes.Services.Mapping\Recipes.Services.Mapping.csproj" />
   </ItemGroup>
 
 </Project>

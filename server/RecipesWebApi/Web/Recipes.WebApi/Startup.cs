@@ -19,6 +19,13 @@
     using Recipes.Data.Models;
     using Recipes.Data.Repositories;
     using Recipes.Data.Seeding;
+    using Recipes.Services.Data.Categories;
+    using Recipes.Services.Data.Comments;
+    using Recipes.Services.Data.Ingredients;
+    using Recipes.Services.Data.RecipeIngredients;
+    using Recipes.Services.Data.RecipeLikes;
+    using Recipes.Services.Data.Recipes;
+    using Recipes.Services.Data.Users;
     using Recipes.Services.Mapping;
     using Recipes.Web.Models.Common.ViewModels;
     using Recipes.WebApi.Helpers;
@@ -91,13 +98,14 @@
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
-            // services.AddTransient<ICategoriesService, CategoriesService>();
-            // services.AddTransient<IRecipesService, RecipesService>();
-            // services.AddTransient<IRecipeLikesService, RecipeLikesService>();
-            // services.AddTransient<ICommentsService, CommentsService>();
-            // services.AddTransient<IUsersService, UsersService>();
-            // services.AddTransient<IIngredientsService, IngredientsService>();
-            // services.AddTransient<IRecipeIngredientsService, RecipeIngredientsService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
+            services.AddTransient<IRecipesService, RecipesService>();
+            services.AddTransient<IRecipeLikesService, RecipeLikesService>();
+            services.AddTransient<ICommentsService, CommentsService>();
+            services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<IIngredientsService, IngredientsService>();
+            services.AddTransient<IRecipeIngredientsService, RecipeIngredientsService>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
