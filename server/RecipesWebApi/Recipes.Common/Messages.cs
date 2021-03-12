@@ -23,7 +23,7 @@
 
             public const string AlreadyTakenUsername = "This username is already taken. Please try with another one.";
 
-            public const string UnknownError = "Something went wrong.";
+            public const string Unknown = "Something went wrong.";
 
             public const string InvalidEmail = "Please enter valid e-mail address.";
 
