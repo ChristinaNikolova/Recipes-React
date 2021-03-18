@@ -92,8 +92,6 @@
                 .AddAuthentication()
                 .AddIdentityServerJwt();
 
-            services.AddCors();
-
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
@@ -107,6 +105,7 @@
             services.AddTransient<IRecipeIngredientsService, RecipeIngredientsService>();
 
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Recipes.WebApi", Version = "v1" });
@@ -122,7 +121,7 @@
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials()
-                .WithOrigins("http://localhost:4200"));
+                .WithOrigins("http://localhost:3000"));
 
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
