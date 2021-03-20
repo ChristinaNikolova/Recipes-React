@@ -1,0 +1,29 @@
+.home-wrapper .jumbotron {
+    padding-top: 20px;
+    margin-bottom: 0;
+    text-align: center;
+    background-color: lavender;
+    border-radius: 0%;
+}
+
+.bold {
+    font-weight: bold;
+    color: #78C2AD;
+    text-decoration-line: none;
+}
+
+.image-home {
+    max-width: 70%;
+    border: 0.1rem double silver;
+}
+
+.custom-font {
+    color: #78C2AD;
+    font-style: italic;
+}
+
+.lead .btn-primary {
+    color: #fff;
+    background-color: #78C2AD;
+    border-color: #78C2AD;
+}

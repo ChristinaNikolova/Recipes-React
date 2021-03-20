@@ -22,11 +22,11 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<IEnumerable<CategoryViewModel>>> All()
+        public async Task<IActionResult> All()
         {
             var categories = await this.categoriesService.GetAllAsync<CategoryViewModel>();
 
-            return new List<CategoryViewModel>(categories);
+            return new JsonResult(categories);
         }
 
         [HttpGet]
