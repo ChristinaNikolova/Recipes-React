@@ -24,10 +24,10 @@
         [ProducesDefaultResponseType]
         public async Task<IActionResult> All()
         {
-            ;
+            //catch
             var categories = await this.categoriesService.GetAllAsync<CategoryViewModel>();
 
-            return new JsonResult(categories);
+            return this.Ok(categories);
         }
 
         [HttpGet]
@@ -36,6 +36,7 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<CategoryNameViewModel>>> AllNames()
         {
+            //catch
             var categories = await this.categoriesService.GetAllAsync<CategoryNameViewModel>();
 
             return new List<CategoryNameViewModel>(categories);
