@@ -24,6 +24,7 @@
         [ProducesDefaultResponseType]
         public async Task<IActionResult> All()
         {
+            ;
             var categories = await this.categoriesService.GetAllAsync<CategoryViewModel>();
 
             return new JsonResult(categories);
