@@ -12,6 +12,11 @@
     text-decoration-line: none;
 }
 
+.bold:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .image-home {
     max-width: 70%;
     border: 0.1rem double silver;

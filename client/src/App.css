@@ -2,14 +2,3 @@
     width: 1200px;
     margin: auto;
 }
-
-a .btn-primary,
-button .btn-primary {
-    color: #fff;
-    background-color: #78C2AD;
-    border-color: #78C2AD;
-}
-
-a .bg-primary {
-    background-color: #78C2AD;
-}
