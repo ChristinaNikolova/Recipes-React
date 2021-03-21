@@ -1,5 +1,7 @@
 import {Component} from 'react';
+
 import * as recipesService from '../../../services/recipesService.js';
+import RecipesOrder from '../RecipesOrder/RecipesOrder.jsx';
 import SingleRecipe from '../SingleRecipe/SingleRecipes.jsx';
 
 import './RecipesList.css';
@@ -24,8 +26,8 @@ class RecipesList extends Component {
             <div className="recipes-wrapper">
                 <div className="container">
                     <div className="fill pt-1 pb-1"></div>
-                    <hr className="hr-fill"/> {/* <app-search-recipe></app-search-recipe>
-                    <app-recipe-order></app-recipe-order> */}
+                    {/* <hr className="hr-fill"/>  <app-search-recipe></app-search-recipe> */}
+                    <RecipesOrder />
                     <div className="row">
                         <div className="col-md-12">
                             <h1 className="text-center mb-0 pt-2">All Recipes</h1>
