@@ -8,11 +8,11 @@ function SingleCategory({id, name, picture, recipesCount}) {
                 <img className="img-category" src={picture} alt="category-pic"></img>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">
-                        <i className="fas fa-book"></i>
+                        <i className="fas fa-book mr-1"></i>
                         Recipes in category: {recipesCount}</li>
                 </ul>
                 <div className="card-body">
-                    <button className="btn btn-secondary button-position">See recipes</button>
+                    <button className="btn btn-secondary button-category">See recipes</button>
                 </div>
             </div>
         </div>

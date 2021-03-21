@@ -6,32 +6,24 @@
     background-color: white;
 }
 
-button {
+.card-body .button-category {
     margin-bottom: 10px;
 }
-button:hover {
+.card-body .button-category:hover {
     background-color: #78C2AD;
     border-color: #78C2AD;
     color: black;
     cursor: pointer;
 }
 
-.bold {
-    font-weight: bold;
-}
-
-.custom-card-categpry .card-header{
+.custom-card-categpry .card-header {
     background-color: #78C2AD;
 }
 
 .title {
-   font-weight: 400;
+    font-weight: 400;
     color: white;
     text-align: center;
-}
-
-.button-position {
-    align-self: center;
 }
 
 .card-body {
