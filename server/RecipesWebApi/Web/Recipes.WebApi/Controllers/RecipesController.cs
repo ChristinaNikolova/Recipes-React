@@ -138,7 +138,7 @@
                 //var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
                 //recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
-                //recipe.Ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<BaseIngredientViewModel>(id);
+                recipe.Ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<BaseIngredientViewModel>(id);
 
                 return recipe;
             }

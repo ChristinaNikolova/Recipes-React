@@ -1,5 +1,5 @@
-img {
-    max-width: 100% !important;
+.recipe-details-img {
+    max-width: 100%;
     max-height: 150%;
     border: 0.1rem hidden;
     padding: 10px;
@@ -24,18 +24,9 @@ img {
 
 .recipe-details-wrapper {
     background-color: lavender;
-    width: 1200px !important;
-    margin: auto;
 }
 
-.custom-font {
-    font-family: 'Akaya Telivigala', cursive;
-    padding: 10px;
-}
 
-ul {
-    list-style-type: none;
-}
 
 .feature-title {
     font-weight: bold;
@@ -43,7 +34,6 @@ ul {
 }
 
 .item-title {
-    font-family: 'Akaya Telivigala', cursive;
     color: #78C2AD;
 }
 
@@ -72,12 +62,10 @@ hr {
 
 .meta {
     text-align: center;
-    font-family: 'Akaya Telivigala', cursive;
     color: #78C2AD;
     font-size: 18px;
 }
 
 .like-text {
-    font-family: 'Akaya Telivigala', cursive;
     color: #78C2AD;
 }
