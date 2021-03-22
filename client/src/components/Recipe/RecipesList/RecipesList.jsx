@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import { Component } from 'react';
 
 import * as recipesService from '../../../services/recipesService.js';
 import RecipesOrder from '../RecipesOrder/RecipesOrder.jsx';
@@ -18,13 +18,13 @@ class RecipesList extends Component {
     componentDidMount() {
         recipesService
             .all()
-            .then(recipes => this.setState({recipes: recipes}));
+            .then(recipes => this.setState({ recipes: recipes }));
     }
 
     order(orderCriteria) {
         recipesService
             .order(orderCriteria)
-            .then(recipes => this.setState({recipes: recipes}));
+            .then(recipes => this.setState({ recipes: recipes }));
     }
 
     render() {
@@ -36,8 +36,8 @@ class RecipesList extends Component {
                     <RecipesOrder
                         clickHandler
                         ={this
-                        .order
-                        .bind(this)}/>
+                            .order
+                            .bind(this)} />
                     <div className="row">
                         <div className="col-md-12">
                             <h1 className="text-center mb-0 pt-2">All Recipes</h1>
@@ -50,22 +50,20 @@ class RecipesList extends Component {
                         </div>
                         <div className="col-md-3"></div>
                     </div>
-                    <hr/>
+                    <hr />
                     <div className="row">
-                        <div className="col-lg-4">
-                            {this
-                                .state
-                                .recipes
-                                .map(r => <SingleRecipe
-                                    key={r.id}
-                                    id={r.id}
-                                    title={r.title}
-                                    picture={r.picture}
-                                    content={r.content}
-                                    categoryName={r.categoryName}
-                                    recipeLikesCount={r.recipeLikesCount}
-                                    commentsCount={r.commentsCount}/>)}
-                        </div>
+                        {this
+                            .state
+                            .recipes
+                            .map(r => <SingleRecipe
+                                key={r.id}
+                                id={r.id}
+                                title={r.title}
+                                picture={r.picture}
+                                content={r.content}
+                                categoryName={r.categoryName}
+                                recipeLikesCount={r.recipeLikesCount}
+                                commentsCount={r.commentsCount} />)}
                     </div>
                 </div>
             </div>

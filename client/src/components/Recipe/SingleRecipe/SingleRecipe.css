@@ -9,6 +9,7 @@
 .card-body .button-recipe {
     margin-bottom: 10px;
 }
+
 .card-body .button-recipe:hover {
     background-color: #78C2AD;
     border-color: #78C2AD;
@@ -42,6 +43,7 @@
     margin-left: 10px;
     color: black;
 }
+
 .hover-effect:hover {
     cursor: pointer;
     color: #78C2AD;
