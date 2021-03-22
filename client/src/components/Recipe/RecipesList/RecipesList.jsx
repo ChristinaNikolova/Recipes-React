@@ -21,13 +21,23 @@ class RecipesList extends Component {
             .then(recipes => this.setState({recipes: recipes}));
     }
 
+    order(orderCriteria) {
+        recipesService
+            .order(orderCriteria)
+            .then(recipes => this.setState({recipes: recipes}));
+    }
+
     render() {
         return (
             <div className="recipes-wrapper">
                 <div className="container">
                     <div className="fill pt-1 pb-1"></div>
                     {/* <hr className="hr-fill"/>  <app-search-recipe></app-search-recipe> */}
-                    <RecipesOrder />
+                    <RecipesOrder
+                        clickHandler
+                        ={this
+                        .order
+                        .bind(this)}/>
                     <div className="row">
                         <div className="col-md-12">
                             <h1 className="text-center mb-0 pt-2">All Recipes</h1>

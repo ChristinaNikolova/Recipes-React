@@ -86,7 +86,6 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> All()
         {
-            ;
             try
             {
                 var recipes = await this.recipesService.GetAllAsync<RecipeBaseViewModel>();
@@ -256,6 +255,7 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> Order(string criteria)
         {
+            //test with more recipes
             try
             {
                 var recipes = await this.recipesService.GetOrderAsync<RecipeBaseViewModel>(criteria);
