@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import { Component } from 'react';
 
 import * as categoriesService from '../../../services/categoriesService.js';
 import SingleCategory from '../SingleCategory/SingleCategory.jsx';
@@ -17,17 +17,16 @@ class CategoriesList extends Component {
     componentDidMount() {
         categoriesService
             .all()
-            .then(categories => this.setState({categories: categories}));
+            .then(categories => this.setState({ categories: categories }));
     }
 
-    render()
-    {
+    render() {
         return (
             <div className="categories-wrapper">
                 <div className="container">
                     <div className="col-md-12">
                         <h1 className="text-center pt-2">All Categories</h1>
-                        <hr/>
+                        <hr />
                     </div>
                     <div className="row">
                         {this
@@ -37,7 +36,7 @@ class CategoriesList extends Component {
                                 key={c.id}
                                 name={c.name}
                                 picture={c.picture}
-                                recipesCount={c.recipesCount}/>)}
+                                recipesCount={c.recipesCount} />)}
                     </div>
                 </div>
             </div>

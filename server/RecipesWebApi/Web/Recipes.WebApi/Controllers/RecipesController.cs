@@ -130,14 +130,15 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<RecipeDetailsViewModel>> Details(string id)
         {
+            ;
             try
             {
                 var recipe = await this.recipesService.GetDetailsAsync<RecipeDetailsViewModel>(id);
 
-                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+                //var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
-                recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
-                recipe.Ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<BaseIngredientViewModel>(id);
+                //recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
+                //recipe.Ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<BaseIngredientViewModel>(id);
 
                 return recipe;
             }

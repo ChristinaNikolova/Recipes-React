@@ -1,0 +1,83 @@
+img {
+    max-width: 100% !important;
+    max-height: 150%;
+    border: 0.1rem hidden;
+    padding: 10px;
+    background-color: white;
+}
+
+.fa-heart:hover {
+    cursor: pointer;
+}
+
+.fa-users,
+.fa-utensils,
+.fa-clock,
+.fa-book,
+.fa-check {
+    color: #78C2AD;
+}
+
+.like-text {
+    font-weight: bold;
+}
+
+.recipe-details-wrapper {
+    background-color: lavender;
+    width: 1200px !important;
+    margin: auto;
+}
+
+.custom-font {
+    font-family: 'Akaya Telivigala', cursive;
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.feature-title {
+    font-weight: bold;
+    color: #78C2AD;
+}
+
+.item-title {
+    font-family: 'Akaya Telivigala', cursive;
+    color: #78C2AD;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.hover-effect:hover {
+    cursor: pointer;
+    color: #78C2AD;
+    font-weight: bold;
+}
+
+hr {
+    margin-right: 20px;
+}
+
+.custom-margin-left {
+    margin-left: 20px;
+}
+
+.fill {
+    background-color: lavender;
+}
+
+.meta {
+    text-align: center;
+    font-family: 'Akaya Telivigala', cursive;
+    color: #78C2AD;
+    font-size: 18px;
+}
+
+.like-text {
+    font-family: 'Akaya Telivigala', cursive;
+    color: #78C2AD;
+}

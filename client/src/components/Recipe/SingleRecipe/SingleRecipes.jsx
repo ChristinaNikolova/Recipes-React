@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './SingleRecipe.css';
 
 function SingleRecipe({
@@ -31,7 +32,7 @@ function SingleRecipe({
                         Comments: {commentsCount}</li>
                 </ul>
                 <div className="card-body">
-                    <button className="btn btn-secondary button-recipe">See the recipe</button>
+                    <Link to={`/recipes/details/${id}`}><button className="btn btn-secondary button-recipe">See the recipe</button></Link>
                 </div>
             </div>
         </div>

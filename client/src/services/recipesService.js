@@ -13,3 +13,11 @@ export const order = (criteria) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 }
+
+export const getDetails = (id) => {
+    let url = `${api.detailsRecipe}${id}`;
+
+    return fetch(url)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
