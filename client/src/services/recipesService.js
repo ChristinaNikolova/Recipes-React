@@ -21,3 +21,11 @@ export const getDetails = (id) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 }
+
+export const getByCategory = (categoryId) => {
+    let url = `${api.getByCategory}${categoryId}`;
+    console.log("in service");
+    return fetch(url)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}

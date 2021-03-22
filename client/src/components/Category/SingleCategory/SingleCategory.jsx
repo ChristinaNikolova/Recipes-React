@@ -13,7 +13,7 @@ function SingleCategory({ id, name, picture, recipesCount }) {
                         Recipes in category: {recipesCount}</li>
                 </ul>
                 <div className="card-body">
-                    <button className="btn btn-secondary button-category">See recipes</button>
+                    <Link to={`/recipes/currentCategory/${id}`}><button className="btn btn-secondary button-category">See recipes</button></Link>
                 </div>
             </div>
         </div>

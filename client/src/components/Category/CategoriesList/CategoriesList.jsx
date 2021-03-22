@@ -34,6 +34,7 @@ class CategoriesList extends Component {
                             .categories
                             .map(c => <SingleCategory
                                 key={c.id}
+                                id={c.id}
                                 name={c.name}
                                 picture={c.picture}
                                 recipesCount={c.recipesCount} />)}
