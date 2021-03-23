@@ -130,7 +130,6 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<RecipeDetailsViewModel>> Details(string id)
         {
-            ;
             try
             {
                 var recipe = await this.recipesService.GetDetailsAsync<RecipeDetailsViewModel>(id);

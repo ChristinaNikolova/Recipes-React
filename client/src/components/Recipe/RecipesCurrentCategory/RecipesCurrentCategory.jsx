@@ -5,7 +5,6 @@ import './RecipesCurrentCategory.css';
 
 class RecipesCurrentCategory extends Component {
     constructor(props) {
-        console.log("in")
         super(props)
 
         this.state = {
@@ -14,10 +13,10 @@ class RecipesCurrentCategory extends Component {
     }
 
     componentDidMount() {
-        // const id = this.props.match.params.id;
-        console.log(this.props.match.params)
+        const categoryId = this.props.match.params.id;
         recipesService
-            .getByCategory();
+            .getByCategory(categoryId)
+            .then(recipes => this.setState({ recipes: recipes }));
     }
 
     render() {

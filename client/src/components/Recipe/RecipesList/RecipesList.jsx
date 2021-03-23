@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import * as recipesService from '../../../services/recipesService.js';
 import RecipesOrder from '../RecipesOrder/RecipesOrder.jsx';
@@ -44,9 +45,9 @@ class RecipesList extends Component {
                         </div>
                         <div className="col-md-3"></div>
                         <div className="col-md-6 custom-position">
-                            <a
+                            <Link to="/recipes/create"
                                 className="btn btn-primary btn-lg mt-4 text-center create-recipe-btn"
-                                role="button">Create new recipe</a>
+                                role="button">Create new recipe</Link>
                         </div>
                         <div className="col-md-3"></div>
                     </div>

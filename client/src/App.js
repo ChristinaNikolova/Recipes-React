@@ -1,13 +1,16 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import Footer from './components/shared/Footer/Footer';
-import Home from './components/Home/Home';
-import Header from './components/shared/Header/Header';
-import CategoriesList from './components/Category/CategoriesList/CategoriesList';
-import RecipesList from './components/Recipe/RecipesList/RecipesList';
-import RecipeDetails from './components/Recipe/RecipeDetails/RecipeDetails';
-import RecipesCurrentCategory from './components/Recipe/RecipesCurrentCategory/RecipesCurrentCategory';
-import NotFound from './components/shared/NotFound/NotFound';
+import Footer from './components/shared/Footer/Footer.jsx';
+import Home from './components/Home/Home.jsx';
+import Header from './components/shared/Header/Header.jsx';
+import Register from './components/Auth/Register/Register.jsx';
+import Login from './components/Auth/Login/Login.jsx';
+import CategoriesList from './components/Category/CategoriesList/CategoriesList.jsx';
+import RecipesList from './components/Recipe/RecipesList/RecipesList.jsx';
+import CreateRecipe from './components/Recipe/CreateRecipe/CreateRecipe.jsx';
+import RecipeDetails from './components/Recipe/RecipeDetails/RecipeDetails.jsx';
+import RecipesCurrentCategory from './components/Recipe/RecipesCurrentCategory/RecipesCurrentCategory.jsx';
+import NotFound from './components/shared/NotFound/NotFound.jsx';
 
 import './App.css';
 
@@ -20,10 +23,13 @@ function App() {
                     <Redirect to='/home'></Redirect>
                 </Route>
                 <Route path='/home' component={Home}></Route>
-                <Route path='/categories' component={CategoriesList}></Route>
-                <Route path='/recipes/currentCategory/:id}' exact component={RecipesCurrentCategory}></Route>
+                <Route path='/register' component={Register}></Route>
+                <Route path='/login' component={Login}></Route>
+                <Route path='/categories' exact component={CategoriesList}></Route>
                 <Route path='/recipes' exact component={RecipesList}></Route>
-                <Route path='/recipes/details/:id' exact component={RecipeDetails}></Route>
+                <Route path='/recipes/create' component={CreateRecipe}></Route>
+                <Route path='/recipes/details/:id' component={RecipeDetails}></Route>
+                <Route path='/recipes/current-category/:id' component={RecipesCurrentCategory}></Route>
                 <Route path="*" component={NotFound}></Route>
             </Switch>
             <Footer />
