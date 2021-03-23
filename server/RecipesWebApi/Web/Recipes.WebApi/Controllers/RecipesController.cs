@@ -108,11 +108,13 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> ByCategory(string categoryId)
         {
+            //try catch
+            //return this.ok
             try
             {
                 var recipes = await this.recipesService.GetAllByCategoryAsync<RecipeBaseViewModel>(categoryId);
 
-                return new List<RecipeBaseViewModel>(recipes);
+                return this.Ok(recipes);
             }
             catch (Exception)
             {

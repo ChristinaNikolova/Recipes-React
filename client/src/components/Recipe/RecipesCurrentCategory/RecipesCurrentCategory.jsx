@@ -1,4 +1,6 @@
 import { Component } from 'react';
+
+import SingleRecipe from '../SingleRecipe/SingleRecipe.jsx'
 import * as recipesService from '../../../services/recipesService.js';
 
 import './RecipesCurrentCategory.css';
@@ -14,12 +16,14 @@ class RecipesCurrentCategory extends Component {
 
     componentDidMount() {
         const categoryId = this.props.match.params.id;
+
         recipesService
             .getByCategory(categoryId)
             .then(recipes => this.setState({ recipes: recipes }));
     }
 
     render() {
+        console.log(this.state);
         return (
             <div className="recipes-current-category-wrapper">
                 <div className="container">
@@ -28,9 +32,15 @@ class RecipesCurrentCategory extends Component {
                         <hr />
                     </div>
                     <div className="row">
-                        <div className="col-lg-4">
-                            ...
-                    </div>
+                        {this.state.recipes.map(r => <SingleRecipe
+                            key={r.id}
+                            id={r.id}
+                            title={r.title}
+                            picture={r.picture}
+                            content={r.content}
+                            categoryName={r.categoryName}
+                            recipeLikesCount={r.recipeLikesCount}
+                            commentsCount={r.commentsCount} />)}
                     </div>
                 </div>
             </div>

@@ -23,7 +23,7 @@ export const getDetails = (id) => {
 }
 
 export const getByCategory = (categoryId) => {
-    let url = `${api.getByCategory}${categoryId}`;
+    let url = `${api.recipesCurrentCategory}${categoryId}`;
 
     return fetch(url)
         .then(res => res.json())

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import * as recipesService from '../../../services/recipesService.js';
 import RecipesOrder from '../RecipesOrder/RecipesOrder.jsx';
-import SingleRecipe from '../SingleRecipe/SingleRecipes.jsx';
+import SingleRecipe from '../SingleRecipe/SingleRecipe.jsx';
 
 import './RecipesList.css';
 
