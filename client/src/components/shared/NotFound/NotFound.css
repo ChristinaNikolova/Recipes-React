@@ -19,7 +19,7 @@ body {
     top: 8%;
 }
 
-.far {
+.mainbox .far {
     position: absolute;
     font-size: 8.5rem;
     left: 42%;

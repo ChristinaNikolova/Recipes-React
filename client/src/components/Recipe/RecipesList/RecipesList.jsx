@@ -44,7 +44,7 @@ class RecipesList extends Component {
                             <h1 className="text-center mb-0 pt-2 cursive-font-style">All Recipes</h1>
                         </div>
                         <div className="col-md-3"></div>
-                        <div className="col-md-6 custom-position">
+                        <div className="col-md-6 custom-position-resipes-list">
                             <Link to="/recipes/create"
                                 className="btn btn-primary btn-lg mt-4 text-center create-recipe-btn"
                                 role="button">Create new recipe</Link>

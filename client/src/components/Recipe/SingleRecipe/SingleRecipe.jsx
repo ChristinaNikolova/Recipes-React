@@ -18,7 +18,7 @@ function SingleRecipe({
                 <div className="card-body">
                     <p className="card-text">CONTENT(70 symbols)...</p>
                 </div>
-                <ul className="list-group list-group-flush">
+                <ul className="list-group list-group-flush recipe-details">
                     <li className="list-group-item">
                         <i className="fas fa-book"></i>
                         Category:

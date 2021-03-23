@@ -32,9 +32,9 @@
     padding-bottom: 10px;
 }
 
-.fa-book,
-.fa-comments,
-.fa-heart {
+.recipe-details .fa-book,
+.recipe-details .fa-comments,
+.recipe-details .fa-heart {
     color: #78C2AD;
     margin-right: 10px;
 }

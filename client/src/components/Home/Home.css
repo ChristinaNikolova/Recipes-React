@@ -6,7 +6,7 @@
     border-radius: 0%;
 }
 
-.bold {
+.bold-home-link {
     font-weight: bold;
     color: #78C2AD;
     text-decoration-line: none;
@@ -27,7 +27,7 @@
     font-style: italic;
 }
 
-.lead .btn-primary {
+.lead-home .btn-primary {
     color: #fff;
     background-color: #78C2AD;
     border-color: #78C2AD;

@@ -10,3 +10,11 @@ ul {
 .cursive-font-style {
     font-family: 'Akaya Telivigala', cursive;
 }
+
+.fill {
+    background-color: lavender;
+}
+
+.hr-fill {
+    border-top-color: lavender;
+}

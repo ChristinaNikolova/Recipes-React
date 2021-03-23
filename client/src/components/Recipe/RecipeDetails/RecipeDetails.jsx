@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import * as recipesService from '../../../services/recipesService.js';
 
 import './RecipeDetails.css';
@@ -37,7 +39,7 @@ class RecipeDetails extends Component {
                                         <li>
                                             <div className="feature-wrap mb-3">
                                                 <div className="media-body space-sm">
-                                                    <i className="far fa-clock"></i>
+                                                <i className="far fa-clock"></i>
                                                     <span className="feature-title ml-2 cursive-font-style">PREP TIME:</span>
                                                     <span className="feature-sub-title ml-2">{recipe.preparationTime} Mins</span>
                                                 </div>
@@ -68,7 +70,7 @@ class RecipeDetails extends Component {
                                                 <div className="media-body space-sm">
                                                     <i className="fas fa-book"></i>
                                                     <span className="feature-title ml-2 cursive-font-style">CATEGORY:</span>
-                                                    <span className="feature-sub-title ml-2"><a className="hover-effect">{recipe.categoryName}</a></span>
+                                                    <span className="feature-sub-title ml-2"><Link to={`/recipes/current-category/${recipe.categoryId}`} className="hover-effect">{recipe.categoryName}</Link></span>
                                                 </div>
                                             </div>
                                         </li>
@@ -111,7 +113,7 @@ class RecipeDetails extends Component {
                 <hr className="custom-margin-left" />
                 ...
                 <div className="fill pt-1 pb-1"></div>
-            </div>
+            </div >
         );
     }
 }

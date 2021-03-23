@@ -2,23 +2,15 @@
     background-color: lavender;
 }
 
-.custom-position {
+.custom-position-resipes-list {
     text-align: center;
 }
 
-.fill {
-    background-color: lavender;
-}
-
-.hr-fill {
-    border-top-color: lavender;
-}
-
-.custom-position .create-recipe-btn {
+.custom-position-resipes-list .create-recipe-btn {
     background-color: #78c2ad;
     border-color: #78c2ad;
 }
 
-.custom-position .create-recipe-btn:hover {
+.custom-position-resipes-list .create-recipe-btn:hover {
     border-color: #0069d9;
 }
