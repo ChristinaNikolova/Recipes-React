@@ -41,7 +41,7 @@ class RecipesList extends Component {
                             .bind(this)} />
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className="text-center mb-0 pt-2">All Recipes</h1>
+                            <h1 className="text-center mb-0 pt-2 cursive-font-style">All Recipes</h1>
                         </div>
                         <div className="col-md-3"></div>
                         <div className="col-md-6 custom-position">

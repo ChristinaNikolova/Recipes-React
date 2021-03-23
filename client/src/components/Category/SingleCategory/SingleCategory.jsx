@@ -5,7 +5,7 @@ function SingleCategory({ id, name, picture, recipesCount }) {
     return (
         <div className="col-lg-4 custom-card-category">
             <div className="card mb-2">
-                <h3 className="card-header category-title">{name}</h3>
+                <h3 className="card-header category-title cursive-font-style">{name}</h3>
                 <img className="img-category" src={picture} alt="category-pic"></img>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">

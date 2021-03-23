@@ -23,12 +23,13 @@ class RecipesCurrentCategory extends Component {
     }
 
     render() {
-        console.log(this.state);
+        const categoryName = this.state.recipes[0] ? this.state.recipes[0].categoryName : null;
+
         return (
             <div className="recipes-current-category-wrapper">
                 <div className="container">
                     <div className="col-md-12">
-                        <h1 className="text-center p-1">Recipes in category: </h1>
+                        <h1 className="text-center p-1 cursive-font-style">Recipes in <span className="recipes-in-category">{categoryName}</span> category: </h1>
                         <hr />
                     </div>
                     <div className="row">

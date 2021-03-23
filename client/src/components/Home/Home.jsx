@@ -6,14 +6,14 @@ function Home() {
     return (
         <div className="home-wrapper">
             <div className="jumbotron">
-                <h1 className="display-3">Welcome to Recipes!</h1>
+                <h1 className="display-3 cursive-font-style">Welcome to Recipes!</h1>
                 <p className="lead">
                     <Link to="/register" className="bold"> Register </Link>
                     or
                     <Link to="/login" className="bold"> Login </Link>
                     now to see the most delicious recipes!</p>
                 <hr className="my-4" />
-                <p className="custom-font">Don't be afraid to adapt new ingredients into your
+                <p className="custom-font-home cursive-font-style">Don't be afraid to adapt new ingredients into your
                 own techniques, and traditional ingredients into new recipes.
                 </p>
                 <img className="image-home" src="https://d23.com/app/uploads/2015/09/recipes-banner1180x600.jpg"></img>

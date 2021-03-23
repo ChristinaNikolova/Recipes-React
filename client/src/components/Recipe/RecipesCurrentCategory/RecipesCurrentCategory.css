@@ -1,3 +1,9 @@
 .recipes-current-category-wrapper {
     background-color: lavender;
 }
+
+.recipes-in-category {
+    text-transform: uppercase;
+    font-style: italic;
+    color: #78C2AD;
+}

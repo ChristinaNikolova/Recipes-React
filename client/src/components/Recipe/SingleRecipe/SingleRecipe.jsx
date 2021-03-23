@@ -13,7 +13,7 @@ function SingleRecipe({
     return (
         <div className="col-lg-4">
             <div className="card mb-2 custom-card-recipe">
-                <h3 className="card-header recipe-title">{title}</h3>
+                <h3 className="card-header recipe-title cursive-font-style">{title}</h3>
                 <img className="img-recipe" src={picture} alt="recipe-pic"></img>
                 <div className="card-body">
                     <p className="card-text">CONTENT(70 symbols)...</p>

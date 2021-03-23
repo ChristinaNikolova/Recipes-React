@@ -27,7 +27,7 @@ class RecipeDetails extends Component {
         return (
             <div className="recipe-details-wrapper">
                 <div className="pl-4">
-                    <h2 className="text-center p-1">{recipe.title}</h2>
+                    <h2 className="text-center p-1 cursive-font-style">{recipe.title}</h2>
                     <hr />
                     <div className="row">
                         <div className="col-lg-12">
@@ -38,7 +38,7 @@ class RecipeDetails extends Component {
                                             <div className="feature-wrap mb-3">
                                                 <div className="media-body space-sm">
                                                     <i className="far fa-clock"></i>
-                                                    <span className="feature-title ml-2">PREP TIME:</span>
+                                                    <span className="feature-title ml-2 cursive-font-style">PREP TIME:</span>
                                                     <span className="feature-sub-title ml-2">{recipe.preparationTime} Mins</span>
                                                 </div>
                                             </div>
@@ -47,7 +47,7 @@ class RecipeDetails extends Component {
                                             <div className="feature-wrap mb-3">
                                                 <div className="media-body space-sm">
                                                     <i className="fas fa-utensils"></i>
-                                                    <span className="feature-title ml-2">COOK TIME:</span>
+                                                    <span className="feature-title ml-2 cursive-font-style">COOK TIME:</span>
                                                     <span className="feature-sub-title ml-2">{recipe.cookingTime} Mins</span>
                                                 </div>
                                             </div>
@@ -56,7 +56,7 @@ class RecipeDetails extends Component {
                                             <div className="feature-wrap mb-3">
                                                 <div className="media-body space-sm">
                                                     <i className="fas fa-users"></i>
-                                                    <span className="feature-title ml-2">SERVING:</span>
+                                                    <span className="feature-title ml-2 cursive-font-style">SERVING:</span>
                                                     <span className="feature-sub-title ml-2">
                                                         {recipe.portions} Portions
                                                     </span>
@@ -67,7 +67,7 @@ class RecipeDetails extends Component {
                                             <div className="feature-wrap mb-3">
                                                 <div className="media-body space-sm">
                                                     <i className="fas fa-book"></i>
-                                                    <span className="feature-title ml-2">CATEGORY:</span>
+                                                    <span className="feature-title ml-2 cursive-font-style">CATEGORY:</span>
                                                     <span className="feature-sub-title ml-2"><a className="hover-effect">{recipe.categoryName}</a></span>
                                                 </div>
                                             </div>
@@ -79,14 +79,14 @@ class RecipeDetails extends Component {
                                 </div>
                                 <div className="col-lg-3">
                                     <div className="ingridients-wrap">
-                                        <h3 className="item-title"><i className="fas fa-list-ul"></i> Ingridients</h3>
+                                        <h3 className="item-title cursive-font-style"><i className="fas fa-list-ul"></i> Ingridients</h3>
                                         <div className="checkbox checkbox-primary">
                                             {/* <label><i className="fas fa-check ml-2 mr-2"></i> {quantity}: {ingredientName}</label> */}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-12 meta mb-2 mt-2">
+                            <div className="col-lg-12 meta mb-2 mt-2 cursive-font-style">
                                 <span className="single-meta m-2">
                                     <i className="far fa-calendar-alt"></i> Created on: {recipe.formattedCreatedOn}
                                 </span>
@@ -101,7 +101,7 @@ class RecipeDetails extends Component {
                         </div>
                         <div className="col-lg-12">
                             <hr />
-                            <h4>How to prepare:</h4>
+                            <h4 className="cursive-font-style">How to prepare:</h4>
                             <p className="item-description m-2">
                                 {recipe.content}
                             </p>
