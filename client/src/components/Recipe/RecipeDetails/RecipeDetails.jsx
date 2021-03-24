@@ -16,15 +16,16 @@ class RecipeDetails extends Component {
     }
 
     componentDidMount() {
-        const id = this.props.match.params.id;
+        const recipeId = this.props.match.params.id;
 
         recipesService
-            .getDetails(id)
-            .then(recipe => this.setState({ recipe: recipe }))
+            .getDetails(recipeId)
+            .then(recipe => this.setState({ recipe: recipe }));
     }
 
     render() {
         const recipe = this.state.recipe;
+        console.log(recipe);
 
         return (
             <div className="recipe-details-wrapper">
@@ -39,7 +40,7 @@ class RecipeDetails extends Component {
                                         <li>
                                             <div className="feature-wrap mb-3">
                                                 <div className="media-body space-sm">
-                                                <i className="far fa-clock"></i>
+                                                    <i className="far fa-clock"></i>
                                                     <span className="feature-title ml-2 cursive-font-style">PREP TIME:</span>
                                                     <span className="feature-sub-title ml-2">{recipe.preparationTime} Mins</span>
                                                 </div>
@@ -82,9 +83,9 @@ class RecipeDetails extends Component {
                                 <div className="col-lg-3">
                                     <div className="ingridients-wrap">
                                         <h3 className="item-title cursive-font-style"><i className="fas fa-list-ul"></i> Ingridients</h3>
-                                        <div className="checkbox checkbox-primary">
-                                            {/* <label><i className="fas fa-check ml-2 mr-2"></i> {quantity}: {ingredientName}</label> */}
-                                        </div>
+                                        {recipe.ingredients
+                                            ? recipe.ingredients.map(i => <div className="checkbox checkbox-primary"><label><i className="fas fa-check ml-2 mr-2"></i> {i.quantity}: {i.ingredientName}</label></div>)
+                                            : <div></div>}
                                     </div>
                                 </div>
                             </div>

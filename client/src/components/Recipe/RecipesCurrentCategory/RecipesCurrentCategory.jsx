@@ -23,7 +23,9 @@ class RecipesCurrentCategory extends Component {
     }
 
     render() {
-        const categoryName = this.state.recipes[0] ? this.state.recipes[0].categoryName : null;
+        const categoryName = this.state.recipes[0]
+            ? this.state.recipes[0].categoryName
+            : null;
 
         return (
             <div className="recipes-current-category-wrapper">

@@ -138,7 +138,7 @@
 
                 //recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
                 recipe.Ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<BaseIngredientViewModel>(id);
-
+                ;
                 return this.Ok(recipe);
             }
             catch (Exception)
