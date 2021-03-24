@@ -76,7 +76,7 @@
                 {
                     var ingredients = await this.ingredientsService.GetAllAsync<IngredientAdminViewModel>();
 
-                    return new List<IngredientAdminViewModel>(ingredients);
+                    return this.Ok(ingredients);
                 }
                 catch (Exception)
                 {
@@ -103,7 +103,7 @@
                 {
                     var ingredient = await this.ingredientsService.GetDetailsAsync<IngredientUpdateInputModel>(id);
 
-                    return ingredient;
+                    return this.Ok(ingredient);
                 }
                 catch (Exception)
                 {

@@ -38,6 +38,8 @@
             this.jwtSettings = jwtSettings.Value;
         }
 
+        //try...catch
+        // return this.Ok(recipes);
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

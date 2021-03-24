@@ -66,7 +66,7 @@
             {
                 var comments = await this.commentsService.GetAllCurrentRecipeAsync<CommentViewModel>(recipeId);
 
-                return new List<CommentViewModel>(comments);
+                return this.Ok(comments);
             }
             catch (Exception)
             {

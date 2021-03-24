@@ -32,7 +32,7 @@
             {
                 var ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<IngredientViewModel>(recipeId);
 
-                return new List<IngredientViewModel>(ingredients);
+                return this.Ok(ingredients);
             }
             catch (Exception)
             {

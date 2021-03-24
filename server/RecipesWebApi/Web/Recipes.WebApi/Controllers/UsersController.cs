@@ -40,7 +40,7 @@
 
                 var recipes = await this.usersService.GetFavouriteRecipesAsync<UserFavouriteRecipesViewModel>(user.Id);
 
-                return new List<UserFavouriteRecipesViewModel>(recipes);
+                return this.Ok(recipes);
             }
             catch (Exception)
             {
@@ -64,7 +64,7 @@
 
                 var recipes = await this.usersService.GetOwnRecipesAsync<UserOwnRecipesViewModel>(user.Id);
 
-                return new List<UserOwnRecipesViewModel>(recipes);
+                return this.Ok(recipes);
             }
             catch (Exception)
             {

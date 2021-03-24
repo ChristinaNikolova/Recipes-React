@@ -1,12 +1,15 @@
 ﻿namespace Recipes.WebApi.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Recipes.Common;
     using Recipes.Services.Data.Categories;
     using Recipes.Web.Models.Categories.ViewModels;
+    using Recipes.Web.Models.Common.ViewModels;
 
     [Route("api/[controller]/[action]")]
     public class CategoriesController : ApiController
@@ -24,10 +27,19 @@
         [ProducesDefaultResponseType]
         public async Task<IActionResult> All()
         {
-            //catch
-            var categories = await this.categoriesService.GetAllAsync<CategoryViewModel>();
+            try
+            {
+                var categories = await this.categoriesService.GetAllAsync<CategoryViewModel>();
 
-            return this.Ok(categories);
+                return this.Ok(categories);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
         }
 
         [HttpGet]
@@ -36,10 +48,19 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<CategoryNameViewModel>>> AllNames()
         {
-            //catch
-            var categories = await this.categoriesService.GetAllAsync<CategoryNameViewModel>();
+            try
+            {
+                var categories = await this.categoriesService.GetAllAsync<CategoryNameViewModel>();
 
-            return new List<CategoryNameViewModel>(categories);
+                return this.Ok(categories);
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
         }
     }
 }

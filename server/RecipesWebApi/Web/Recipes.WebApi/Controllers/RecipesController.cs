@@ -108,8 +108,6 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> ByCategory(string categoryId)
         {
-            //try catch
-            //return this.ok
             try
             {
                 var recipes = await this.recipesService.GetAllByCategoryAsync<RecipeBaseViewModel>(categoryId);
@@ -141,7 +139,7 @@
                 //recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
                 recipe.Ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<BaseIngredientViewModel>(id);
 
-                return recipe;
+                return this.Ok(recipe);
             }
             catch (Exception)
             {
@@ -163,7 +161,7 @@
             {
                 var recipe = await this.recipesService.GetDetailsAsync<RecipeUpdateInputModel>(id);
 
-                return recipe;
+                return this.Ok(recipe);
             }
             catch (Exception)
             {
@@ -239,7 +237,7 @@
             {
                 var recipes = await this.recipesService.GetSearchedAsync<RecipeBaseViewModel>(query);
 
-                return new List<RecipeBaseViewModel>(recipes);
+                return this.Ok(recipes);
             }
             catch (Exception)
             {
@@ -262,7 +260,7 @@
             {
                 var recipes = await this.recipesService.GetOrderAsync<RecipeBaseViewModel>(criteria);
 
-                return new List<RecipeBaseViewModel>(recipes);
+                return this.Ok(recipes);
             }
             catch (Exception)
             {

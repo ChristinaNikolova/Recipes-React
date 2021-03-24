@@ -76,7 +76,7 @@
                 {
                     var categories = await this.categoriesService.GetAllAsync<CategoryAdminViewModel>();
 
-                    return new List<CategoryAdminViewModel>(categories);
+                    return this.Ok(categories);
                 }
                 catch (Exception ex)
                 {
@@ -103,7 +103,7 @@
                 {
                     var category = await this.categoriesService.GetDetailsAsync<CategoryUpdateInputModel>(id);
 
-                    return category;
+                    return this.Ok(category);
                 }
                 catch (Exception)
                 {
