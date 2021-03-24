@@ -18,3 +18,27 @@ ul {
 .hr-fill {
     border-top-color: lavender;
 }
+
+.hover-effect:hover {
+    cursor: pointer;
+    color: #78C2AD;
+    font-weight: bold;
+}
+
+.hover-effect {
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+}
+
+.hover-effect:hover {
+    cursor: pointer;
+    color: #78C2AD;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.card-body {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

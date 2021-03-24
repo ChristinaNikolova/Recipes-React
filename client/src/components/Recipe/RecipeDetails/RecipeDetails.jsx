@@ -25,7 +25,6 @@ class RecipeDetails extends Component {
 
     render() {
         const recipe = this.state.recipe;
-        console.log(recipe);
 
         return (
             <div className="recipe-details-wrapper">

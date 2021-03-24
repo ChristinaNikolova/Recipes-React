@@ -27,11 +27,6 @@
     text-align: center;
 }
 
-.card-body {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
 .custom-card-category .fa-book {
     color: #78C2AD;
 }

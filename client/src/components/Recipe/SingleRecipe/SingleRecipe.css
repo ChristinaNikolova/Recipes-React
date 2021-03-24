@@ -27,25 +27,9 @@
     text-align: center;
 }
 
-.card-body {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
 .recipe-details .fa-book,
 .recipe-details .fa-comments,
 .recipe-details .fa-heart {
     color: #78C2AD;
     margin-right: 10px;
-}
-
-.hover-effect {
-    margin-left: 10px;
-    color: black;
-}
-
-.hover-effect:hover {
-    cursor: pointer;
-    color: #78C2AD;
-    font-weight: bold;
 }

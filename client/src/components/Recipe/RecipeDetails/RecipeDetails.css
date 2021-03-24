@@ -16,9 +16,6 @@
 .recipe-details-wrapper .fa-book,
 .recipe-details-wrapper .fa-check {
     color: #78C2AD;
-}
-
-.like-text {
     font-weight: bold;
 }
 
@@ -35,27 +32,12 @@
     color: #78C2AD;
 }
 
-/* a {
-    text-decoration: none;
-    color: black;
-} */
-
-.hover-effect:hover {
-    cursor: pointer;
-    color: #78C2AD;
-    font-weight: bold;
-}
-
-hr {
+.recipe-details-wrapper hr {
     margin-right: 20px;
 }
 
 .custom-margin-left {
     margin-left: 20px;
-}
-
-.fill {
-    background-color: lavender;
 }
 
 .meta {
@@ -66,4 +48,5 @@ hr {
 
 .like-text {
     color: #78C2AD;
+    font-weight: bold;
 }

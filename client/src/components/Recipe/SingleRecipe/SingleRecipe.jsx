@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import './SingleRecipe.css';
 
 function SingleRecipe({
@@ -6,6 +7,7 @@ function SingleRecipe({
     title,
     picture,
     content,
+    categoryId,
     categoryName,
     recipeLikesCount,
     commentsCount
@@ -16,13 +18,13 @@ function SingleRecipe({
                 <h3 className="card-header recipe-title cursive-font-style">{title}</h3>
                 <img className="img-recipe" src={picture} alt="recipe-pic"></img>
                 <div className="card-body">
-                    <p className="card-text">CONTENT(70 symbols)...</p>
+                    <p className="card-text">{content.slice(0, 30)}...</p>
                 </div>
                 <ul className="list-group list-group-flush recipe-details">
                     <li className="list-group-item">
                         <i className="fas fa-book"></i>
                         Category:
-                        <a className="hover-effect">{categoryName}</a>
+                        <Link to={`/recipes/current-category/${categoryId}`} className="hover-effect">{categoryName}</Link>
                     </li>
                     <li className="list-group-item">
                         <i className="fas fa-heart"></i>

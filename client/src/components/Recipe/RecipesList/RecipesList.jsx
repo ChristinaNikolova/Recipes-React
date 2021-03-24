@@ -62,6 +62,7 @@ class RecipesList extends Component {
                                 title={r.title}
                                 picture={r.picture}
                                 content={r.content}
+                                categoryId={r.categoryId}
                                 categoryName={r.categoryName}
                                 recipeLikesCount={r.recipeLikesCount}
                                 commentsCount={r.commentsCount} />)}
