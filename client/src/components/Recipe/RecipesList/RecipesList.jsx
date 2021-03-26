@@ -13,7 +13,8 @@ class RecipesList extends Component {
         super(props)
 
         this.state = {
-            recipes: []
+            recipes: [],
+            isSearched: false,
         };
     }
 
@@ -26,15 +27,18 @@ class RecipesList extends Component {
     order(orderCriteria) {
         recipesService
             .order(orderCriteria)
-            .then(recipes => this.setState({ recipes: recipes }));
+            .then(recipes => this.setState({
+                recipes: recipes
+            }));
     }
 
     search(query) {
-        console.log("queru:" + query);
-        
         recipesService
             .search(query)
-            .then(recipes => this.setState({ recipes: recipes }));
+            .then(recipes => this.setState({
+                recipes: recipes,
+                isSearched: true
+            }));
     }
 
     render() {
@@ -45,16 +49,23 @@ class RecipesList extends Component {
                 <div className="container">
                     <div className="fill pt-1 pb-1"></div>
                     <hr className="hr-fill" />
+
                     <SearchRecipe
-                        clickHandler={this.search.bind(this)} />
-                    <RecipesOrder
-                        clickHandler
-                        ={this
-                            .order
-                            .bind(this)} />
+                        clickHandler={this.search.bind(this)}
+                        isSearched={this.state.isSearched} />
+
+                    {!this.state.isSearched
+                        ? <RecipesOrder
+                            clickHandler
+                            ={this
+                                .order
+                                .bind(this)} />
+                        : null}
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className="text-center mb-0 pt-2 cursive-font-style">All Recipes</h1>
+                            {!this.state.isSearched
+                                ? <h1 className="text-center mb-0 pt-2 cursive-font-style">All Recipes</h1>
+                                : <h1 className="text-center mb-0 pt-2 cursive-font-style">Searched Recipes Result</h1>}
                         </div>
                         <div className="col-md-3"></div>
                         <div className="col-md-6 custom-position-resipes-list">
@@ -78,7 +89,8 @@ class RecipesList extends Component {
                                 categoryId={r.categoryId}
                                 categoryName={r.categoryName}
                                 recipeLikesCount={r.recipeLikesCount}
-                                commentsCount={r.commentsCount} />)}
+                                commentsCount={r.commentsCount}
+                            />)}
                     </div>
                 </div>
             </div>

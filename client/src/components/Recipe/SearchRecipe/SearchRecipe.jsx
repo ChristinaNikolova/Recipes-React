@@ -5,6 +5,7 @@ import InputError from '../../shared/InputError/InputError.jsx';
 import './SearchRecipe.css';
 
 function SearchRecipe(props) {
+    console.log(props);
     const [errorMessage, setErrorMessage] = useState('');
 
     const onSearchRecipeSubmitHandler = (e) => {
@@ -44,7 +45,9 @@ function SearchRecipe(props) {
                                         <button className="btn btn-secondary" type="submit">Search</button>
                                     </div>
                                     <div className="col-lg-2">
-                                        <button className="btn btn-danger custom-danger">Clear</button>
+                                        {props.isSearched 
+                                        ? <button className="btn btn-danger custom-danger">Clear Result</button> 
+                                        : null}
                                     </div>
                                 </div>
                             </form>
