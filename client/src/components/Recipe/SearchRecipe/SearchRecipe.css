@@ -1,0 +1,39 @@
+.remove button {
+    margin-bottom: 10px;
+}
+
+.remove button:hover {
+    background-color: #78C2AD;
+    color: black;
+    cursor: pointer;
+}
+
+.custom-danger {
+    margin-left: 0px;
+}
+
+.remove .custom-danger:hover {
+    background-color: red;
+    color: white;
+}
+
+.search-form {
+    background-color: lightgrey;
+    border: 0.2rem solid lightgrey;
+}
+
+.remove {
+    padding-left: 0px !important;
+    margin-left: 0px !important;
+    padding-right: 0px !important;
+    margin-right: 0px !important;
+}
+
+.search-form .col-lg-2 {
+    flex: 0 0 8.666667%;
+}
+
+.search-form-centered {
+    text-align: center;
+    margin-left: 100px;
+}

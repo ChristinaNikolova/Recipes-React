@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import * as recipesService from '../../../services/recipesService.js';
 import RecipesOrder from '../RecipesOrder/RecipesOrder.jsx';
+import SearchRecipe from '../SearchRecipe/SearchRecipe.jsx';
 import SingleRecipe from '../SingleRecipe/SingleRecipe.jsx';
 
 import './RecipesList.css';
@@ -28,12 +29,24 @@ class RecipesList extends Component {
             .then(recipes => this.setState({ recipes: recipes }));
     }
 
+    search(query) {
+        console.log("queru:" + query);
+        
+        recipesService
+            .search(query)
+            .then(recipes => this.setState({ recipes: recipes }));
+    }
+
     render() {
+        console.log(this.state.recipes);
+
         return (
             <div className="recipes-wrapper">
                 <div className="container">
                     <div className="fill pt-1 pb-1"></div>
-                    {/* <hr className="hr-fill"/>  <app-search-recipe></app-search-recipe> */}
+                    <hr className="hr-fill" />
+                    <SearchRecipe
+                        clickHandler={this.search.bind(this)} />
                     <RecipesOrder
                         clickHandler
                         ={this

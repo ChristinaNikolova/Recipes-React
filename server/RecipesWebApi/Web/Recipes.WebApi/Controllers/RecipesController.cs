@@ -233,6 +233,7 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> Search(string query)
         {
+            ;
             try
             {
                 var recipes = await this.recipesService.GetSearchedAsync<RecipeBaseViewModel>(query);
