@@ -6,12 +6,14 @@ import './SearchRecipe.css';
 
 function SearchRecipe(props) {
     const [errorMessage, setErrorMessage] = useState('');
+    const queryMinLenght = 3;
+    const errorMessageText = `The field should be at least ${queryMinLenght} character`;
 
     const onSearchRecipeSubmitHandler = (e) => {
         e.preventDefault();
         const query = e.target.search.value;
 
-        if (query === undefined || query.length < 3) {
+        if (query === undefined || query.length < queryMinLenght) {
             onSearchRecipeChangeHandler(e);
             return;
         }
@@ -23,8 +25,8 @@ function SearchRecipe(props) {
     const onSearchRecipeChangeHandler = (e) => {
         const query = e.target.value;
 
-        if (query === undefined || query.length < 3) {
-            setErrorMessage('The field should be at least 3 character');
+        if (query === undefined || query.length < queryMinLenght) {
+            setErrorMessage(errorMessageText);
         } else {
             setErrorMessage('');
         }
