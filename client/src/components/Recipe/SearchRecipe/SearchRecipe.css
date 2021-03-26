@@ -22,11 +22,11 @@
     border: 0.2rem solid lightgrey;
 }
 
-.remove {
-    padding-left: 0px !important;
-    margin-left: 0px !important;
-    padding-right: 0px !important;
-    margin-right: 0px !important;
+.search-form-centered .remove {
+    padding-left: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+    margin-right: 0px;
 }
 
 .search-form .col-lg-2 {

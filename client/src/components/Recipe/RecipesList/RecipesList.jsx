@@ -19,6 +19,10 @@ class RecipesList extends Component {
     }
 
     componentDidMount() {
+        this.getAllRecipes();
+    }
+
+    getAllRecipes() {
         recipesService
             .all()
             .then(recipes => this.setState({ recipes: recipes }));
@@ -33,6 +37,12 @@ class RecipesList extends Component {
     }
 
     search(query) {
+        if (query === undefined) {
+            this.setState({ isSearched: false });
+            this.getAllRecipes();
+            return;
+        }
+
         recipesService
             .search(query)
             .then(recipes => this.setState({
@@ -42,8 +52,6 @@ class RecipesList extends Component {
     }
 
     render() {
-        console.log(this.state.recipes);
-
         return (
             <div className="recipes-wrapper">
                 <div className="container">
@@ -79,8 +87,8 @@ class RecipesList extends Component {
                     <div className="row">
                         {this
                             .state
-                            .recipes
-                            .map(r => <SingleRecipe
+                            .recipes.length > 0
+                            ? this.state.recipes.map(r => <SingleRecipe
                                 key={r.id}
                                 id={r.id}
                                 title={r.title}
@@ -90,7 +98,9 @@ class RecipesList extends Component {
                                 categoryName={r.categoryName}
                                 recipeLikesCount={r.recipeLikesCount}
                                 commentsCount={r.commentsCount}
-                            />)}
+                            />)
+                            : <h4 className="col-lg-12 text-center nothing-found cursive-font-style">Nothing found!</h4>
+                        }
                     </div>
                 </div>
             </div>

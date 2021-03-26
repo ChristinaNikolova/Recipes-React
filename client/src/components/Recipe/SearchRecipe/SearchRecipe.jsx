@@ -5,12 +5,17 @@ import InputError from '../../shared/InputError/InputError.jsx';
 import './SearchRecipe.css';
 
 function SearchRecipe(props) {
-    console.log(props);
     const [errorMessage, setErrorMessage] = useState('');
 
     const onSearchRecipeSubmitHandler = (e) => {
         e.preventDefault();
         const query = e.target.search.value;
+
+        if (query === undefined || query.length < 3) {
+            onSearchRecipeChangeHandler(e);
+            return;
+        }
+
         e.target.search.value = '';
         props.clickHandler(query)
     }
@@ -18,11 +23,15 @@ function SearchRecipe(props) {
     const onSearchRecipeChangeHandler = (e) => {
         const query = e.target.value;
 
-        if (query === '' || query.length < 3) {
+        if (query === undefined || query.length < 3) {
             setErrorMessage('The field should be at least 3 character');
         } else {
             setErrorMessage('');
         }
+    }
+
+    const clear = () => {
+        props.clickHandler();
     }
 
     return (
@@ -37,20 +46,20 @@ function SearchRecipe(props) {
                         <div className="search-form-centered">
                             <form className="m-2" onSubmit={onSearchRecipeSubmitHandler}>
                                 <div className="row remove">
-                                    <div className="col-lg-8">
+                                    <div className="col-lg-10">
                                         <input className="form-control" type="text" name="search" placeholder="Search" onChange={onSearchRecipeChangeHandler} />
                                         <InputError>{errorMessage}</InputError>
                                     </div>
                                     <div className="col-lg-2 remove">
                                         <button className="btn btn-secondary" type="submit">Search</button>
                                     </div>
-                                    <div className="col-lg-2">
-                                        {props.isSearched 
-                                        ? <button className="btn btn-danger custom-danger">Clear Result</button> 
-                                        : null}
-                                    </div>
                                 </div>
                             </form>
+                        </div>
+                        <div className="text-center mb-1">
+                            {props.isSearched
+                                ? <button className="btn btn-danger custom-danger clear-recult-font-size" onClick={clear}>Clear Result</button>
+                                : null}
                         </div>
                     </div>
                 </div>
