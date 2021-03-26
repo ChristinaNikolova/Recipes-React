@@ -1,33 +1,58 @@
-import { useState, useEffect } from 'react';
+import { Component } from 'react';
 
 import * as commentsService from '../../../services/commentsService.js';
 import CreateComment from '../CreateComment/CreateComment.jsx';
+import SingleComment from '../SingleComment/SingleComment.jsx';
 
 import './CommentsListCurrentRecipe.css';
 
-function CommentsListCurrentRecipe(props) {
+class CommentsListCurrentRecipe extends Component {
+    constructor(props) {
+        super(props)
 
-    let [comments] = useState({});
-
-    useEffect(() => {
-        commentsService.getAllCurrentRecipe(props.recipeId)
-            .then(res => comments(res));
-    }, []);
-
-    const reload = () => {
-        console.log("in reload");
+        this.state = {
+            comments: []
+        };
     }
 
-    return (
-        <div className="comments-list-wrapper">
-            <CreateComment
-                clickHandler={reload}
-                recipeId={props.recipeId} />
-            <article className="post post-content">
-                {/* <app-single-comment [comment] = "comment" ></app - single - comment > */}
-            </article >
-        </div>
-    );
+    componentDidMount() {
+        this.getAllCommentsCurrentRecipe();
+    }
+
+    getAllCommentsCurrentRecipe() {
+        commentsService
+            .getAllCurrentRecipe(this.props.recipeId)
+            .then(comments => this.setState({ comments: comments }));
+    }
+
+    reload() {
+        setTimeout(() => {
+            this.getAllCommentsCurrentRecipe();
+        }, 300);
+
+    }
+
+    render() {
+        console.log(this.state.comments.length);
+        if (!this.state.comments) {
+            return null;
+        }
+
+        return (
+            <div className="comments-list-wrapper">
+                <CreateComment
+                    clickHandler={this.reload.bind(this)}
+                    recipeId={this.props.recipeId} />
+                <article className="post post-content">
+                    {this.state.comments.map(c => <SingleComment
+                        key={c.id}
+                        content={c.content}
+                        formattedCreatedOn={c.formattedCreatedOn}
+                        clientUserName={c.clientUserName} />)}
+                </article >
+            </div>
+        );
+    }
 }
 
 export default CommentsListCurrentRecipe;

@@ -7,6 +7,8 @@
 
     public class CommentViewModel : IMapFrom<Comment>
     {
+        public string Id { get; set; }
+
         public string Content { get; set; }
 
         public DateTime CreatedOn { get; set; }

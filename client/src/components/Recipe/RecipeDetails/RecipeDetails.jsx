@@ -112,7 +112,9 @@ class RecipeDetails extends Component {
                     </div>
                 </div>
                 <hr className="custom-margin-left" />
-                <CommentsListCurrentRecipe recipeId={recipe.id} />
+                {recipe.id
+                    ? <CommentsListCurrentRecipe recipeId={recipe.id} />
+                    : null}
                 <div className="fill pt-1 pb-1"></div>
             </div >
         );

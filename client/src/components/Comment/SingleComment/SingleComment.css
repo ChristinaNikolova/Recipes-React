@@ -1,16 +1,3 @@
-.post {
-    overflow: auto;
-    background: #ddf9c0;
-    margin: 15px;
-    position: relative;
-}
-
-.post-content {
-    display: block;
-    vertical-align: top;
-    padding: 10px;
-}
-
 .info {
     font-size: 14px;
     color: #999999;
