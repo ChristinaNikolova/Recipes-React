@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as recipesService from '../../../services/recipesService.js';
+import CommentsListCurrentRecipe from '../../Comment/CommentsListCurrentRecipe/CommentsListCurrentRecipe.jsx';
 
 import './RecipeDetails.css';
 
@@ -111,7 +112,7 @@ class RecipeDetails extends Component {
                     </div>
                 </div>
                 <hr className="custom-margin-left" />
-                ...
+                <CommentsListCurrentRecipe recipeId={recipe.id} />
                 <div className="fill pt-1 pb-1"></div>
             </div >
         );

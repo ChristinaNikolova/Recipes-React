@@ -1,0 +1,44 @@
+.create-comment-wrapper .post {
+    overflow: auto;
+    background: #ddf9c0;
+    margin: 15px;
+    position: relative;
+}
+
+.create-comment-wrapper .post-content {
+    display: block;
+    vertical-align: top;
+    padding: 10px;
+}
+
+.comment-form {
+    display: block;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+.comment-form-text-area {
+    resize: none;
+    height: 6em;
+    display: block;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+.comment-form .add-comment-button:hover {
+    background-color: #78C2AD;
+    color: black;
+    cursor: pointer;
+}
+
+.create-comment-wrapper {
+    background-color: lavender;
+}
+
+.comments-title {
+    padding-left: 15px;
+}
+
+.comments-title-second-title {
+    margin: 15px 5px;
+}
