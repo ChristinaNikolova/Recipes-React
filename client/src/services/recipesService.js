@@ -37,3 +37,29 @@ export const search = (query) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 }
+
+export const create = (title, content, portions, preparationTime, cookingTime, categoryName, picture, ingredients) => {
+
+
+    let recipe = {
+        title,
+        content,
+        portions,
+        preparationTime,
+        cookingTime,
+        categoryName,
+        picture,
+        ingredients
+    };
+
+    console.log();
+
+    console.log(api.createRecipe);
+    return fetch(api.createRecipe, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(recipe)
+    }).catch(err => console.error(err));;
+}

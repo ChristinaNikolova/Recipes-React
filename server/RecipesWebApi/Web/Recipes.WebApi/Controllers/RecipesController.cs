@@ -47,6 +47,7 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Create([FromBody] RecipeInputModel input)
         {
+            ;
             var isTitleAlreadyExisting = await this.recipesService.IsTitleAlreadyExistingAsync(input.Title);
 
             if (isTitleAlreadyExisting)

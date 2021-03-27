@@ -3,6 +3,7 @@ import { produce } from 'immer';
 import { generate } from 'shortid';
 
 import * as categoriesService from '../../../services/categoriesService.js';
+import * as recipesService from '../../../services/recipesService.js';
 
 import './CreateRecipe.css';
 
@@ -16,7 +17,6 @@ function CreateRecipe() {
     }, []);
 
     const addIngredient = () => {
-        console.log("in add ")
         setIngredients(prevState => [...prevState, {
             id: generate(),
             name: '',
@@ -51,7 +51,18 @@ function CreateRecipe() {
 
     const onCreateRecipeSubmitHandler = (e) => {
         e.preventDefault();
-        console.log(ingredients);
+
+        const { title, content, portions, preparationTime, cookingTime, categoryName, picture } = e.target;
+
+        recipesService
+            .create(title.value,
+                content.value,
+                portions.value,
+                preparationTime.value,
+                cookingTime.value,
+                categoryName.value,
+                picture.value,
+                ingredients);
     }
 
     const getIngredientIndex = (target) => {
@@ -107,10 +118,10 @@ function CreateRecipe() {
                             </div>
                             <hr />
                             <label className="fonts-bold">Ingredients: </label>
-                            {ingredients.map((i, ci) => {
-                                const index = `ingredients[${ci}]`;
+                            {ingredients.map((ingredient, ingredientIndex) => {
+                                const index = `ingredients[${ingredientIndex}]`;
                                 return (
-                                    <div key={i.id}>
+                                    <div key={ingredient.id}>
                                         <label className="form-control-label custom-color-green">Ingredient: </label>
                                         <div className="form-group">
                                             <label className="form-control-label" htmlFor={index}>Name</label>

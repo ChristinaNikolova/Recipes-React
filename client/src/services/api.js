@@ -7,6 +7,7 @@ export default {
     allCategories: `${categoriesUrl}/all`,
     allCategoriesNames: `${categoriesUrl}/allNames`,
     allRecipes: `${recipesUrl}/all`,
+    createRecipe: `${recipesUrl}/create`,
     orderRecipes: `${recipesUrl}/order`,
     detailsRecipe: `${recipesUrl}/details`,
     recipesCurrentCategory: `${recipesUrl}/byCategory`,
