@@ -47,7 +47,6 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Create([FromBody] RecipeInputModel input)
         {
-            ;
             var isTitleAlreadyExisting = await this.recipesService.IsTitleAlreadyExistingAsync(input.Title);
 
             if (isTitleAlreadyExisting)
@@ -60,11 +59,15 @@
 
             try
             {
-                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+                //var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+
+                var userId = "c3a43854-bd43-409d-b368-e21733328c4b";
 
                 var ingredients = PrepareIngredients(input.Ingredients);
 
-                await this.recipesService.CreateAsync(input.Title, input.Content, input.Portions, input.PreparationTime, input.CookingTime, input.CategoryName, input.Picture, ingredients, user.Id);
+                //await this.recipesService.CreateAsync(input.Title, input.Content, input.Portions, input.PreparationTime, input.CookingTime, input.CategoryName, input.Picture, ingredients, user.Id);
+
+                await this.recipesService.CreateAsync(input.Title, input.Content, input.Portions, input.PreparationTime, input.CookingTime, input.CategoryName, input.Picture, ingredients, userId);
 
                 return this.Ok(new
                 {
@@ -139,7 +142,7 @@
 
                 //recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
                 recipe.Ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<BaseIngredientViewModel>(id);
-                
+
                 return this.Ok(recipe);
             }
             catch (Exception)
@@ -149,7 +152,7 @@
                     Message = Messages.Error.Unknown,
                 });
             }
-       }
+        }
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
