@@ -20,7 +20,7 @@
     font-weight: bold;
 }
 
-.create-recipe-wrapper .custom-color-blue {
+#custom-add-ingredient-button {
     background-color: lightblue;
     border-color: lightblue;
     color: black;
@@ -33,4 +33,9 @@
 .create-recipe-wrapper .container {
     background-color: lightgray;
     padding: 10px;
+}
+
+.current-ingredient-add .custom-danger-button:hover {
+    background-color: red;
+    color: white;
 }

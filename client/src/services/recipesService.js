@@ -39,8 +39,6 @@ export const search = (query) => {
 }
 
 export const create = (title, content, portions, preparationTime, cookingTime, categoryName, picture, ingredients) => {
-
-
     let recipe = {
         title,
         content,
@@ -52,9 +50,6 @@ export const create = (title, content, portions, preparationTime, cookingTime, c
         ingredients
     };
 
-    console.log();
-
-    console.log(api.createRecipe);
     return fetch(api.createRecipe, {
         method: 'POST',
         headers: {

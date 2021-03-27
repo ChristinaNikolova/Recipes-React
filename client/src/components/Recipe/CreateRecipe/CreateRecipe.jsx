@@ -121,7 +121,7 @@ function CreateRecipe() {
                             {ingredients.map((ingredient, ingredientIndex) => {
                                 const index = `ingredients[${ingredientIndex}]`;
                                 return (
-                                    <div key={ingredient.id}>
+                                    <div className="current-ingredient-add" key={ingredient.id}>
                                         <label className="form-control-label custom-color-green">Ingredient: </label>
                                         <div className="form-group">
                                             <label className="form-control-label" htmlFor={index}>Name</label>
@@ -131,14 +131,14 @@ function CreateRecipe() {
                                             <label className="form-control-label" htmlFor={index}>Quantity</label>
                                             <input onChange={changeIngredientQunatityHandler} className="form-control" id={`${index}`} type="text" />
                                         </div>
-                                        <button type="button" onClick={() => removeIngredient(index)}>Remove</button>
+                                        <button type="button" className="btn btn-danger custom-danger-button" onClick={() => removeIngredient(index)}>Remove</button>
+                                        <hr />
                                     </div>
-
                                 )
                             })}
-                            <button type="button" className="btn btn-primary custom-color-blue" onClick={addIngredient}> Add ingredient</button >
+                            <button id="custom-add-ingredient-button" type="button" className="btn btn-primary ml-2" onClick={addIngredient}> Add ingredient</button >
                             <hr />
-                            <button type="submit" className="btn btn-secondary"> Create</button >
+                            <button type="submit" className="btn btn-secondary">Create</button >
                         </div >
                     </div >
                 </form >
