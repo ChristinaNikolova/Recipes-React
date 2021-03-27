@@ -1,0 +1,36 @@
+.create-recipe-wrapper {
+    background-color: lavender;
+}
+
+.cursive-font-style {
+    padding: 10px;
+}
+
+.create-recipe-wrapper button {
+    margin-bottom: 10px;
+}
+
+.create-recipe-wrapper button:hover {
+    background-color: #78C2AD;
+    color: black;
+    cursor: pointer;
+}
+
+.fonts-bold {
+    font-weight: bold;
+}
+
+.create-recipe-wrapper .custom-color-blue {
+    background-color: lightblue;
+    border-color: lightblue;
+    color: black;
+}
+
+.create-recipe-wrapper .custom-color-green {
+    color: #78C2AD;
+}
+
+.create-recipe-wrapper .container {
+    background-color: lightgray;
+    padding: 10px;
+}
