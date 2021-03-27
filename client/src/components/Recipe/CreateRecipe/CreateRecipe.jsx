@@ -16,6 +16,7 @@ function CreateRecipe() {
     }, []);
 
     const addIngredient = () => {
+        console.log("in add ")
         setIngredients(prevState => [...prevState, {
             id: generate(),
             name: '',
@@ -23,17 +24,17 @@ function CreateRecipe() {
         }]);
     };
 
-    const removeIngredient = (i) => {
-        console.log(i);
-        setIngredients(currentIngredient => currentIngredient.filter(x => x.id !== i.id));
+    const removeIngredient = (targetIndex) => {
+        const ingredientIndex = getIngredientIndex(targetIndex);
+        const ingredientId = ingredients[ingredientIndex].id;
+
+        setIngredients(ingredients => ingredients.filter(x => x.id !== ingredientId));
     };
 
     const changeIngredientNameHandler = (e) => {
         const name = e.target.value;
-        const startIndex = (e.target.id).indexOf('[') + 1;
-        const endIndex = (e.target.id).indexOf(']');
-        const ingredientIndex = (e.target.id).slice(startIndex, endIndex);
-        
+        const ingredientIndex = getIngredientIndex(e.target.id);
+
         setIngredients(currentIngredient => produce(currentIngredient, v => {
             v[ingredientIndex].name = name;
         }));
@@ -41,10 +42,8 @@ function CreateRecipe() {
 
     const changeIngredientQunatityHandler = (e) => {
         const quantity = e.target.value;
-        const startIndex = (e.target.id).indexOf('[') + 1;
-        const endIndex = (e.target.id).indexOf(']');
-        const ingredientIndex = (e.target.id).slice(startIndex, endIndex);
-        
+        const ingredientIndex = getIngredientIndex(e.target.id);
+
         setIngredients(currentIngredient => produce(currentIngredient, v => {
             v[ingredientIndex].quantity = quantity;
         }));
@@ -52,8 +51,15 @@ function CreateRecipe() {
 
     const onCreateRecipeSubmitHandler = (e) => {
         e.preventDefault();
-        console.log("in submit");
         console.log(ingredients);
+    }
+
+    const getIngredientIndex = (target) => {
+        const startIndex = (target).indexOf('[') + 1;
+        const endIndex = (target).indexOf(']');
+        const ingredientIndex = (target).slice(startIndex, endIndex);
+
+        return ingredientIndex;
     }
 
     return (
@@ -107,15 +113,16 @@ function CreateRecipe() {
                                     <div key={i.id}>
                                         <label className="form-control-label custom-color-green">Ingredient: </label>
                                         <div className="form-group">
-                                            <label className="form-control-label" htmlFor={`${index}.name`}>Name</label>
-                                            <input onChange={changeIngredientNameHandler} className="form-control" id={`${index}.name`} type="text" />
+                                            <label className="form-control-label" htmlFor={index}>Name</label>
+                                            <input onChange={changeIngredientNameHandler} className="form-control" id={`${index}`} type="text" />
                                         </div>
                                         <div className="form-group">
-                                            <label className="form-control-label" htmlFor={`${index}.quantity`}>Quantity</label>
-                                            <input onChange={changeIngredientQunatityHandler} className="form-control" id={`${index}.quantity`} type="text" />
+                                            <label className="form-control-label" htmlFor={index}>Quantity</label>
+                                            <input onChange={changeIngredientQunatityHandler} className="form-control" id={`${index}`} type="text" />
                                         </div>
-                                        <button onClick={removeIngredient}>Remove</button>
+                                        <button type="button" onClick={() => removeIngredient(index)}>Remove</button>
                                     </div>
+
                                 )
                             })}
                             <button type="button" className="btn btn-primary custom-color-blue" onClick={addIngredient}> Add ingredient</button >
