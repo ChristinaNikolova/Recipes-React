@@ -37,3 +37,11 @@
     text-align: center;
     margin-left: 100px;
 }
+
+.search-form-centered .red {
+    border-color: red;
+}
+
+.search-form-centered .green {
+    border-color: green;
+}

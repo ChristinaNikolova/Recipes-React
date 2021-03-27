@@ -5,6 +5,8 @@
 
     public class BaseIngredientViewModel : IMapFrom<RecipeIngredient>
     {
+        public string IngredientId { get; set; }
+
         public string IngredientName { get; set; }
 
         public string Quantity { get; set; }

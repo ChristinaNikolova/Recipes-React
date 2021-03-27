@@ -21,7 +21,5 @@ export const create = (content, recipeId) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(comment)
-    })
-        .then(res => console.log(res))
-        .catch(err => console.error(err));
+    }).catch(err => console.error(err));
 }

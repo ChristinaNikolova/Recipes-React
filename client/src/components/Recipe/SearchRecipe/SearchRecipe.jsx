@@ -49,7 +49,9 @@ function SearchRecipe(props) {
                             <form className="m-2" onSubmit={onSearchRecipeSubmitHandler}>
                                 <div className="row remove">
                                     <div className="col-lg-10">
-                                        <input className="form-control" type="text" name="search" placeholder="Search" onChange={onSearchRecipeChangeHandler} />
+                                        {!errorMessage
+                                            ? <input className="form-control green" type="text" name="search" placeholder="Search" onChange={onSearchRecipeChangeHandler} />
+                                            : <input className="form-control red" type="text" name="search" placeholder="Search" onChange={onSearchRecipeChangeHandler} />}
                                         <InputError>{errorMessage}</InputError>
                                     </div>
                                     <div className="col-lg-2 remove">

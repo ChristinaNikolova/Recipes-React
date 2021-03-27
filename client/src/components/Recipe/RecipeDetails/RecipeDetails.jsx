@@ -84,7 +84,7 @@ class RecipeDetails extends Component {
                                     <div className="ingridients-wrap">
                                         <h3 className="item-title cursive-font-style"><i className="fas fa-list-ul"></i> Ingridients</h3>
                                         {recipe.ingredients
-                                            ? recipe.ingredients.map(i => <div className="checkbox checkbox-primary"><label><i className="fas fa-check ml-2 mr-2"></i> {i.quantity}: {i.ingredientName}</label></div>)
+                                            ? recipe.ingredients.map(i => <div key={i.ingredientId} className="checkbox checkbox-primary"><label><i className="fas fa-check ml-2 mr-2"></i> {i.quantity}: {i.ingredientName}</label></div>)
                                             : <div></div>}
                                     </div>
                                 </div>
