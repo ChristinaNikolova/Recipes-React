@@ -5,3 +5,9 @@ export const all = () => {
         .then(res => res.json())
         .catch(err => console.error(err));
 }
+
+export const getAllNames = () => {
+    return fetch(api.allCategoriesNames)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
