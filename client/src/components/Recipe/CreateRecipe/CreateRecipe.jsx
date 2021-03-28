@@ -4,16 +4,20 @@ import { generate } from 'shortid';
 
 import * as categoriesService from '../../../services/categoriesService.js';
 import * as recipesService from '../../../services/recipesService.js';
-import createRecipeErrors from '../../../utils/errors/createRecipeErrors.js';
+import * as test from '../../../utils/validations/recipeValidator.js';
 import Input from '../../shared/Input/Input.jsx';
-import InputError from '../../shared/InputError/InputError.jsx';
 
 import './CreateRecipe.css';
 
 function CreateRecipe({ history }) {
     const [categories, setCategories] = useState([]);
     const [ingredients, setIngredients] = useState([]);
-    const [errors, setErrors] = useState([]);
+    const [errorTitle, setErrorTitle] = useState('');
+    const [errorContent, setErrorContent] = useState('');
+    const [errorPortion, setErrorPortion] = useState('');
+    const [errorPrepTime, setErrorPrepTime] = useState('');
+    const [errorCookTime, setErrorCookTime] = useState('');
+    const [errorPicture, setErrorPicture] = useState('');
 
     useEffect(() => {
         categoriesService.getAllNames()
@@ -58,19 +62,7 @@ function CreateRecipe({ history }) {
 
         const { title, content, portions, preparationTime, cookingTime, categoryName, picture } = e.target;
 
-        let messages = createRecipeErrors(title.value,
-            content.value,
-            portions.value,
-            preparationTime.value,
-            cookingTime.value,
-            categoryName.value,
-            picture.value);
-
-        setErrors(messages);
-
-        if (messages.length > 0) {
-            return
-        }
+        //validate
 
         recipesService
             .create(title.value,
@@ -104,38 +96,41 @@ function CreateRecipe({ history }) {
                     </div>
                 </div>
                 <form onSubmit={onCreateRecipeSubmitHandler}>
-                    {errors.map(e => <InputError key={generate()}>{e}</InputError>)}
                     <div className="row space-top">
                         <div className="col-lg-8">
                             <Input
                                 type='text'
                                 name='title'
-                                label='Title' />
+                                label='Title'
+                                error={errorTitle} />
 
                             <Input
                                 type='text'
                                 name='content'
-                                label='Content' />
+                                label='Content'
+                                error={errorContent} />
 
                             <Input
                                 type='number'
                                 name='portions'
-                                label='Portions' />
+                                label='Portions'
+                                error={errorPortion} />
 
                             <Input
                                 type='number'
                                 name='preparationTime'
-                                label='Preparation Time in minutes' />
+                                label='Preparation Time in minutes'
+                                error={errorPrepTime} />
 
                             <Input
                                 type='number'
                                 name='cookingTime'
-                                label='Cooking Time in minutes' />
+                                label='Cooking Time in minutes'
+                                error={errorCookTime} />
 
                             <div className="form-group">
                                 <label className="form-control-label" htmlFor="categoryName">Category</label>
                                 <select className="form-control" id="categoryName">
-                                    <option disabled>Please select one of the options below</option>
                                     {categories.map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
                                 </select>
                             </div>
@@ -143,7 +138,8 @@ function CreateRecipe({ history }) {
                             <Input
                                 type='url'
                                 name='picture'
-                                label='Picture url' />
+                                label='Picture url'
+                                error={errorPicture} />
 
                             <hr />
                             <label className="fonts-bold">Ingredients: </label>
