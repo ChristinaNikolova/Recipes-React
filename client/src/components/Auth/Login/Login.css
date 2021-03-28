@@ -1,0 +1,20 @@
+.login-wrapper button {
+    margin-bottom: 10px;
+    background-color: #6c757d;
+}
+
+.login-wrapper button:hover {
+    background-color: #78C2AD;
+    color: black;
+    cursor: pointer;
+}
+
+.login-wrapper {
+    background-color: lavender;
+    height: 650px;
+}
+
+.login-wrapper .container {
+    background-color: lightgray;
+    padding: 10px;
+}

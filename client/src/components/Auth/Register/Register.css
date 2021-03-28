@@ -1,0 +1,20 @@
+.register-wrapper button {
+    margin-bottom: 10px;
+    background-color: #6c757d;
+}
+
+.register-wrapper button:hover {
+    background-color: #78C2AD;
+    color: black;
+    cursor: pointer;
+}
+
+.register-wrapper {
+    background-color: lavender;
+    height: 800px;
+}
+
+.register-wrapper .container {
+    background-color: lightgray;
+    padding: 10px;
+}
