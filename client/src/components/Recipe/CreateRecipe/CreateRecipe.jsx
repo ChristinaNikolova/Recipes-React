@@ -1,24 +1,19 @@
 import { useState, useEffect } from 'react';
 import { produce } from 'immer';
-import { generate, isValid } from 'shortid';
+import { generate } from 'shortid';
 
 import * as categoriesService from '../../../services/categoriesService.js';
 import * as recipesService from '../../../services/recipesService.js';
-import createRecipeValidationFunc from '../../../utils/validations/recipe.js';
+import createRecipeErrors from '../../../utils/errors/createRecipeErrors.js';
 import Input from '../../shared/Input/Input.jsx';
+import InputError from '../../shared/InputError/InputError.jsx';
 
 import './CreateRecipe.css';
 
 function CreateRecipe({ history }) {
     const [categories, setCategories] = useState([]);
     const [ingredients, setIngredients] = useState([]);
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [portions, setPortions] = useState(0);
-    const [preparationTime, setPreparationTime] = useState(0);
-    const [cookingTime, setCookingTime] = useState(0);
-    const [categoryName, setCategoryName] = useState('');
-    const [picture, setPicture] = useState('');
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         categoriesService.getAllNames()
@@ -63,6 +58,20 @@ function CreateRecipe({ history }) {
 
         const { title, content, portions, preparationTime, cookingTime, categoryName, picture } = e.target;
 
+        let messages = createRecipeErrors(title.value,
+            content.value,
+            portions.value,
+            preparationTime.value,
+            cookingTime.value,
+            categoryName.value,
+            picture.value);
+
+        setErrors(messages);
+
+        if (messages.length > 0) {
+            return
+        }
+
         recipesService
             .create(title.value,
                 content.value,
@@ -85,45 +94,6 @@ function CreateRecipe({ history }) {
         return ingredientIndex;
     }
 
-
-    const validObj = createRecipeValidationFunc(
-        title,
-        content,
-        portions,
-        preparationTime,
-        cookingTime,
-        categoryName,
-        picture,
-    );
-
-    const onChangeTitleInputHandler = (e) => {
-        setTitle(e.target.value)
-    }
-
-    const onChangeContentInputHandler = (e) => {
-        setContent(e.target.value)
-    }
-
-    const onChangePortionsInputHandler = (e) => {
-        setPortions(e.target.value)
-    }
-
-    const onChangePreparationTimeInputHandler = (e) => {
-        setPreparationTime(e.target.value)
-    }
-
-    const onChangeCookingTimeInputHandler = (e) => {
-        setCookingTime(e.target.value)
-    }
-
-    const onChangeCategoryNameInputHandler = (e) => {
-        setCategoryName(e.target.value)
-    }
-
-    const onChangePictureInputHandler = (e) => {
-        setPicture(e.target.value)
-    }
-
     return (
         <div className="create-recipe-wrapper" >
             <div className="fill pt-2 pb-2"></div>
@@ -134,68 +104,46 @@ function CreateRecipe({ history }) {
                     </div>
                 </div>
                 <form onSubmit={onCreateRecipeSubmitHandler}>
+                    {errors.map(e => <InputError key={generate()}>{e}</InputError>)}
                     <div className="row space-top">
                         <div className="col-lg-8">
                             <Input
                                 type='text'
                                 name='title'
-                                label='Title'
-                                value={title}
-                                valid={validObj.validTitle}
-                                onChange={onChangeTitleInputHandler} />
+                                label='Title' />
 
                             <Input
                                 type='text'
                                 name='content'
-                                label='Content'
-                                value={content}
-                                valid={validObj.validContent}
-                                onChange={onChangeContentInputHandler}
-                            />
+                                label='Content' />
 
                             <Input
                                 type='number'
                                 name='portions'
-                                label='Portions'
-                                value={useState.portions}
-                                valid={validObj.validPortions}
-                                onChange={onChangePortionsInputHandler}
-                            />
+                                label='Portions' />
 
                             <Input
                                 type='number'
                                 name='preparationTime'
-                                label='Preparation Time in minutes'
-                                value={useState.preparationTime}
-                                valid={validObj.validPreparationTime}
-                                onChange={onChangePreparationTimeInputHandler}
-                            />
+                                label='Preparation Time in minutes' />
 
                             <Input
                                 type='number'
                                 name='cookingTime'
-                                label='Cooking Time in minutes'
-                                value={useState.cookingTime}
-                                valid={validObj.validCookingTime}
-                                onChange={onChangeCookingTimeInputHandler}
-                            />
+                                label='Cooking Time in minutes' />
 
                             <div className="form-group">
                                 <label className="form-control-label" htmlFor="categoryName">Category</label>
                                 <select className="form-control" id="categoryName">
                                     <option disabled>Please select one of the options below</option>
-                                    {categories.map(c => <option key={c.id} value={c.name} onChange={onChangeCategoryNameInputHandler}>{c.name}</option>)}
+                                    {categories.map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
                                 </select>
                             </div>
 
                             <Input
                                 type='url'
                                 name='picture'
-                                label='Picture url'
-                                value={useState.picture}
-                                valid={validObj.validPicture}
-                                onChange={onChangePictureInputHandler}
-                            />
+                                label='Picture url' />
 
                             <hr />
                             <label className="fonts-bold">Ingredients: </label>

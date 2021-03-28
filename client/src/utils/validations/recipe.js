@@ -1,19 +1,19 @@
 const createRecipeValidationFunc = (title, content, portions, preparationTime, cookingTime, categoryName, picture) => {
     let validTitle = (() => {
         if (
-            title.length > 3 &&
-            title.length < 50 &&
+            title.length >= 3 &&
+            title.length <= 50 &&
             title !== ''
         ) {
-            return true
+            return ''
         }
-        return false
+        return (`Title should be between ${recipeConstants.TITLE_MIN_LEN} and ${recipeConstants.TITLE_MAX_LEN} characters long.`);
     })();
 
     let validContent = (() => {
         if (
-            content.length > 3 &&
-            content.length < 5000 &&
+            content.length >= 3 &&
+            content.length <= 5000 &&
             content !== ''
         ) {
             return true
@@ -23,9 +23,8 @@ const createRecipeValidationFunc = (title, content, portions, preparationTime, c
 
     let validPortions = (() => {
         if (
-            portions > 0 &&
-            portions < 2147483647 &&
-            portions !== ''
+            portions >= 1 &&
+            portions <= 1000
         ) {
             return true
         }
@@ -34,9 +33,8 @@ const createRecipeValidationFunc = (title, content, portions, preparationTime, c
 
     let validPreparationTime = (() => {
         if (
-            preparationTime > 0 &&
-            preparationTime < 2147483647 &&
-            preparationTime !== ''
+            preparationTime >= 1 &&
+            preparationTime <= 1000
         ) {
             return true
         }
@@ -45,9 +43,8 @@ const createRecipeValidationFunc = (title, content, portions, preparationTime, c
 
     let validCookingTime = (() => {
         if (
-            cookingTime > 0 &&
-            cookingTime < 2147483647 &&
-            cookingTime !== ''
+            cookingTime >= 1 &&
+            cookingTime <= 1000
         ) {
             return true
         }
@@ -65,7 +62,8 @@ const createRecipeValidationFunc = (title, content, portions, preparationTime, c
 
     let validPicture = (() => {
         if (
-            (picture.startsWith('https://') || picture.startsWith('http://')) && picture.length >= 14
+            (picture.startsWith('https://') || picture.startsWith('http://')) &&
+            picture !== ''
         ) {
             return true
         }

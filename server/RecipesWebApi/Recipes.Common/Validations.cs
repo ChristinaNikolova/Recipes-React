@@ -14,11 +14,17 @@
 
             public const string PortionsMin = "1";
 
+            public const string PortionsMax = "1000";
+
             public const string PrepTimeMin = "1";
+
+            public const string PrepTimeMax = "1000";
 
             public const string CookTimeMin = "1";
 
-            public const string IntMaxValue = "2147483647";
+            public const string CookTimeMax = "1000";
+
+            //public const string IntMaxValue = "2147483647";
         }
 
         public static class Category

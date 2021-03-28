@@ -22,13 +22,13 @@
 
         public string Picture { get; set; }
 
-        [Range(typeof(int), Validations.Recipe.PortionsMin, Validations.Recipe.IntMaxValue)]
+        [Range(typeof(int), Validations.Recipe.PortionsMin, Validations.Recipe.PortionsMax)]
         public int Portions { get; set; }
 
-        [Range(typeof(int), Validations.Recipe.PrepTimeMin, Validations.Recipe.IntMaxValue)]
+        [Range(typeof(int), Validations.Recipe.PrepTimeMin, Validations.Recipe.PrepTimeMax)]
         public int PreparationTime { get; set; }
 
-        [Range(typeof(int), Validations.Recipe.CookTimeMin, Validations.Recipe.IntMaxValue)]
+        [Range(typeof(int), Validations.Recipe.CookTimeMin, Validations.Recipe.CookTimeMax)]
         public int CookingTime { get; set; }
 
         [Required]
