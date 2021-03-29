@@ -42,3 +42,7 @@ ul {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.custom-table {
+    background-color: white;
+}
