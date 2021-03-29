@@ -56,5 +56,14 @@ export const create = (title, content, portions, preparationTime, cookingTime, c
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(recipe)
+    }).catch(err => console.error(err));
+}
+
+export const remove = (recipeId) => {
+    return fetch(`${api.deleteRecipe}/${recipeId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
     }).catch(err => console.error(err));;
 }

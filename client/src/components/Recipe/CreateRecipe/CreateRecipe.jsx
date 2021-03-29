@@ -64,18 +64,35 @@ function CreateRecipe({ history }) {
 
         //validate
 
-        recipesService
-            .create(title.value,
-                content.value,
-                portions.value,
-                preparationTime.value,
-                cookingTime.value,
-                categoryName.value,
-                picture.value,
-                ingredients)
-            .then(() => {
-                history.push(`/recipes`);
-            });
+        // var error = test.validTitle(title.value);
+        // console.log(title.value);
+        // console.log("error")
+        // console.log(error);
+
+        // setErrorTitle(errorTitle => produce(errorTitle, () => test.validTitle(title.value)));
+        // useEffect(() => {
+        //     categoriesService.getAllNames()
+        //         .then(categories => setCategories(categories));
+        // }, []);
+
+        // useEffect(() => {
+        //     error => setErrorTitle(error)
+        // }, []);
+
+        //console.log(errorTitle);
+
+        // recipesService
+        //     .create(title.value,
+        //         content.value,
+        //         portions.value,
+        //         preparationTime.value,
+        //         cookingTime.value,
+        //         categoryName.value,
+        //         picture.value,
+        //         ingredients)
+        //     .then(() => {
+        //         history.push(`/recipes`);
+        //     });
     }
 
     const getIngredientIndex = (target) => {

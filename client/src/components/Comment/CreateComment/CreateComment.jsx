@@ -6,7 +6,9 @@ function CreateComment(props) {
 
     const onCreateCommentSubmitHandler = (e) => {
         e.preventDefault();
+
         //Validate
+        
         const content = e.target.content.value;
         const recipeId = props.recipeId;
         e.target.content.value = '';

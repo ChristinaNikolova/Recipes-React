@@ -21,10 +21,10 @@ function Header() {
                             <Link to="/recipes" className="nav-link">Recipes</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link">My Own Recipes</a>
+                            <Link to="/users/own" className="nav-link">My Own Recipes</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link">My Favourite Recipes</a>
+                            <Link to="/users/favourite" className="nav-link">My Favourite Recipes</Link>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link">Administration</a>

@@ -1,0 +1,14 @@
+.pic-own-recipe {
+    max-width: 40%;
+    max-height: 200px;
+    border: 0.1rem hidden;
+    background-color: white;
+}
+
+.title-own-recipe {
+    color: #78C2AD
+}
+
+.title-own-recipe:hover {
+    cursor: pointer;
+}
