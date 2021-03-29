@@ -37,12 +37,20 @@ class RecipeDetails extends Component {
     }
 
     removeFromFav() {
+        const recipeId = this.state.recipe.id;
+        const isFavourite = this.state.recipe.isFavourite;
 
+        recipesService
+            .dislike(recipeId)
+            .then(this.setState(state => (
+                {
+                    recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
+                })));
     }
 
     render() {
         const recipe = this.state.recipe;
-        
+
         return (
             <div className="recipe-details-wrapper">
                 <div className="pl-4">
