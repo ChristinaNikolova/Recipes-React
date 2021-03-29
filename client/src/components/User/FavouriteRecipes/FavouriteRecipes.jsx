@@ -15,6 +15,16 @@ class FavouriteRecipes extends Component {
     }
 
     componentDidMount() {
+        this.getRecipes();
+    }
+
+    reload() {
+        setTimeout(() => {
+            this.getRecipes();
+        }, 300);
+    }
+
+    getRecipes() {
         usersService
             .getFavourite()
             .then(recipes => this.setState({ favRecipes: recipes }));
@@ -45,7 +55,8 @@ class FavouriteRecipes extends Component {
                                     recipeTitle={r.recipeTitle}
                                     recipePicture={r.recipePicture}
                                     recipeCategoryName={r.recipeCategoryName}
-                                    recipeAuthorUserName={r.recipeAuthorUserName} />)}
+                                    recipeAuthorUserName={r.recipeAuthorUserName}
+                                    clickHandler={this.reload.bind(this)} />)}
                         </tbody>
                     </table>
                 </div >

@@ -1,8 +1,17 @@
-import './FavouriteRecipesRow.css';
-
 import { Link } from 'react-router-dom';
 
-function FavouriteRecipesRow({ recipeId, recipeTitle, recipePicture, recipeCategoryName, recipeAuthorUserName }) {
+import * as recipesService from '../../../services/recipesService.js';
+
+import './FavouriteRecipesRow.css';
+
+function FavouriteRecipesRow({ recipeId, recipeTitle, recipePicture, recipeCategoryName, recipeAuthorUserName, clickHandler }) {
+
+    const removeFromFav = () => {
+        recipesService
+            .dislike(recipeId)
+            .then(clickHandler());
+    }
+
     return (
         <tr>
             <td>
@@ -13,7 +22,7 @@ function FavouriteRecipesRow({ recipeId, recipeTitle, recipePicture, recipeCateg
             </td>
             <td>{recipeCategoryName}</td>
             <td>{recipeAuthorUserName}</td>
-            <td><button className="btn btn-danger">Remove</button></td>
+            <td><button className="btn btn-danger" onClick={removeFromFav}>Remove</button></td>
         </tr >
     );
 }
