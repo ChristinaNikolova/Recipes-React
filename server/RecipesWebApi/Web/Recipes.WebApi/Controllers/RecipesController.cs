@@ -282,7 +282,6 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(string recipeId)
         {
-            ;
             try
             {
                 await this.recipesService.DeleteAsync(recipeId);

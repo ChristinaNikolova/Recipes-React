@@ -15,6 +15,16 @@ class OwnRecipes extends Component {
     }
 
     componentDidMount() {
+        this.getRecipes();
+    }
+
+    reload() {
+        setTimeout(() => {
+            this.getRecipes();
+        }, 300);
+    }
+
+    getRecipes() {
         usersService
             .getOwn()
             .then(recipes => this.setState({ ownRecipes: recipes }));
@@ -43,7 +53,8 @@ class OwnRecipes extends Component {
                                 id={r.id}
                                 title={r.title}
                                 picture={r.picture}
-                                categoryName={r.categoryName} />)}
+                                categoryName={r.categoryName}
+                                clickHandler={this.reload.bind(this)} />)}
                         </tbody>
                     </table>
                 </div >

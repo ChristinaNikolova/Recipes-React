@@ -4,11 +4,12 @@ import * as recipesService from '../../../services/recipesService.js';
 
 import './OwnRecipesRow.css';
 
-function OwnRecipesRow({ id, title, picture, categoryName }) {
+function OwnRecipesRow({ id, title, picture, categoryName, clickHandler }) {
 
     const remove = () => {
         recipesService
-            .remove(id);
+            .remove(id)
+            .then(clickHandler());
     }
 
     return (
