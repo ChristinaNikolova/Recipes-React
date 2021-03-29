@@ -67,3 +67,21 @@ export const remove = (recipeId) => {
         }
     }).catch(err => console.error(err));
 }
+
+export const like = (id) => {
+    return fetch(`${api.recipeLike}/${id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).catch(err => console.error(err));
+}
+
+export const dislike = (id) => {
+    return fetch(`${api.recipeDislike}/${id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).catch(err => console.error(err));
+}

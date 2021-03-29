@@ -13,6 +13,8 @@ export default {
     deleteRecipe: `${recipesUrl}/delete`,
     orderRecipes: `${recipesUrl}/order`,
     detailsRecipe: `${recipesUrl}/details`,
+    recipeLike: `${recipesUrl}/like`,
+    recipeDislike: `${recipesUrl}/dislike`,
     recipesCurrentCategory: `${recipesUrl}/byCategory`,
     searchRecipe: `${recipesUrl}/search`,
     allCommentsCurrentRecipe: `${commentsUrl}/all`,

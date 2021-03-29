@@ -24,9 +24,25 @@ class RecipeDetails extends Component {
             .then(recipe => this.setState({ recipe: recipe }));
     }
 
+    addToFav() {
+        const recipeId = this.state.recipe.id;
+        const isFavourite = this.state.recipe.isFavourite;
+
+        recipesService
+            .like(recipeId)
+            .then(this.setState(state => (
+                {
+                    recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
+                })));
+    }
+
+    removeFromFav() {
+
+    }
+
     render() {
         const recipe = this.state.recipe;
-
+        
         return (
             <div className="recipe-details-wrapper">
                 <div className="pl-4">
@@ -97,8 +113,9 @@ class RecipeDetails extends Component {
                                     <i className="fas fa-user"></i> by <span>{recipe.authorUserName}</span>
                                 </span>
                                 <span className="single-meta m-2">
-                                    <i className="far fa-heart"><span className="like-text"> Add to favourites</span></i>
-                                    <i className="fas fa-heart"><span className="like-text"> Remove from favourites</span></i>
+                                    {recipe.isFavourite
+                                        ? <i className="fas fa-heart" onClick={this.removeFromFav.bind(this)}><span className="like-text cursive-font-style"> Remove from favourites</span></i>
+                                        : <i className="far fa-heart" onClick={this.addToFav.bind(this)}><span className="like-text cursive-font-style"> Add to favourites</span></i>}
                                 </span>
                             </div>
                         </div>

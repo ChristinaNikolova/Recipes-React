@@ -28,7 +28,6 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<IngredientViewModel>>> GetByRecipe(string recipeId)
         {
-            ;
             try
             {
                 var ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<IngredientViewModel>(recipeId);

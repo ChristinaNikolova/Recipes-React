@@ -48,5 +48,6 @@
 
 .like-text {
     color: #78C2AD;
-    font-weight: bold;
+    font-style: italic;
+    font-weight: 200;
 }
