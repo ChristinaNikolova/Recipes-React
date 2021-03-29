@@ -1,0 +1,14 @@
+.pic-fav-recipe {
+    max-width: 40%;
+    max-height: 200px;
+    border: 0.1rem hidden;
+    background-color: white;
+}
+
+.custom-title-fav-recipe {
+    color: #78C2AD
+}
+
+.custom-title-fav-recipe:hover {
+    cursor: pointer;
+}
