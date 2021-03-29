@@ -3,6 +3,7 @@ const recipesUrl = `${baseUrl}/recipes`;
 const commentsUrl = `${baseUrl}/comments`;
 const categoriesUrl = `${baseUrl}/categories`;
 const usersUrl = `${baseUrl}/users`;
+const ingredientsUrl = `${baseUrl}/ingredients`;
 
 export default {
     allCategories: `${categoriesUrl}/all`,
@@ -17,5 +18,7 @@ export default {
     allCommentsCurrentRecipe: `${commentsUrl}/all`,
     createComment: `${commentsUrl}/create`,
     favouriteRecipes: `${usersUrl}/favourite`,
-    ownRecipes: `${usersUrl}/own`
+    ownRecipes: `${usersUrl}/own`,
+    ingredientsCurrentRecipe: `${ingredientsUrl}/getByRecipe`,
+    deleteIngredientCurrentRecipe: `${ingredientsUrl}/delete`
 };

@@ -21,7 +21,7 @@ function OwnRecipesRow({ id, title, picture, categoryName, clickHandler }) {
                 <img className="pic-own-recipe" src={picture} alt="recipe-pic" />
             </td>
             <td>{categoryName}</td>
-            <td><button className="btn btn-secondary">Delete Ingredients</button></td>
+            <td><Link to={`/recipes/ingredients/${id}`}><button className="btn btn-secondary">Delete Ingredients</button></Link></td>
             <td><button className="btn btn-warning">Update</button></td >
             <td><button className="btn btn-danger" onClick={remove}>Delete</button></td >
         </tr>

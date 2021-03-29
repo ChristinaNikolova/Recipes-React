@@ -17,19 +17,13 @@ function Login() {
 
         if (() => validator.validEmail(email.value) !== '') {
             setErrorEmail(() => validator.validEmail(email.value));
-            console.log(errorEmail);
         } else {
             setErrorEmail('');
         }
-
-        console.log(email.value);
-        console.log(password.value);
     }
 
     const onChangeE = (e) => {
-        console.log(e.target.value);
         setEmail(e.target.value);
-        console.log(email);
     }
 
     const onChangeP = (e) => {

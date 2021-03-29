@@ -65,5 +65,5 @@ export const remove = (recipeId) => {
         headers: {
             'Content-Type': 'application/json',
         }
-    }).catch(err => console.error(err));;
+    }).catch(err => console.error(err));
 }
