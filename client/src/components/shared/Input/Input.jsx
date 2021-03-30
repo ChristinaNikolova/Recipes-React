@@ -20,7 +20,7 @@ function Input({ type, name, label, error }) {
                     name={name}
                 />
             }
-            {error ? (<InputError>{error}</InputError>) : null}
+            {(error !== '' && error !== undefined) ? (<InputError>{error}</InputError>) : null}
         </div>
     )
 }
