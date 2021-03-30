@@ -1,18 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { produce } from 'immer';
 import { generate } from 'shortid';
 
 function CreateIngredientRecipeForm({ clickHandler }) {
     const [ingredients, setIngredients] = useState([]);
 
+    useEffect(() => {
+        clickHandler(ingredients)
+    }, [ingredients]);
+
     const addIngredient = () => {
-        setIngredients(prevState => [...prevState, {
+        setIngredients(prevState => ([...prevState, {
             id: generate(),
             name: '',
             quantity: ''
-        }]);
-
-        clickHandler(ingredients);
+        }]));
     };
 
     const removeIngredient = (targetIndex) => {
@@ -20,8 +22,6 @@ function CreateIngredientRecipeForm({ clickHandler }) {
         const ingredientId = ingredients[ingredientIndex].id;
 
         setIngredients(ingredients => ingredients.filter(x => x.id !== ingredientId));
-
-        clickHandler(ingredients);
     };
 
     const changeIngredientNameHandler = (e) => {
@@ -31,8 +31,6 @@ function CreateIngredientRecipeForm({ clickHandler }) {
         setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
             ingredients[ingredientIndex].name = name;
         }));
-
-        clickHandler(ingredients);
     }
 
     const changeIngredientQuantityHandler = (e) => {
@@ -42,9 +40,6 @@ function CreateIngredientRecipeForm({ clickHandler }) {
         setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
             ingredients[ingredientIndex].quantity = quantity;
         }));
-
-        clickHandler(ingredients);
-
     }
 
     const getIngredientIndex = (target) => {
@@ -65,11 +60,11 @@ function CreateIngredientRecipeForm({ clickHandler }) {
                         <label className="form-control-label custom-color-green">Ingredient: </label>
                         <div className="form-group">
                             <label className="form-control-label" htmlFor={index}>Name</label>
-                            <input onChange={changeIngredientNameHandler} className="form-control" id={`${index}`} type="text" />
+                            <input onChange={changeIngredientNameHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
                         <div className="form-group">
                             <label className="form-control-label" htmlFor={index}>Quantity</label>
-                            <input onChange={changeIngredientQuantityHandler} className="form-control" id={`${index}`} type="text" />
+                            <input onChange={changeIngredientQuantityHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
                         <button type="button" className="btn btn-danger custom-danger-button" onClick={() => removeIngredient(index)}>Remove</button>
                         <hr />
