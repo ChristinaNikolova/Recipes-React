@@ -15,3 +15,18 @@ export const remove = (recipeId, ingredientId) => {
         }
     }).catch(err => console.error(err));;
 }
+
+export const getAll = () => {
+    return fetch(api.adminAllIngredients)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
+
+export const removeFromAdmin = (id) => {
+    return fetch(`${api.adminDeleteIngredient}/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).catch(err => console.error(err));
+}

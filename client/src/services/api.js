@@ -5,6 +5,9 @@ const categoriesUrl = `${baseUrl}/categories`;
 const usersUrl = `${baseUrl}/users`;
 const ingredientsUrl = `${baseUrl}/ingredients`;
 
+const adminBaseUrl = `${baseUrl}/admin`;
+const adminIngredientUrl = `${adminBaseUrl}/ingredients`;
+
 export default {
     allCategories: `${categoriesUrl}/all`,
     allCategoriesNames: `${categoriesUrl}/allNames`,
@@ -22,5 +25,7 @@ export default {
     favouriteRecipes: `${usersUrl}/favourite`,
     ownRecipes: `${usersUrl}/own`,
     ingredientsCurrentRecipe: `${ingredientsUrl}/getByRecipe`,
-    deleteIngredientCurrentRecipe: `${ingredientsUrl}/delete`
+    deleteIngredientCurrentRecipe: `${ingredientsUrl}/delete`,
+    adminAllIngredients: `${adminIngredientUrl}/all`,
+    adminDeleteIngredient: `${adminIngredientUrl}/delete`,
 };

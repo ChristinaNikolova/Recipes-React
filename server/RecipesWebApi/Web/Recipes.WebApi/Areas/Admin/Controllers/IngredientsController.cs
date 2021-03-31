@@ -30,37 +30,37 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Create([FromBody] IngredientCreateAdminInputModel input)
         {
-            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //{
+            var isIngredientAlreadyExisting = await this.ingredientsService.IsAlreadyAddedAsync(input.Name);
+
+            if (isIngredientAlreadyExisting)
             {
-                var isIngredientAlreadyExisting = await this.ingredientsService.IsAlreadyAddedAsync(input.Name);
-
-                if (isIngredientAlreadyExisting)
+                return this.BadRequest(new BadRequestViewModel
                 {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = Messages.Error.AlreadyExistsIngredient,
-                    });
-                }
-
-                try
-                {
-                    await this.ingredientsService.CreateAsync(input.Name);
-
-                    return this.Ok(new
-                    {
-                        Message = Messages.Success.Added,
-                    });
-                }
-                catch (Exception)
-                {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = Messages.Error.Unknown,
-                    });
-                }
+                    Message = Messages.Error.AlreadyExistsIngredient,
+                });
             }
 
-            return this.Unauthorized();
+            try
+            {
+                await this.ingredientsService.CreateAsync(input.Name);
+
+                return this.Ok(new
+                {
+                    Message = Messages.Success.Added,
+                });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+            //}
+
+            //return this.Unauthorized();
         }
 
         [HttpGet]
@@ -70,24 +70,24 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<IngredientAdminViewModel>>> All()
         {
-            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //{
+            try
             {
-                try
-                {
-                    var ingredients = await this.ingredientsService.GetAllAsync<IngredientAdminViewModel>();
+                var ingredients = await this.ingredientsService.GetAllAsync<IngredientAdminViewModel>();
 
-                    return this.Ok(ingredients);
-                }
-                catch (Exception)
-                {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = Messages.Error.Unknown,
-                    });
-                }
+                return this.Ok(ingredients);
             }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+            //}
 
-            return this.Unauthorized();
+            //return this.Unauthorized();
         }
 
         [HttpGet("{id}")]
@@ -97,24 +97,24 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IngredientUpdateInputModel>> IngredientForUpdate(string id)
         {
-            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //{
+            try
             {
-                try
-                {
-                    var ingredient = await this.ingredientsService.GetDetailsAsync<IngredientUpdateInputModel>(id);
+                var ingredient = await this.ingredientsService.GetDetailsAsync<IngredientUpdateInputModel>(id);
 
-                    return this.Ok(ingredient);
-                }
-                catch (Exception)
-                {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = Messages.Error.Unknown,
-                    });
-                }
+                return this.Ok(ingredient);
             }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+            //}
 
-            return this.Unauthorized();
+            //return this.Unauthorized();
         }
 
         [HttpDelete("{id}")]
@@ -124,27 +124,27 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(string id)
         {
-            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //{
+            try
             {
-                try
-                {
-                    await this.ingredientsService.DeleteAsync(id);
+                await this.ingredientsService.DeleteAsync(id);
 
-                    return this.Ok(new
-                    {
-                        Message = Messages.Success.Deleted,
-                    });
-                }
-                catch (Exception)
+                return this.Ok(new
                 {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = Messages.Error.Unknown,
-                    });
-                }
+                    Message = Messages.Success.Deleted,
+                });
             }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+            // }
 
-            return this.Unauthorized();
+            // return this.Unauthorized();
         }
 
         [HttpPut]
@@ -154,27 +154,27 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Update(IngredientUpdateInputModel input)
         {
-            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            // {
+            try
             {
-                try
-                {
-                    await this.ingredientsService.UpdateAsync(input.Id, input.Name);
+                await this.ingredientsService.UpdateAsync(input.Id, input.Name);
 
-                    return this.Ok(new
-                    {
-                        Message = Messages.Success.Updated,
-                    });
-                }
-                catch (Exception)
+                return this.Ok(new
                 {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = Messages.Error.Unknown,
-                    });
-                }
+                    Message = Messages.Success.Updated,
+                });
             }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+            //}
 
-            return this.Unauthorized();
+            //return this.Unauthorized();
         }
     }
 }

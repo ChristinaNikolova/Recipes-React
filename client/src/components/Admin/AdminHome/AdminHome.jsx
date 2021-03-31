@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import './AdminHome.css';
 
 function AdminHome() {
@@ -16,7 +18,7 @@ function AdminHome() {
                 <li className="bold-admin-dashboard m-1">
                     Ingredients
                     <div className="mt-2 mb-2">
-                        <button className="btn btn-secondary mr-2 remove-font all-admin-area">All Ingredients</button>
+                        <Link to="/admin/ingredients"><button className="btn btn-secondary mr-2 remove-font all-admin-area">All Ingredients</button></Link>
                         <button className="btn btn-primary mr-2 remove-font create-admin-area">Create ingredient</button>
                     </div>
                 </li >

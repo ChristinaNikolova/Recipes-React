@@ -14,6 +14,7 @@ import RecipeDetails from './components/Recipe/RecipeDetails/RecipeDetails.jsx';
 import RecipesCurrentCategory from './components/Recipe/RecipesCurrentCategory/RecipesCurrentCategory.jsx';
 import RecipeIngredientsList from './components/Ingredients/RecipeIngredientsList/RecipeIngredientsList.jsx';
 import AdminHome from './components/Admin/AdminHome/AdminHome.jsx';
+import IngredientsAdminList from './components/Admin/Ingredient/IngredientsAdminList/IngredientsAdminList.jsx';
 import NotFound from './components/shared/NotFound/NotFound.jsx';
 
 import './App.css';
@@ -38,6 +39,7 @@ function App() {
                 <Route path='/recipes/current-category/:id' component={RecipesCurrentCategory}></Route>
                 <Route path='/recipes/ingredients/:id' component={RecipeIngredientsList}></Route>
                 <Route path='/admin/dashboard' component={AdminHome}></Route>
+                <Route path='/admin/ingredients' component={IngredientsAdminList}></Route>
                 <Route path="*" component={NotFound}></Route>
             </Switch>
             <Footer />
