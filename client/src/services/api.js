@@ -1,4 +1,5 @@
 const baseUrl = 'https://localhost:44319/api';
+const accountUrl = `${baseUrl}/account`
 const recipesUrl = `${baseUrl}/recipes`;
 const commentsUrl = `${baseUrl}/comments`;
 const categoriesUrl = `${baseUrl}/categories`;
@@ -10,6 +11,7 @@ const adminIngredientUrl = `${adminBaseUrl}/ingredients`;
 const adminCategoryUrl = `${adminBaseUrl}/categories`;
 
 export default {
+    register: `${accountUrl}/register`,
     allCategories: `${categoriesUrl}/all`,
     allCategoriesNames: `${categoriesUrl}/allNames`,
     allRecipes: `${recipesUrl}/all`,

@@ -24,7 +24,7 @@ function CategoryAdminCreate({ history }) {
             categoriesService
                 .create(name, picture)
                 .then(() => {
-                    history.push(`/admin/categories`);
+                    history.push('/admin/categories');
                     return;
                 });
         }
