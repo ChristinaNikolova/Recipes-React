@@ -1,0 +1,19 @@
+.create-category-wrapper button {
+    margin-bottom: 10px;
+}
+
+.create-category-wrapper button:hover {
+    background-color: #78C2AD;
+    color: black;
+    cursor: pointer;
+}
+
+.create-category-wrapper {
+    background-color: lavender;
+    height: 600px;
+}
+
+.create-category-form {
+    background-color: lightgray;
+    padding: 10px;
+}

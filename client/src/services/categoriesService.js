@@ -48,3 +48,18 @@ export const update = (id, name, picture) => {
         body: JSON.stringify(category)
     }).catch(err => console.error(err));
 }
+
+export const create = (name, picture) => {
+    let category = {
+        name,
+        picture
+    };
+
+    return fetch(api.adminCreateCategory, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(category)
+    }).catch(err => console.error(err));
+}

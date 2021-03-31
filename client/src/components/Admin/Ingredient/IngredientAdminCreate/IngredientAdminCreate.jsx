@@ -12,13 +12,13 @@ function IngredientAdminCreate({ history }) {
     const onCreateIngredientSubmitHandler = (e) => {
         e.preventDefault();
 
-        const ingredientName = e.target.name.value;
+        const name = e.target.name.value;
 
-        setErrorName(validator.validName(ingredientName));
+        setErrorName(validator.validName(name));
 
-        if (validator.validName(ingredientName) === '') {
+        if (validator.validName(name) === '') {
             ingredientsService
-                .create(ingredientName)
+                .create(name)
                 .then(() => {
                     history.push(`/admin/ingredients`);
                     return;

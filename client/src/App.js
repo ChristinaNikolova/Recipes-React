@@ -18,10 +18,11 @@ import IngredientsAdminList from './components/Admin/Ingredient/IngredientsAdmin
 import IngredientAdminUpdate from './components/Admin/Ingredient/IngredientAdminUpdate/IngredientAdminUpdate.jsx';
 import IngredientAdminCreate from './components/Admin/Ingredient/IngredientAdminCreate/IngredientAdminCreate.jsx';
 import CategoriesAdminList from './components/Admin/Category/CategoriesAdminList/CategoriesAdminList.jsx';
+import CategoryAdminUpdate from './components/Admin/Category/CategoryAdminUpdate/CategoryAdminUpdate.jsx';
+import CategoryAdminCreate from './components/Admin/Category/CategoryAdminCreate/CategoryAdminCreate.jsx';
 import NotFound from './components/shared/NotFound/NotFound.jsx';
 
 import './App.css';
-import CategoryAdminUpdate from './components/Admin/Category/CategoryAdminUpdate/CategoryAdminUpdate.jsx';
 
 function App() {
     return (
@@ -46,7 +47,7 @@ function App() {
                 <Route path='/recipes/details/:id' component={RecipeDetails}></Route>
                 <Route path='/recipes/current-category/:id' component={RecipesCurrentCategory}></Route>
                 <Route path='/recipes/ingredients/:id' component={RecipeIngredientsList}></Route>
-                
+
                 <Route path='/admin/dashboard' component={AdminHome}></Route>
 
                 <Route path='/admin/ingredients' exact component={IngredientsAdminList}></Route>
@@ -54,6 +55,7 @@ function App() {
                 <Route path='/admin/ingredients/update/:id' component={IngredientAdminUpdate}></Route>
 
                 <Route path='/admin/categories' exact component={CategoriesAdminList}></Route>
+                <Route path='/admin/categories/create' exact component={CategoryAdminCreate}></Route>
                 <Route path='/admin/categories/update/:id' component={CategoryAdminUpdate}></Route>
 
                 <Route path="*" component={NotFound}></Route>

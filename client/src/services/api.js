@@ -36,4 +36,5 @@ export default {
     adminDeleteCategory: `${adminCategoryUrl}/delete`,
     adminGetCategoryForUpdate: `${adminCategoryUrl}/categoryForUpdate`,
     adminUpdateCategory: `${adminCategoryUrl}/update`,
+    adminCreateCategory: `${adminCategoryUrl}/create`,
 };
