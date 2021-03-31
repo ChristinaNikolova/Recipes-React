@@ -29,7 +29,7 @@ function CreateRecipeForm({ clickHandler }) {
         setIngredientsForRecipe(ingredients);
     }
 
-    const onSubmitCreateForm = (e) => {
+    const onCreateRecipeSubmitHandler = (e) => {
         e.preventDefault();
 
         const { title, content, portions, preparationTime, cookingTime, categoryName, picture } = e.target;
@@ -63,7 +63,7 @@ function CreateRecipeForm({ clickHandler }) {
     }
 
     return (
-        <form onSubmit={onSubmitCreateForm}>
+        <form onSubmit={onCreateRecipeSubmitHandler}>
             <div className="row space-top">
                 <div className="col-lg-8">
                     <Input

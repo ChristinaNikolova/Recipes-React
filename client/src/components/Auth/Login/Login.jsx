@@ -1,4 +1,3 @@
-import FormicLoginForm from '../FormikLoginForm/FormicLoginForm';
 import './Login.css';
 
 function Login() {
@@ -9,7 +8,6 @@ function Login() {
                 <h1 className="p-1 cursive-font-style">Sign In</h1>
                 <div className="row">
                     <div className="col-lg-10">
-                        <FormicLoginForm />
                     </div>
                 </div >
             </div >

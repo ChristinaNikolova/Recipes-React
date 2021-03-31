@@ -49,5 +49,19 @@ export const update = (id, name) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(ingredient)
-    });
+    }).catch(err => console.error(err));
+}
+
+export const create = (name) => {
+    let ingredient = {
+        name
+    };
+
+    return fetch(api.adminCreateIngredient, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ingredient)
+    }).catch(err => console.error(err));
 }

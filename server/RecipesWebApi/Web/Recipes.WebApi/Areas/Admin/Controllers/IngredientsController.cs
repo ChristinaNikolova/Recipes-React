@@ -30,6 +30,7 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Create([FromBody] IngredientCreateAdminInputModel input)
         {
+            ;
             //if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
             //{
             var isIngredientAlreadyExisting = await this.ingredientsService.IsAlreadyAddedAsync(input.Name);
@@ -154,7 +155,6 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Update(IngredientUpdateInputModel input)
         {
-            ;
             //if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
             // {
             try

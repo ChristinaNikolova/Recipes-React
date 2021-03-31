@@ -30,4 +30,5 @@ export default {
     adminDeleteIngredient: `${adminIngredientUrl}/delete`,
     adminGetIngredientForUpdate: `${adminIngredientUrl}/ingredientForUpdate`,
     adminUpdateIngredient: `${adminIngredientUrl}/update`,
+    adminCreateIngredient: `${adminIngredientUrl}/create`,
 };

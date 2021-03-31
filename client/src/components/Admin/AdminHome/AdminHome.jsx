@@ -19,7 +19,7 @@ function AdminHome() {
                     Ingredients
                     <div className="mt-2 mb-2">
                         <Link to="/admin/ingredients"><button className="btn btn-secondary mr-2 remove-font all-admin-area">All Ingredients</button></Link>
-                        <button className="btn btn-primary mr-2 remove-font create-admin-area">Create ingredient</button>
+                        <Link to="/admin/ingredients/create"><button className="btn btn-primary mr-2 remove-font create-admin-area">Create ingredient</button></Link>
                     </div>
                 </li >
             </ul >
