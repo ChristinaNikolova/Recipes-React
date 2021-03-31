@@ -11,3 +11,18 @@ export const getAllNames = () => {
         .then(res => res.json())
         .catch(err => console.error(err));
 }
+
+export const getAllForAdmin = () => {
+    return fetch(api.adminAllCategories)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
+
+export const removeFromAdmin = (id) => {
+    return fetch(`${api.adminDeleteCategory}/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).catch(err => console.error(err));
+}

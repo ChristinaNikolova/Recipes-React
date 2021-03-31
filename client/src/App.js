@@ -17,6 +17,7 @@ import AdminHome from './components/Admin/AdminHome/AdminHome.jsx';
 import IngredientsAdminList from './components/Admin/Ingredient/IngredientsAdminList/IngredientsAdminList.jsx';
 import IngredientAdminUpdate from './components/Admin/Ingredient/IngredientAdminUpdate/IngredientAdminUpdate.jsx';
 import IngredientAdminCreate from './components/Admin/Ingredient/IngredientAdminCreate/IngredientAdminCreate.jsx';
+import CategoriesAdminList from './components/Admin/Category/CategoriesAdminList/CategoriesAdminList.jsx';
 import NotFound from './components/shared/NotFound/NotFound.jsx';
 
 import './App.css';
@@ -44,6 +45,7 @@ function App() {
                 <Route path='/admin/ingredients' exact component={IngredientsAdminList}></Route>
                 <Route path='/admin/ingredients/create' exact component={IngredientAdminCreate}></Route>
                 <Route path='/admin/ingredients/update/:id' component={IngredientAdminUpdate}></Route>
+                <Route path='/admin/categories' exact component={CategoriesAdminList}></Route>
                 <Route path="*" component={NotFound}></Route>
             </Switch>
             <Footer />

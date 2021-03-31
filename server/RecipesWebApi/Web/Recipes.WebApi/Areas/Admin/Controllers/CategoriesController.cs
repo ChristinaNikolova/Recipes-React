@@ -30,37 +30,37 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Create([FromBody] CategoryInputModel input)
         {
-            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //{
+            var isCategoryAlreadyExisting = await this.categoriesService.IsCategoryAlreadyExistingAsync(input.Name);
+
+            if (isCategoryAlreadyExisting)
             {
-                var isCategoryAlreadyExisting = await this.categoriesService.IsCategoryAlreadyExistingAsync(input.Name);
-
-                if (isCategoryAlreadyExisting)
+                return this.BadRequest(new BadRequestViewModel
                 {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = Messages.Error.AlreadyExistsCategory,
-                    });
-                }
-
-                try
-                {
-                    await this.categoriesService.CreateAsync(input.Name, input.Picture);
-
-                    return this.Ok(new
-                    {
-                        Message = Messages.Success.Added,
-                    });
-                }
-                catch (Exception)
-                {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = Messages.Error.Unknown,
-                    });
-                }
+                    Message = Messages.Error.AlreadyExistsCategory,
+                });
             }
 
-            return this.Unauthorized();
+            try
+            {
+                await this.categoriesService.CreateAsync(input.Name, input.Picture);
+
+                return this.Ok(new
+                {
+                    Message = Messages.Success.Added,
+                });
+            }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+            //}
+
+            //return this.Unauthorized();
         }
 
         [HttpGet]
@@ -70,24 +70,24 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<CategoryAdminViewModel>>> All()
         {
-            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //{
+            try
             {
-                try
-                {
-                    var categories = await this.categoriesService.GetAllAsync<CategoryAdminViewModel>();
+                var categories = await this.categoriesService.GetAllAsync<CategoryAdminViewModel>();
 
-                    return this.Ok(categories);
-                }
-                catch (Exception ex)
-                {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = ex.Message,
-                    });
-                }
+                return this.Ok(categories);
             }
+            catch (Exception ex)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = ex.Message,
+                });
+            }
+            // }
 
-            return this.Unauthorized();
+            //return this.Unauthorized();
         }
 
         [HttpGet("{id}")]
@@ -97,24 +97,24 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<CategoryUpdateInputModel>> CategoryForUpdate(string id)
         {
-            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //{
+            try
             {
-                try
-                {
-                    var category = await this.categoriesService.GetDetailsAsync<CategoryUpdateInputModel>(id);
+                var category = await this.categoriesService.GetDetailsAsync<CategoryUpdateInputModel>(id);
 
-                    return this.Ok(category);
-                }
-                catch (Exception)
-                {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = Messages.Error.Unknown,
-                    });
-                }
+                return this.Ok(category);
             }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+            // }
 
-            return this.Unauthorized();
+            //return this.Unauthorized();
         }
 
         [HttpDelete("{id}")]
@@ -124,27 +124,27 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(string id)
         {
-            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            // if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            //{
+            try
             {
-                try
-                {
-                    await this.categoriesService.DeleteAsync(id);
+                await this.categoriesService.DeleteAsync(id);
 
-                    return this.Ok(new
-                    {
-                        Message = Messages.Success.Deleted,
-                    });
-                }
-                catch (Exception)
+                return this.Ok(new
                 {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = Messages.Error.Unknown,
-                    });
-                }
+                    Message = Messages.Success.Deleted,
+                });
             }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+            // }
 
-            return this.Unauthorized();
+            // return this.Unauthorized();
         }
 
         [HttpPut]
@@ -154,27 +154,27 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Update(CategoryUpdateInputModel input)
         {
-            if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            // if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
+            // {
+            try
             {
-                try
-                {
-                    await this.categoriesService.UpdateAsync(input.Id, input.Name, input.Picture);
+                await this.categoriesService.UpdateAsync(input.Id, input.Name, input.Picture);
 
-                    return this.Ok(new
-                    {
-                        Message = Messages.Success.Updated,
-                    });
-                }
-                catch (Exception)
+                return this.Ok(new
                 {
-                    return this.BadRequest(new BadRequestViewModel
-                    {
-                        Message = Messages.Error.Unknown,
-                    });
-                }
+                    Message = Messages.Success.Updated,
+                });
             }
+            catch (Exception)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.Unknown,
+                });
+            }
+            //}
 
-            return this.Unauthorized();
+            // return this.Unauthorized();
         }
     }
 }

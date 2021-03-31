@@ -7,6 +7,7 @@ const ingredientsUrl = `${baseUrl}/ingredients`;
 
 const adminBaseUrl = `${baseUrl}/admin`;
 const adminIngredientUrl = `${adminBaseUrl}/ingredients`;
+const adminCategoryUrl = `${adminBaseUrl}/categories`;
 
 export default {
     allCategories: `${categoriesUrl}/all`,
@@ -31,4 +32,6 @@ export default {
     adminGetIngredientForUpdate: `${adminIngredientUrl}/ingredientForUpdate`,
     adminUpdateIngredient: `${adminIngredientUrl}/update`,
     adminCreateIngredient: `${adminIngredientUrl}/create`,
+    adminAllCategories: `${adminCategoryUrl}/all`,    
+    adminDeleteCategory: `${adminCategoryUrl}/delete`, 
 };

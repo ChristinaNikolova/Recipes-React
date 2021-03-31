@@ -11,8 +11,8 @@ function AdminHome() {
                 <li className="bold-admin-dashboard m-1">
                     Categories
                     <div className="mt-2 mb-2">
-                        <button className="btn btn-secondary mr-2 remove-font all-admin-area">All Categories</button>
-                        <button className="btn btn-primary mr-2 remove-font create-admin-area">Create category</button>
+                        <Link to="/admin/categories"><button className="btn btn-secondary mr-2 remove-font all-admin-area">All Categories</button></Link>
+                        <Link to="/admin/categories/create"><button className="btn btn-primary mr-2 remove-font create-admin-area">Create category</button></Link>
                     </div>
                 </li>
                 <li className="bold-admin-dashboard m-1">

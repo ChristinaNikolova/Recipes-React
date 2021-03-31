@@ -7,13 +7,13 @@ import './IngredientsAdminList.css';
 
 function IngredientsAdminList() {
     const [ingredients, setIngredients] = useState([]);
-    const [hasToRealod, setHasToReload] = useState(false)
+    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         ingredientsService.getAll()
             .then(ingredients => setIngredients(ingredients))
             .then(setHasToReload(false));
-    }, [hasToRealod]);
+    }, [hasToReload]);
 
     const reload = () => {
         setHasToReload(true);
