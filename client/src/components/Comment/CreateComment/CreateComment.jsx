@@ -1,21 +1,32 @@
+import { useState, useEffect } from 'react';
+
+import Input from '../../shared/Input/Input.jsx';
 import * as commentsService from '../../../services/commentsService.js';
+import * as validator from '../../../utils/validations/commentValidator.js';
 
 import './CreateComment.css';
 
 function CreateComment(props) {
+    const [errorMessage, setErrorMessage] = useState('');
+
+    useEffect(() => {
+    }, [errorMessage]);
 
     const onCreateCommentSubmitHandler = (e) => {
         e.preventDefault();
 
-        //Validate
-        
         const content = e.target.content.value;
-        const recipeId = props.recipeId;
-        e.target.content.value = '';
 
-        commentsService
-            .create(content, recipeId)
-            .then(props.clickHandler());
+        setErrorMessage(validator.validContent(content));
+
+        if (validator.validContent(content) === '') {
+            e.target.content.value = '';
+            const recipeId = props.recipeId;
+
+            commentsService
+                .create(content, recipeId)
+                .then(props.clickHandler());
+        }
     }
 
     return (
@@ -24,7 +35,12 @@ function CreateComment(props) {
             <div className="post post-content">
                 <h5 className="comments-title-second-title">Leave comment</h5>
                 <form className="comment-form" onSubmit={onCreateCommentSubmitHandler}>
-                    <textarea className="comment-form-text-area" type="text" name="content" placeholder="Write you comment..."></textarea>
+                    <Input
+                        type='text'
+                        name='content'
+                        label=''
+                        placeholder='Write you comment...'
+                        error={errorMessage} />
                     <button type="submit" className="btn btn-secondary mt-2 add-comment-button" > Add Comment</button >
                 </form>
             </div>

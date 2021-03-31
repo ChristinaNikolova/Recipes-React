@@ -17,14 +17,6 @@
     box-sizing: border-box;
 }
 
-.comment-form-text-area {
-    resize: none;
-    height: 6em;
-    display: block;
-    width: 400px;
-    box-sizing: border-box;
-}
-
 .comment-form .add-comment-button:hover {
     background-color: #78C2AD;
     color: black;

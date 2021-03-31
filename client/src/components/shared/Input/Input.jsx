@@ -13,6 +13,7 @@ function Input({ type, name, label, placeholder, error }) {
                     id={name}
                     type={type}
                     name={name}
+                    placeholder={placeholder}
                     cols="10"
                     rows="7"
                 ></textarea>

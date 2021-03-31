@@ -10,4 +10,4 @@ export default {
     COOK_TIME_MIN: 1,
     COOK_TIME_MAX: 1000,
     SEARCH_TEXT_MIN_LEN: 3,
-}
+};
