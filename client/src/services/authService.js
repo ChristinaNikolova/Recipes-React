@@ -15,3 +15,20 @@ export const register = (username, email, password) => {
         body: JSON.stringify(user)
     }).catch(err => console.error(err));
 }
+
+export const login = (email, password) => {
+    const user = {
+        email,
+        password
+    }
+
+    return fetch(api.login, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user)
+    })
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}

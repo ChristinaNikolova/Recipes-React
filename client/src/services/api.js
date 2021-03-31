@@ -12,6 +12,7 @@ const adminCategoryUrl = `${adminBaseUrl}/categories`;
 
 export default {
     register: `${accountUrl}/register`,
+    login: `${accountUrl}/login`,
     allCategories: `${categoriesUrl}/all`,
     allCategoriesNames: `${categoriesUrl}/allNames`,
     allRecipes: `${recipesUrl}/all`,
