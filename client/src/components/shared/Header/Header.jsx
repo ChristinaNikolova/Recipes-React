@@ -27,7 +27,7 @@ function Header() {
                             <Link to="/users/favourite" className="nav-link">My Favourite Recipes</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link">Administration</a>
+                            <Link to="/admin/dashboard" className="nav-link">Administration</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/login" className="nav-link">Login</Link>

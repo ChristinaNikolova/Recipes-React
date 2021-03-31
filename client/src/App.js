@@ -13,6 +13,7 @@ import CreateRecipe from './components/Recipe/CreateRecipe/CreateRecipe.jsx';
 import RecipeDetails from './components/Recipe/RecipeDetails/RecipeDetails.jsx';
 import RecipesCurrentCategory from './components/Recipe/RecipesCurrentCategory/RecipesCurrentCategory.jsx';
 import RecipeIngredientsList from './components/Ingredients/RecipeIngredientsList/RecipeIngredientsList.jsx';
+import AdminHome from './components/Admin/AdminHome/AdminHome.jsx';
 import NotFound from './components/shared/NotFound/NotFound.jsx';
 
 import './App.css';
@@ -36,6 +37,7 @@ function App() {
                 <Route path='/recipes/details/:id' component={RecipeDetails}></Route>
                 <Route path='/recipes/current-category/:id' component={RecipesCurrentCategory}></Route>
                 <Route path='/recipes/ingredients/:id' component={RecipeIngredientsList}></Route>
+                <Route path='/admin/dashboard' component={AdminHome}></Route>
                 <Route path="*" component={NotFound}></Route>
             </Switch>
             <Footer />

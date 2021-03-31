@@ -188,7 +188,6 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Like(string id)
         {
-            ;
             try
             {
                 //var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
@@ -273,7 +272,6 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult<IEnumerable<RecipeBaseViewModel>>> Order(string criteria)
         {
-            //test with more recipes
             try
             {
                 var recipes = await this.recipesService.GetOrderAsync<RecipeBaseViewModel>(criteria);

@@ -1,0 +1,35 @@
+.bold-admin-dashboard {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.admin-home-wrapper {
+    background-color: lavender;
+    height: 650px;
+}
+
+.hr-admin-dashboard {
+    margin: 20px;
+}
+
+.custom-font-li li {
+    list-style-type: circle;
+    font-family: 'Akaya Telivigala', cursive;
+    color: #78C2AD;
+    font-size: 24px;
+}
+
+.remove-font {
+    color: white;
+    font-size: 16px;
+    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif
+}
+
+.admin-home-wrapper .create-admin-area {
+    background-color: #78C2AD;
+    border-color: #78C2AD;
+}
+
+.all-admin-area {
+    border-color: #5A6268;
+}
