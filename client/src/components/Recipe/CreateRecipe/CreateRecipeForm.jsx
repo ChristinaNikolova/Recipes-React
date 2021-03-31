@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import * as categoriesService from '../../../services/categoriesService.js';
 import * as recipesService from '../../../services/recipesService.js';
-import * as test from '../../../utils/validations/recipeValidator.js';
+import * as validator from '../../../utils/validations/recipeValidator.js';
 import Input from '../../shared/Input/Input.jsx';
 import CreateIngredientRecipeForm from './CreateIngredientRecipeForm.jsx';
 
@@ -31,22 +31,22 @@ function CreateRecipeForm({ clickHandler }) {
 
     const onSubmitCreateForm = (e) => {
         e.preventDefault();
-        
+
         const { title, content, portions, preparationTime, cookingTime, categoryName, picture } = e.target;
 
-        setErrorTitle(test.validTitle(title.value));
-        setErrorContent(test.validContent(content.value));
-        setErrorPortions(test.validPortions(portions.value));
-        setErrorPrepTime(test.validPreparationTime(preparationTime.value));
-        setErrorCookTime(test.validCookingTime(cookingTime.value));
-        setErrorPicture(test.validPicture(picture.value));
+        setErrorTitle(validator.validTitle(title.value));
+        setErrorContent(validator.validContent(content.value));
+        setErrorPortions(validator.validPortions(portions.value));
+        setErrorPrepTime(validator.validPreparationTime(preparationTime.value));
+        setErrorCookTime(validator.validCookingTime(cookingTime.value));
+        setErrorPicture(validator.validPicture(picture.value));
 
-        if (test.validTitle(title.value) === '' &&
-            test.validContent(content.value) === '' &&
-            test.validPortions(portions.value) === '' &&
-            test.validPreparationTime(preparationTime.value) === '' &&
-            test.validCookingTime(cookingTime.value) === '' &&
-            test.validPicture(picture.value) === '') {
+        if (validator.validTitle(title.value) === '' &&
+            validator.validContent(content.value) === '' &&
+            validator.validPortions(portions.value) === '' &&
+            validator.validPreparationTime(preparationTime.value) === '' &&
+            validator.validCookingTime(cookingTime.value) === '' &&
+            validator.validPicture(picture.value) === '') {
             recipesService
                 .create(title.value,
                     content.value,

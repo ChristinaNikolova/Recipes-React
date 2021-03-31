@@ -1,9 +1,12 @@
 import InputError from "../InputError/InputError.jsx";
 
-function Input({ type, name, label, error }) {
+function Input({ type, name, label, placeholder, error }) {
     return (
         <div className='form-group'>
-            <label className='form-control-label' htmlFor={name}>{label}</label>
+            {label !== ''
+                ? <label className='form-control-label' htmlFor={name}>{label}</label>
+                : null}
+
             {name === 'content'
                 ? <textarea
                     className='form-control'
@@ -18,6 +21,7 @@ function Input({ type, name, label, error }) {
                     id={name}
                     type={type}
                     name={name}
+                    placeholder={placeholder}
                 />
             }
             {(error !== '' && error !== undefined) ? (<InputError>{error}</InputError>) : null}

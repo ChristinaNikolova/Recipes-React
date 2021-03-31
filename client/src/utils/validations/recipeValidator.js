@@ -58,8 +58,7 @@ export const validCookingTime = (cookingTime) => {
 };
 
 export const validPicture = (picture) => {
-    if (
-        (picture.startsWith('https://') || picture.startsWith('http://')) &&
+    if ((picture.startsWith('https://') || picture.startsWith('http://')) &&
         picture !== ''
     ) {
         return '';
@@ -67,3 +66,14 @@ export const validPicture = (picture) => {
 
     return 'Idvalid URL.';
 };
+
+export const validSearchText = (content) => {
+    if (
+        content.length >= recipeConstants.SEARCH_TEXT_MIN_LEN &&
+        content !== ''
+    ) {
+        return '';
+    }
+
+    return (`Content should be at least ${recipeConstants.SEARCH_TEXT_MIN_LEN} characters long.`);
+}

@@ -1,34 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-import InputError from '../../shared/InputError/InputError.jsx';
+import Input from '../../shared/Input/Input.jsx';
+import * as validator from '../../../utils/validations/recipeValidator.js';
 
 import './SearchRecipe.css';
 
 function SearchRecipe(props) {
     const [errorMessage, setErrorMessage] = useState('');
-    const queryMinLenght = 3;
-    const errorMessageText = `The field should be at least ${queryMinLenght} character`;
+
+    useEffect(() => {
+    }, [errorMessage]);
 
     const onSearchRecipeSubmitHandler = (e) => {
         e.preventDefault();
+
         const query = e.target.search.value;
 
-        if (query === undefined || query.length < queryMinLenght) {
-            onSearchRecipeChangeHandler(e);
-            return;
-        }
+        setErrorMessage(validator.validSearchText(query));
 
-        e.target.search.value = '';
-        props.clickHandler(query)
-    }
-
-    const onSearchRecipeChangeHandler = (e) => {
-        const query = e.target.value;
-
-        if (query === undefined || query.length < queryMinLenght) {
-            setErrorMessage(errorMessageText);
-        } else {
-            setErrorMessage('');
+        if (validator.validSearchText(query) === '') {
+            e.target.search.value = '';
+            props.clickHandler(query);
         }
     }
 
@@ -49,10 +41,12 @@ function SearchRecipe(props) {
                             <form className="m-2" onSubmit={onSearchRecipeSubmitHandler}>
                                 <div className="row remove">
                                     <div className="col-lg-10">
-                                        {!errorMessage
-                                            ? <input className="form-control green" type="text" name="search" placeholder="Search" onChange={onSearchRecipeChangeHandler} />
-                                            : <input className="form-control red" type="text" name="search" placeholder="Search" onChange={onSearchRecipeChangeHandler} />}
-                                        <InputError>{errorMessage}</InputError>
+                                        <Input
+                                            type='text'
+                                            name='search'
+                                            label=''
+                                            placeholder='Search'
+                                            error={errorMessage} />
                                     </div>
                                     <div className="col-lg-2 remove">
                                         <button className="btn btn-secondary" type="submit">Search</button>

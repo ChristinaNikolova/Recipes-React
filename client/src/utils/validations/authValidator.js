@@ -1,5 +1,3 @@
-import authConstants from '../constants/authConstants.js';
-
 export const validEmail = (email) => {
     if (email === '') {
         return 'Email is required.';

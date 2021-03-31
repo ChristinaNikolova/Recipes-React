@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { produce } from 'immer';
 import { generate } from 'shortid';
 
+import InputError from "../../shared/InputError/InputError.jsx"
+import * as validator from '../../../utils/validations/ingredientValidator.js';
+
 function CreateIngredientRecipeForm({ clickHandler }) {
     const [ingredients, setIngredients] = useState([]);
 
@@ -62,10 +65,12 @@ function CreateIngredientRecipeForm({ clickHandler }) {
                             <label className="form-control-label" htmlFor={index}>Name</label>
                             <input onChange={changeIngredientNameHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
+                        {/* <InputError>{error}</InputError> */}
                         <div className="form-group">
                             <label className="form-control-label" htmlFor={index}>Quantity</label>
                             <input onChange={changeIngredientQuantityHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
+                        {/* <InputError>{error}</InputError> */}
                         <button type="button" className="btn btn-danger custom-danger-button" onClick={() => removeIngredient(index)}>Remove</button>
                         <hr />
                     </div>
