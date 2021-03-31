@@ -32,6 +32,8 @@ export default {
     adminGetIngredientForUpdate: `${adminIngredientUrl}/ingredientForUpdate`,
     adminUpdateIngredient: `${adminIngredientUrl}/update`,
     adminCreateIngredient: `${adminIngredientUrl}/create`,
-    adminAllCategories: `${adminCategoryUrl}/all`,    
-    adminDeleteCategory: `${adminCategoryUrl}/delete`, 
+    adminAllCategories: `${adminCategoryUrl}/all`,
+    adminDeleteCategory: `${adminCategoryUrl}/delete`,
+    adminGetCategoryForUpdate: `${adminCategoryUrl}/categoryForUpdate`,
+    adminUpdateCategory: `${adminCategoryUrl}/update`,
 };

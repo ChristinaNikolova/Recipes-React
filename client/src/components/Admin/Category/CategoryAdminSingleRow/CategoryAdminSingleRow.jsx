@@ -15,7 +15,7 @@ function CategoryAdminSingleRow({ id, name, recipesCount, clickHandler }) {
         <tr>
             <td><Link to={`/recipes/current-category/${id}`} className="custom-title">{name}</Link></td>
             <td>{recipesCount}</td>
-            <td><button className="btn btn-warning">Update</button></td >
+            <td><Link to={`/admin/categories/update/${id}`}><button className="btn btn-warning">Update</button></Link></td>
             <td><button className="btn btn-danger" onClick={remove} >Delete</button></td >
         </tr >
     );

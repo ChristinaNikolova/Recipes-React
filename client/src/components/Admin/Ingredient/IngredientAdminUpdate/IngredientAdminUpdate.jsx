@@ -12,7 +12,8 @@ function IngredientAdminUpdate({ match, history }) {
     const id = match.params.id;
 
     useEffect(() => {
-        ingredientsService.getIngredientForUpdate(id)
+        ingredientsService
+            .getIngredientForUpdate(id)
             .then(ingredient => setIngredient(ingredient))
     }, []);
 
