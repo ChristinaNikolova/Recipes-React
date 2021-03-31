@@ -1,6 +1,6 @@
 import InputError from "../InputError/InputError.jsx";
 
-function Input({ type, name, label, placeholder, error }) {
+function Input({ type, name, label, placeholder, onChange, value, error }) {
     return (
         <div className='form-group'>
             {label !== ''
@@ -14,6 +14,7 @@ function Input({ type, name, label, placeholder, error }) {
                     type={type}
                     name={name}
                     placeholder={placeholder}
+                    defaultValue={value}
                     cols="10"
                     rows="7"
                 ></textarea>
@@ -23,6 +24,8 @@ function Input({ type, name, label, placeholder, error }) {
                     type={type}
                     name={name}
                     placeholder={placeholder}
+                    onChange={onChange}
+                    defaultValue={value}
                 />
             }
             {(error !== '' && error !== undefined) ? (<InputError>{error}</InputError>) : null}

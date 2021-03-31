@@ -6,6 +6,7 @@ function CreateRecipe({ history }) {
 
     const createRecipe = () => {
         history.push(`/recipes`);
+        return;
     }
 
     return (

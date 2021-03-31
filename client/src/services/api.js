@@ -28,4 +28,6 @@ export default {
     deleteIngredientCurrentRecipe: `${ingredientsUrl}/delete`,
     adminAllIngredients: `${adminIngredientUrl}/all`,
     adminDeleteIngredient: `${adminIngredientUrl}/delete`,
+    adminGetIngredientForUpdate: `${adminIngredientUrl}/ingredientForUpdate`,
+    adminUpdateIngredient: `${adminIngredientUrl}/update`,
 };

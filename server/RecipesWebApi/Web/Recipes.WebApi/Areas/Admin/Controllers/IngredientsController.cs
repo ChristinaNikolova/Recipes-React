@@ -154,6 +154,7 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Update(IngredientUpdateInputModel input)
         {
+            ;
             //if (this.User.Identity.Name == GlobalConstants.Roles.Admin)
             // {
             try

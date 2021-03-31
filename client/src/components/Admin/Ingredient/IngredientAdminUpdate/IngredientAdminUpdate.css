@@ -1,0 +1,19 @@
+.update-ingredient-wrapper button {
+    margin-bottom: 10px;
+}
+
+.update-ingredient-wrapper button:hover {
+    background-color: #78C2AD;
+    color: black;
+    cursor: pointer;
+}
+
+.update-ingredient-wrapper {
+    background-color: lavender;
+    height: 600px;
+}
+
+.update-ingredient-form {
+    background-color: lightgray;
+    padding: 10px;
+}

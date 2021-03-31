@@ -30,3 +30,24 @@ export const removeFromAdmin = (id) => {
         }
     }).catch(err => console.error(err));
 }
+
+export const getIngredientForUpdate = (id) => {
+    return fetch(`${api.adminGetIngredientForUpdate}/${id}`)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
+
+export const update = (id, name) => {
+    const ingredient = {
+        id,
+        name
+    };
+
+    return fetch(`${api.adminUpdateIngredient}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ingredient)
+    });
+}
