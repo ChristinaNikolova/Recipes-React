@@ -1,4 +1,5 @@
 const baseUrl = 'https://localhost:44319/api';
+
 const accountUrl = `${baseUrl}/account`
 const recipesUrl = `${baseUrl}/recipes`;
 const commentsUrl = `${baseUrl}/comments`;

@@ -1,8 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
+import * as authService from '../../../services/authService.js';
 
 import './Header.css';
 
-function Header() {
+function Header({ history }) {
+
+    const logout = () => {
+        authService
+            .logout();
+
+        history.push('/');
+    }
+
     return (
         <div className="header-wrapper">
             <nav className="navbar navbar-expand-lg navbar-dark">
@@ -36,7 +46,7 @@ function Header() {
                             <Link to="/register" className="nav-link">Register</Link>
                         </li>
                         <li className="nav-item">
-                            <button type="button" className="btn btn-danger ml-1">Logout</button>
+                            <button className="btn btn-danger ml-1" type="button" onClick={logout}>Logout</button>
                         </li>
                     </ul>
                 </div>
@@ -45,4 +55,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default withRouter(Header);

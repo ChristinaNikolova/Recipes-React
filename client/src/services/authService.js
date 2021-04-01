@@ -32,3 +32,7 @@ export const login = (email, password) => {
         .then(res => res.json())
         .catch(err => console.error(err));
 }
+
+export const logout = () => {
+    return localStorage.clear();
+}

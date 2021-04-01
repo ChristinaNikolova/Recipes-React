@@ -12,7 +12,7 @@ function Login({ history }) {
 
     const onLoginSubmitHandler = (e) => {
         e.preventDefault();
-        
+
         const email = e.target.email.value;
         const password = e.target.password.value;
 
@@ -27,7 +27,7 @@ function Login({ history }) {
                     localStorage.setItem('token', data['token']);
                     localStorage.setItem('username', data['username']);
                     localStorage.setItem('isAdmin', data['isAdmin']);
-                    history.push('/login')
+                    history.push('/')
                     return;
                 });
         }
