@@ -34,7 +34,7 @@ function Register({ history }) {
                 .then(() => {
                     history.push('/login')
                     return;
-                })
+                });
         }
     }
 
