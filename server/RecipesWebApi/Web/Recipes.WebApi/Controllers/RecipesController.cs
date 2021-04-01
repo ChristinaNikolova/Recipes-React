@@ -253,7 +253,7 @@
             try
             {
                 var recipes = await this.recipesService.GetSearchedAsync<RecipeBaseViewModel>(query);
-
+                ;
                 return this.Ok(recipes);
             }
             catch (Exception)

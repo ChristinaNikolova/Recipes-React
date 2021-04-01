@@ -1,48 +1,38 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 
 import * as categoriesService from '../../../services/categoriesService.js';
 import SingleCategory from '../SingleCategory/SingleCategory.jsx';
 
 import './CategoriesList.css';
 
-class CategoriesList extends Component {
-    constructor(props) {
-        super(props)
+function CategoriesList() {
+    const [categories, setCategories] = useState([]);
 
-        this.state = {
-            categories: []
-        };
-    }
-
-    componentDidMount() {
+    useEffect(() => {
         categoriesService
             .all()
-            .then(categories => this.setState({ categories: categories }));
-    }
+            .then(categories => setCategories(categories));
+    }, []);
 
-    render() {
-        return (
-            <div className="categories-wrapper">
-                <div className="container">
-                    <div className="col-md-12">
-                        <h1 className="text-center pt-2 cursive-font-style">All Categories</h1>
-                        <hr />
-                    </div>
-                    <div className="row">
-                        {this
-                            .state
-                            .categories
-                            .map(c => <SingleCategory
-                                key={c.id}
-                                id={c.id}
-                                name={c.name}
-                                picture={c.picture}
-                                recipesCount={c.recipesCount} />)}
-                    </div>
+    return (
+        <div className="categories-wrapper">
+            <div className="container">
+                <div className="col-md-12">
+                    <h1 className="text-center pt-2 cursive-font-style">All Categories</h1>
+                    <hr />
+                </div>
+                <div className="row">
+                    {categories
+                        .map(c => <SingleCategory
+                            key={c.id}
+                            id={c.id}
+                            name={c.name}
+                            picture={c.picture}
+                            recipesCount={c.recipesCount} />)}
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default CategoriesList;

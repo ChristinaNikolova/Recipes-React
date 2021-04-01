@@ -1,73 +1,51 @@
-import { Component } from 'react';
+import { useState } from 'react';
 
 import './RecipesOrder.css';
 
-class RecipesOrder extends Component {
+function RecipesOrder({ clickHandler }) {
+    const [isShown, setIsShown] = useState(false);
 
-    constructor(props) {
-        super(props)
+    const toogle = (criteria) => {
+        const prevState = isShown;
 
-        this.state = {
-            isShown: false
-        };
+        setIsShown(!prevState);
+        clickHandler(criteria);
     }
 
-    toogle() {
-        this.setState(prevState => ({
-            isShown: !prevState.isShown
-        }));
-    }
-
-    render() {
-        return (
-            <div className="order-wrapper">
-                <button
-                    className="btn btn-secondary"
-                    onClick={this
-                        .toogle
-                        .bind(this)}>
-                    {this.state.isShown
-                        ? <i className="fas fa-hand-point-down"></i>
-                        : <i className="fas fa-hand-point-right"></i>}
+    return (
+        <div className="order-wrapper">
+            <button
+                className="btn btn-secondary"
+                onClick={toogle}>
+                {isShown
+                    ? <i className="fas fa-hand-point-down"></i>
+                    : <i className="fas fa-hand-point-right"></i>}
                     Order by</button>
 
-                {this.state.isShown
-                    ? <ul>
-                        <li
-                            className="recipe-order"
-                            onClick={() => {
-                                this.props.clickHandler('old')
-                                this.toogle()
-                            }}>
-                            <i className="fas fa-check-circle"></i>Oldest to newest</li>
-                        <li
-                            className="recipe-order"
-                            onClick={() => {
-                                this.props.clickHandler('new')
-                                this.toogle()
-                            }}>
-                            <i className="fas fa-check-circle"></i>
+            {isShown
+                ? <ul>
+                    <li
+                        className="recipe-order"
+                        onClick={() => toogle("old")}>
+                        <i className="fas fa-check-circle"></i>Oldest to newest</li>
+                    <li
+                        className="recipe-order"
+                        onClick={() => toogle("new")}>
+                        <i className="fas fa-check-circle"></i>
                                 Newest to oldest</li>
-                        <li
-                            className="recipe-order"
-                            onClick={() => {
-                                this.props.clickHandler('likes')
-                                this.toogle()
-                            }}>
-                            <i className="fas fa-check-circle"></i>Likes Count</li>
-                        <li
-                            className="recipe-order"
-                            onClick={() => {
-                                this.props.clickHandler('comments')
-                                this.toogle()
-                            }}>
-                            <i className="fas fa-check-circle"></i>
+                    <li
+                        className="recipe-order"
+                        onClick={() => toogle("likes")}>
+                        <i className="fas fa-check-circle"></i>Likes Count</li>
+                    <li
+                        className="recipe-order"
+                        onClick={() => toogle("comments")}>
+                        <i className="fas fa-check-circle"></i>
                                 Comments Count</li>
-                    </ul>
-                    : <div></div>}
-            </div>
-        );
-    }
+                </ul>
+                : <div></div>}
+        </div>
+    );
 }
 
 export default RecipesOrder;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Input from '../../shared/Input/Input.jsx';
 import * as commentsService from '../../../services/commentsService.js';
@@ -6,11 +6,8 @@ import * as validator from '../../../utils/validations/commentValidator.js';
 
 import './CreateComment.css';
 
-function CreateComment(props) {
+function CreateComment({ recipeId, clickHandler }) {
     const [errorMessage, setErrorMessage] = useState('');
-
-    useEffect(() => {
-    }, [errorMessage]);
 
     const onCreateCommentSubmitHandler = (e) => {
         e.preventDefault();
@@ -21,11 +18,10 @@ function CreateComment(props) {
 
         if (validator.validContent(content) === '') {
             e.target.content.value = '';
-            const recipeId = props.recipeId;
 
             commentsService
                 .create(content, recipeId)
-                .then(props.clickHandler());
+                .then(clickHandler());
         }
     }
 

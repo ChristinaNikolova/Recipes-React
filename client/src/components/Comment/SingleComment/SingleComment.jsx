@@ -1,10 +1,6 @@
 import './SingleComment.css';
 
-function SingleComment({
-    content,
-    formattedCreatedOn,
-    clientUserName
-}) {
+function SingleComment({ content, formattedCreatedOn, clientUserName }) {
     return (
         <article className="post post-content">
             <div className="single-comment-wripper">

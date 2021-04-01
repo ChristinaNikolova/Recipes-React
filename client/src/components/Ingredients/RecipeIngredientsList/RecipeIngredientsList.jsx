@@ -1,67 +1,55 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 
 import * as ingredientsService from '../../../services/ingredientsService.js';
 import RecipeIngredientRow from '../RecipeIngredientRow/RecipeIngredientRow.jsx';
 
 import './RecipeIngredientsList.css';
 
-class RecipeIngredientsList extends Component {
-    constructor(props) {
-        super(props)
+function RecipeIngredientsList({ match }) {
+    const [ingredients, setIngredients] = useState([]);
+    const [hasToReload, setHasToReload] = useState(false);
+    const recipeId = match.params.id;
 
-        this.state = {
-            ingredients: []
-        };
-    }
-
-    componentDidMount() {
-        this.getIngredients();
-    }
-
-    reload() {
-        setTimeout(() => {
-            this.getIngredients();
-        }, 300);
-    }
-
-    getIngredients() {
-        let recipeId = this.props.match.params.id;
-
+    useEffect(() => {
         ingredientsService
             .getByRecipe(recipeId)
-            .then(ingredients => this.setState({ ingredients: ingredients }));
+            .then(ingredients => setIngredients(ingredients))
+            .then(setHasToReload(false));
+    }, [hasToReload]);
+
+    const reload = () => {
+        setHasToReload(true);
     }
 
-    render() {
-        return (
-            <div className="recipe-ingredients-wrapper">
-                <div className="container">
-                    <h1 className="text-center cursive-font-style p-1">Ingredients</h1>
-                    <hr />
-                    <table className="table table-bordered table-hover custom-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Quantity</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.state.ingredients.map(i =>
+    return (
+        <div className="recipe-ingredients-wrapper">
+            <div className="container">
+                <h1 className="text-center cursive-font-style p-1">Ingredients</h1>
+                <hr />
+                <table className="table table-bordered table-hover custom-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {ingredients
+                            .map(i =>
                                 <RecipeIngredientRow
                                     key={i.ingredientId}
                                     ingredientId={i.ingredientId}
                                     recipeId={i.recipeId}
                                     ingredientName={i.ingredientName}
                                     quantity={i.quantity}
-                                    clickHandler={this.reload.bind(this)} />)}
-                        </tbody>
-                    </table>
-                </div >
-                <div className="fill pt-1 pb-1"></div>
+                                    clickHandler={reload} />)}
+                    </tbody>
+                </table>
             </div >
-        );
-    }
+            <div className="fill pt-1 pb-1"></div>
+        </div >
+    );
 }
 
 export default RecipeIngredientsList;

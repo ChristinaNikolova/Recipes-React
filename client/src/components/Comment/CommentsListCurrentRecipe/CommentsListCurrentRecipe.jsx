@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 
 import * as commentsService from '../../../services/commentsService.js';
 import CreateComment from '../CreateComment/CreateComment.jsx';
@@ -6,47 +6,36 @@ import SingleComment from '../SingleComment/SingleComment.jsx';
 
 import './CommentsListCurrentRecipe.css';
 
-class CommentsListCurrentRecipe extends Component {
-    constructor(props) {
-        super(props)
+function CommentsListCurrentRecipe({ recipeId }) {
+    const [comments, setComments] = useState([]);
+    const [hasToReload, setHasToReload] = useState(false);
 
-        this.state = {
-            comments: []
-        };
-    }
-
-    componentDidMount() {
-        this.getAllCommentsCurrentRecipe();
-    }
-
-    getAllCommentsCurrentRecipe() {
+    useEffect(() => {
         commentsService
-            .getAllCurrentRecipe(this.props.recipeId)
-            .then(comments => this.setState({ comments: comments }));
+            .getAllCurrentRecipe(recipeId)
+            .then(comments => setComments(comments))
+            .then(setHasToReload(false));
+    }, [hasToReload]);
+
+    const reload = () => {
+        setHasToReload(true);
     }
 
-    reload() {
-        setTimeout(() => {
-            this.getAllCommentsCurrentRecipe();
-        }, 300);
-    }
+    return (
+        <div className="comments-list-wrapper" >
+            <CreateComment
+                clickHandler={reload}
+                recipeId={recipeId} />
+            <div>
+                {comments.map(c => <SingleComment
+                    key={c.id}
+                    content={c.content}
+                    formattedCreatedOn={c.formattedCreatedOn}
+                    clientUserName={c.clientUserName} />)}
+            </div>
+        </div >
+    );
 
-    render() {
-        return (
-            <div className="comments-list-wrapper">
-                <CreateComment
-                    clickHandler={this.reload.bind(this)}
-                    recipeId={this.props.recipeId} />
-                <div>
-                    {this.state.comments.map(c => <SingleComment
-                        key={c.id}
-                        content={c.content}
-                        formattedCreatedOn={c.formattedCreatedOn}
-                        clientUserName={c.clientUserName} />)}
-                </div>
-            </div >
-        );
-    }
 }
 
 export default CommentsListCurrentRecipe;

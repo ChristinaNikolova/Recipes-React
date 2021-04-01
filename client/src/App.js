@@ -1,10 +1,12 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import Footer from './components/shared/Footer/Footer.jsx';
-import Home from './components/Home/Home.jsx';
 import Header from './components/shared/Header/Header.jsx';
+import Footer from './components/shared/Footer/Footer.jsx';
+
+import Home from './components/Home/Home.jsx';
 import Register from './components/Auth/Register/Register.jsx';
 import Login from './components/Auth/Login/Login.jsx';
+
 import CategoriesList from './components/Category/CategoriesList/CategoriesList.jsx';
 import FavouriteRecipes from './components/User/FavouriteRecipes/FavouriteRecipes.jsx';
 import OwnRecipes from './components/User/OwnRecipes/OwnRecipes.jsx';
@@ -13,6 +15,7 @@ import CreateRecipe from './components/Recipe/CreateRecipe/CreateRecipe.jsx';
 import RecipeDetails from './components/Recipe/RecipeDetails/RecipeDetails.jsx';
 import RecipesCurrentCategory from './components/Recipe/RecipesCurrentCategory/RecipesCurrentCategory.jsx';
 import RecipeIngredientsList from './components/Ingredients/RecipeIngredientsList/RecipeIngredientsList.jsx';
+
 import AdminHome from './components/Admin/AdminHome/AdminHome.jsx';
 import IngredientsAdminList from './components/Admin/Ingredient/IngredientsAdminList/IngredientsAdminList.jsx';
 import IngredientAdminUpdate from './components/Admin/Ingredient/IngredientAdminUpdate/IngredientAdminUpdate.jsx';
@@ -20,6 +23,7 @@ import IngredientAdminCreate from './components/Admin/Ingredient/IngredientAdmin
 import CategoriesAdminList from './components/Admin/Category/CategoriesAdminList/CategoriesAdminList.jsx';
 import CategoryAdminUpdate from './components/Admin/Category/CategoryAdminUpdate/CategoryAdminUpdate.jsx';
 import CategoryAdminCreate from './components/Admin/Category/CategoryAdminCreate/CategoryAdminCreate.jsx';
+
 import NotFound from './components/shared/NotFound/NotFound.jsx';
 
 import './App.css';

@@ -1,15 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Input from '../../shared/Input/Input.jsx';
 import * as validator from '../../../utils/validations/recipeValidator.js';
 
 import './SearchRecipe.css';
 
-function SearchRecipe(props) {
+function SearchRecipe({ clickHandler, isSearched }) {
     const [errorMessage, setErrorMessage] = useState('');
-
-    useEffect(() => {
-    }, [errorMessage]);
 
     const onSearchRecipeSubmitHandler = (e) => {
         e.preventDefault();
@@ -20,12 +17,12 @@ function SearchRecipe(props) {
 
         if (validator.validSearchText(query) === '') {
             e.target.search.value = '';
-            props.clickHandler(query);
+            clickHandler(query);
         }
     }
 
     const clear = () => {
-        props.clickHandler();
+        clickHandler();
     }
 
     return (
@@ -55,7 +52,7 @@ function SearchRecipe(props) {
                             </form>
                         </div>
                         <div className="text-center mb-1">
-                            {props.isSearched
+                            {isSearched
                                 ? <button className="btn btn-danger custom-danger clear-recult-font-size" onClick={clear}>Clear Result</button>
                                 : null}
                         </div>

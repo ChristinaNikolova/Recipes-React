@@ -1,41 +1,34 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 
 import SingleRecipe from '../SingleRecipe/SingleRecipe.jsx'
 import * as recipesService from '../../../services/recipesService.js';
 
 import './RecipesCurrentCategory.css';
 
-class RecipesCurrentCategory extends Component {
-    constructor(props) {
-        super(props)
+function RecipesCurrentCategory({ match }) {
+    const [recipes, setRecipes] = useState([]);
+    const categoryId = match.params.id;
 
-        this.state = {
-            recipes: []
-        };
-    }
-
-    componentDidMount() {
-        const categoryId = this.props.match.params.id;
-
+    useEffect(() => {
         recipesService
             .getByCategory(categoryId)
-            .then(recipes => this.setState({ recipes: recipes }));
-    }
+            .then(recipes => setRecipes(recipes));
+    }, []);
 
-    render() {
-        const categoryName = this.state.recipes[0]
-            ? this.state.recipes[0].categoryName
-            : null;
+    const categoryName = recipes[0]
+        ? recipes[0].categoryName
+        : null;
 
-        return (
-            <div className="recipes-current-category-wrapper">
-                <div className="container">
-                    <div className="col-md-12">
-                        <h1 className="text-center p-1 cursive-font-style">Recipes in <span className="recipes-in-category">{categoryName}</span> category: </h1>
-                        <hr />
-                    </div>
-                    <div className="row">
-                        {this.state.recipes.map(r => <SingleRecipe
+    return (
+        <div className="recipes-current-category-wrapper">
+            <div className="container">
+                <div className="col-md-12">
+                    <h1 className="text-center p-1 cursive-font-style">Recipes in <span className="recipes-in-category">{categoryName}</span> category: </h1>
+                    <hr />
+                </div>
+                <div className="row">
+                    {recipes
+                        .map(r => <SingleRecipe
                             key={r.id}
                             id={r.id}
                             title={r.title}
@@ -44,11 +37,11 @@ class RecipesCurrentCategory extends Component {
                             categoryName={r.categoryName}
                             recipeLikesCount={r.recipeLikesCount}
                             commentsCount={r.commentsCount} />)}
-                    </div>
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
+
 }
 
 export default RecipesCurrentCategory;
