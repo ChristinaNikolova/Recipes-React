@@ -1,4 +1,7 @@
+import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+
+import * as authService from './services/authService.js';
 
 import Header from './components/shared/Header/Header.jsx';
 import Footer from './components/shared/Footer/Footer.jsx';
@@ -29,9 +32,24 @@ import NotFound from './components/shared/NotFound/NotFound.jsx';
 import './App.css';
 
 function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        setIsLoggedIn(authService
+            .isAuthenticated());
+
+        console.log("auth");
+        console.log(authService
+        .isAuthenticated());
+
+        setIsAdmin(authService
+            .isAdmin());
+    }, []);
+
     return (
         <div className="app">
-            <Header />
+            <Header loggedIn={isLoggedIn} isAdmin={isAdmin} />
             <Switch>
                 <Route path='/' exact>
                     <Redirect to='/home'></Redirect>

@@ -36,3 +36,13 @@ export const login = (email, password) => {
 export const logout = () => {
     return localStorage.clear();
 }
+
+export const isAuthenticated = () => {
+    let isAuth = false;
+    return localStorage.getItem('authToken') !== null ? isAuth : !isAuth;
+}
+
+export const isAdmin = () => {
+    let isUserAdmin = false;
+    return localStorage.getItem('isAdmin') !== 'true' ? isUserAdmin : !isUserAdmin;
+}
