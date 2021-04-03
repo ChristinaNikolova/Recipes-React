@@ -22,9 +22,6 @@ function CreateRecipeForm({ clickHandler }) {
             .then(categories => setCategories(categories));
     }, []);
 
-    useEffect(() => {
-    }, [errorTitle, errorContent, errorPortions, errorPrepTime, errorCookTime, errorPicture]);
-
     const updateIngredients = (ingredients) => {
         setIngredientsForRecipe(ingredients);
     }
@@ -32,30 +29,29 @@ function CreateRecipeForm({ clickHandler }) {
     const onCreateRecipeSubmitHandler = (e) => {
         e.preventDefault();
 
-        const { title, content, portions, preparationTime, cookingTime, categoryName, picture } = e.target;
+        const title = e.target.title.value;
+        const content = e.target.content.value;
+        const portions = e.target.portions.value;
+        const preparationTime = e.target.preparationTime.value;
+        const cookingTime = e.target.cookingTime.value;
+        const categoryName = e.target.categoryName.value;
+        const picture = e.target.picture.value;
 
-        setErrorTitle(validator.validTitle(title.value));
-        setErrorContent(validator.validContent(content.value));
-        setErrorPortions(validator.validPortions(portions.value));
-        setErrorPrepTime(validator.validPreparationTime(preparationTime.value));
-        setErrorCookTime(validator.validCookingTime(cookingTime.value));
-        setErrorPicture(validator.validPicture(picture.value));
+        setErrorTitle(validator.validTitle(title));
+        setErrorContent(validator.validContent(content));
+        setErrorPortions(validator.validPortions(portions));
+        setErrorPrepTime(validator.validPreparationTime(preparationTime));
+        setErrorCookTime(validator.validCookingTime(cookingTime));
+        setErrorPicture(validator.validPicture(picture));
 
-        if (validator.validTitle(title.value) === '' &&
-            validator.validContent(content.value) === '' &&
-            validator.validPortions(portions.value) === '' &&
-            validator.validPreparationTime(preparationTime.value) === '' &&
-            validator.validCookingTime(cookingTime.value) === '' &&
-            validator.validPicture(picture.value) === '') {
+        if (validator.validTitle(title) === '' &&
+            validator.validContent(content) === '' &&
+            validator.validPortions(portions) === '' &&
+            validator.validPreparationTime(preparationTime) === '' &&
+            validator.validCookingTime(cookingTime) === '' &&
+            validator.validPicture(picture) === '') {
             recipesService
-                .create(title.value,
-                    content.value,
-                    portions.value,
-                    preparationTime.value,
-                    cookingTime.value,
-                    categoryName.value,
-                    picture.value,
-                    ingredientsForRecipe)
+                .create(title, content, portions, preparationTime, cookingTime, categoryName, picture, ingredientsForRecipe)
                 .then(() => {
                     clickHandler();
                 });

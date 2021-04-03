@@ -39,10 +39,6 @@ function App() {
         setIsLoggedIn(authService
             .isAuthenticated());
 
-        console.log("auth");
-        console.log(authService
-        .isAuthenticated());
-
         setIsAdmin(authService
             .isAdmin());
     }, []);

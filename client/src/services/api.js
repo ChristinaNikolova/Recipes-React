@@ -11,7 +11,7 @@ const adminBaseUrl = `${baseUrl}/admin`;
 const adminIngredientUrl = `${adminBaseUrl}/ingredients`;
 const adminCategoryUrl = `${adminBaseUrl}/categories`;
 
-export default {
+const api={
     register: `${accountUrl}/register`,
     login: `${accountUrl}/login`,
     allCategories: `${categoriesUrl}/all`,
@@ -41,4 +41,6 @@ export default {
     adminGetCategoryForUpdate: `${adminCategoryUrl}/categoryForUpdate`,
     adminUpdateCategory: `${adminCategoryUrl}/update`,
     adminCreateCategory: `${adminCategoryUrl}/create`,
-};
+}
+
+export default api;

@@ -11,9 +11,17 @@ function RecipeDetails({ match }) {
     const recipeId = match.params.id;
 
     useEffect(() => {
+        let isMounted = true;
+
         recipesService
             .getDetails(recipeId)
-            .then(recipe => setRecipe(recipe));
+            .then(recipe => 
+                {
+                    if(isMounted)
+                    setRecipe(recipe)
+                });
+
+            return() => { isMounted = false };
     }, [recipe]);
 
     const addToFav = () => {
