@@ -16,7 +16,9 @@ function IngredientsAdminList() {
     }, [hasToReload]);
 
     const reload = () => {
-        setHasToReload(true);
+        setTimeout(() => {
+            setHasToReload(true);
+        }, 250);
     }
 
     return (
