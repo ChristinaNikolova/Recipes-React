@@ -8,9 +8,9 @@ import './RecipeDetails.css';
 
 function RecipeDetails({ match }) {
     const [recipe, setRecipe] = useState({});
-    const recipeId = match.params.id;
 
-    useEffect(() => {
+    useEffect((match) => {
+        const recipeId = match.params.id;
         let isMounted = true;
 
         recipesService
@@ -28,7 +28,7 @@ function RecipeDetails({ match }) {
         const isFavourite = recipe.isFavourite;
         
         recipesService
-            .like(recipeId)
+            .like(recipe.id)
             .then(setRecipe(state => (
                 {
                     recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
@@ -39,7 +39,7 @@ function RecipeDetails({ match }) {
         const isFavourite = recipe.isFavourite;
 
         recipesService
-            .dislike(recipeId)
+            .dislike(recipe.id)
             .then(setRecipe(state => (
                 {
                     recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })

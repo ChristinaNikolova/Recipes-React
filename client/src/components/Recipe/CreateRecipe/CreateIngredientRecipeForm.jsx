@@ -8,7 +8,7 @@ import * as validator from '../../../utils/validations/ingredientValidator.js';
 function CreateIngredientRecipeForm({ clickHandler }) {
     const [ingredients, setIngredients] = useState([]);
 
-    useEffect(() => {
+    useEffect((clickHandler) => {
         clickHandler(ingredients)
     }, [ingredients]);
 

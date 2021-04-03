@@ -12,7 +12,7 @@ function CategoryAdminUpdate({ match, history }) {
     const [errorPicture, setErrorPicture] = useState('');
     const id = match.params.id;
 
-    useEffect(() => {
+    useEffect((id) => {
         categoriesService
             .getCategoryForUpdate(id)
             .then(category => setCategory(category))

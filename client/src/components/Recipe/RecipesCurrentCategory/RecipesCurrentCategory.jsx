@@ -5,11 +5,12 @@ import * as recipesService from '../../../services/recipesService.js';
 
 import './RecipesCurrentCategory.css';
 
-function RecipesCurrentCategory({ match }) {
+function RecipesCurrentCategory(props) {
     const [recipes, setRecipes] = useState([]);
-    const categoryId = match.params.id;
 
-    useEffect(() => {
+    useEffect((props) => {
+        const categoryId = props.match.params.id;
+
         recipesService
             .getByCategory(categoryId)
             .then(recipes => setRecipes(recipes));
