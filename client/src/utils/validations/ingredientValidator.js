@@ -2,8 +2,8 @@ import ingredientConstants from '../constants/ingredientConstants.js';
 
 export const validName = (name) => {
     if (
-        name.length >= ingredientConstants.NAME_MIN_LEN &&
-        name.length <= ingredientConstants.NAME_MAX_LEN &&
+        name?.length >= ingredientConstants.NAME_MIN_LEN &&
+        name?.length <= ingredientConstants.NAME_MAX_LEN &&
         name !== ''
     ) {
         return '';
@@ -14,8 +14,8 @@ export const validName = (name) => {
 
 export const validQuantity = (quantity) => {
     if (
-        quantity.length >= ingredientConstants.QUANTITY_MIN_LEN &&
-        quantity.length <= ingredientConstants.QUANTITY_MAX_LEN &&
+        quantity?.length >= ingredientConstants.QUANTITY_MIN_LEN &&
+        quantity?.length <= ingredientConstants.QUANTITY_MAX_LEN &&
         quantity !== ''
     ) {
         return '';
