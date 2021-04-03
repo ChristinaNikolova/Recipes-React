@@ -7,18 +7,18 @@ import * as validator from '../../../utils/validations/ingredientValidator.js';
 
 function CreateIngredientRecipeForm({ clickHandler }) {
     const [ingredients, setIngredients] = useState([]);
-    const[errorName, setErrorName] = useState([]);
-    const[errorQuantity, setErrorQuantity] = useState([]);
 
     useEffect(() => {
         clickHandler(ingredients)
-    }, [ingredients, errorName, errorQuantity]);
+    }, [ingredients]);
 
     const addIngredient = () => {
         setIngredients(prevState => ([...prevState, {
             id: generate(),
             name: '',
-            quantity: ''
+            quantity: '',
+            errorNameTest: 'Invalid Name',
+            errorQuantityTest:'Invalid Qty'
         }]));
     };
 
@@ -37,17 +37,18 @@ function CreateIngredientRecipeForm({ clickHandler }) {
             ingredients[ingredientIndex].name = name;
         }));
 
-        setErrorName(prevState => ([...prevState, 
-            validator.validName(ingredients[ingredientIndex]?.name)
-        ]));
+        setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
+            ingredients[ingredientIndex].errorNameTest = validator.validName(name);
+        }));
     }
 
     const onBlurIngredientNameHandler = (e) => {
         const ingredientIndex = getIngredientIndex(e.target.id);
+        let name = ingredients[ingredientIndex]?.name;
 
-        setErrorName(prevState => ([...prevState, 
-            validator.validName(ingredients[ingredientIndex]?.name)
-        ]));
+        setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
+            ingredients[ingredientIndex].errorNameTest = validator.validName(name);
+        }));
     }
 
     const changeIngredientQuantityHandler = (e) => {
@@ -58,15 +59,18 @@ function CreateIngredientRecipeForm({ clickHandler }) {
             ingredients[ingredientIndex].quantity = quantity;
         }));
 
-        setErrorName(validator.validName(quantity));
+        setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
+            ingredients[ingredientIndex].errorQuantityTest = validator.validQuantity(quantity);
+        }));
     }
 
     const onBlurIngredientQuantityHandler = (e) => {
         const ingredientIndex = getIngredientIndex(e.target.id);
+        let quantity =ingredients[ingredientIndex]?.quantity;
 
-        setErrorQuantity(prevState => ([...prevState, 
-            validator.validQuantity(ingredients[ingredientIndex]?.quantity)
-        ]));
+        setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
+            ingredients[ingredientIndex].errorQuantityTest = validator.validQuantity(quantity);
+        }));
     }
 
     const getIngredientIndex = (target) => {
@@ -87,14 +91,14 @@ function CreateIngredientRecipeForm({ clickHandler }) {
                         <label className="form-control-label custom-color-green">Ingredient: </label>
                         <div className="form-group">
                             <label className="form-control-label" htmlFor={index}>Name</label>
-                            <input onChange={changeIngredientNameHandler} onBlur={onBlurIngredientNameHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
+                            <input onChange={changeIngredientNameHandler} onBlur={onBlurIngredientNameHandler}  className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
-                        <InputError>{errorName[ingredientIndex]}</InputError> 
+                        <InputError>{ingredient.errorNameTest}</InputError> 
                         <div className="form-group">
                             <label className="form-control-label" htmlFor={index}>Quantity</label>
-                            <input onChange={changeIngredientQuantityHandler} onBlur={onBlurIngredientQuantityHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
+                            <input onChange={changeIngredientQuantityHandler} onBlur={onBlurIngredientQuantityHandler}  className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
-                        <InputError>{errorQuantity[ingredientIndex]}</InputError> 
+                        <InputError>{ingredient.errorQuantityTest}</InputError> 
                         <button type="button" className="btn btn-danger custom-danger-button" onClick={() => removeIngredient(index)}>Remove</button>
                         <hr />
                     </div>
