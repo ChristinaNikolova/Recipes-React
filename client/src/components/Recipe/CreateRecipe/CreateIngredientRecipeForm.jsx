@@ -17,8 +17,8 @@ function CreateIngredientRecipeForm({ clickHandler }) {
             id: generate(),
             name: '',
             quantity: '',
-            errorNameTest: 'Invalid Name',
-            errorQuantityTest:'Invalid Qty'
+            errorName: validator.ErrorMessageName(),
+            errorQuantity: validator.ErrorMessageQuantity(),
         }]));
     };
 
@@ -37,39 +37,43 @@ function CreateIngredientRecipeForm({ clickHandler }) {
             ingredients[ingredientIndex].name = name;
         }));
 
-        setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
-            ingredients[ingredientIndex].errorNameTest = validator.validName(name);
-        }));
+        setNameError(ingredientIndex, name);
     }
 
     const onBlurIngredientNameHandler = (e) => {
         const ingredientIndex = getIngredientIndex(e.target.id);
         let name = ingredients[ingredientIndex]?.name;
 
-        setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
-            ingredients[ingredientIndex].errorNameTest = validator.validName(name);
-        }));
+        setNameError(ingredientIndex, name);
     }
 
     const changeIngredientQuantityHandler = (e) => {
-        const quantity = e.target.value;
         const ingredientIndex = getIngredientIndex(e.target.id);
+        const quantity = e.target.value;
 
         setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
             ingredients[ingredientIndex].quantity = quantity;
         }));
 
-        setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
-            ingredients[ingredientIndex].errorQuantityTest = validator.validQuantity(quantity);
-        }));
+        setQunatityError(ingredientIndex, quantity);
     }
 
     const onBlurIngredientQuantityHandler = (e) => {
         const ingredientIndex = getIngredientIndex(e.target.id);
         let quantity =ingredients[ingredientIndex]?.quantity;
 
+        setQunatityError(ingredientIndex, quantity);
+    }
+
+    const setNameError = (ingredientIndex, name) =>{
         setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
-            ingredients[ingredientIndex].errorQuantityTest = validator.validQuantity(quantity);
+            ingredients[ingredientIndex].errorName = validator.validName(name);
+        }));
+    }
+
+    const setQunatityError = (ingredientIndex, quantity) => {
+        setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
+            ingredients[ingredientIndex].errorQuantity = validator.validQuantity(quantity);
         }));
     }
 
@@ -93,12 +97,12 @@ function CreateIngredientRecipeForm({ clickHandler }) {
                             <label className="form-control-label" htmlFor={index}>Name</label>
                             <input onChange={changeIngredientNameHandler} onBlur={onBlurIngredientNameHandler}  className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
-                        <InputError>{ingredient.errorNameTest}</InputError> 
+                        <InputError>{ingredient.errorName}</InputError> 
                         <div className="form-group">
                             <label className="form-control-label" htmlFor={index}>Quantity</label>
                             <input onChange={changeIngredientQuantityHandler} onBlur={onBlurIngredientQuantityHandler}  className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
-                        <InputError>{ingredient.errorQuantityTest}</InputError> 
+                        <InputError>{ingredient.errorQuantity}</InputError> 
                         <button type="button" className="btn btn-danger custom-danger-button" onClick={() => removeIngredient(index)}>Remove</button>
                         <hr />
                     </div>

@@ -37,8 +37,6 @@ function CreateRecipeForm({ clickHandler }) {
         const categoryName = e.target.categoryName.value;
         const picture = e.target.picture.value;
 
-        console.log(ingredientsForRecipe);
-
         setErrorTitle(validator.validTitle(title));
         setErrorContent(validator.validContent(content));
         setErrorPortions(validator.validPortions(portions));
@@ -46,7 +44,7 @@ function CreateRecipeForm({ clickHandler }) {
         setErrorCookTime(validator.validCookingTime(cookingTime));
         setErrorPicture(validator.validPicture(picture));
 
-        var validIngredients = !(ingredientsForRecipe.some(i => i.errorNameTest !== '' || i.errorQuantityTest !== ''));
+        var validIngredients = !(ingredientsForRecipe.some(i => i.errorName !== '' || i.errorQuantity !== ''));
 
         if (validator.validTitle(title) === '' &&
             validator.validContent(content) === '' &&

@@ -23,3 +23,11 @@ export const validQuantity = (quantity) => {
 
     return `Quantity should be between ${ingredientConstants.QUANTITY_MIN_LEN} and ${ingredientConstants.QUANTITY_MAX_LEN} characters long.`;
 };
+
+export const ErrorMessageName = () => {
+    return (`Name should be between ${ingredientConstants.NAME_MIN_LEN} and ${ingredientConstants.NAME_MAX_LEN} characters long.`);
+}
+
+export const ErrorMessageQuantity = () =>{
+     return `Quantity should be between ${ingredientConstants.QUANTITY_MIN_LEN} and ${ingredientConstants.QUANTITY_MAX_LEN} characters long.`;
+}
