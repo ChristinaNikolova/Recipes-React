@@ -39,3 +39,7 @@
     background-color: red;
     color: white;
 }
+
+.required-ingredient{
+    color: red;
+}

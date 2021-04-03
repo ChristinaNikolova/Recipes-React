@@ -45,7 +45,7 @@ function CreateRecipeForm({ clickHandler }) {
         setErrorPicture(validator.validPicture(picture));
 
         var validIngredients = !(ingredientsForRecipe.some(i => i.errorName !== '' || i.errorQuantity !== ''));
-
+        
         if (validator.validTitle(title) === '' &&
             validator.validContent(content) === '' &&
             validator.validPortions(portions) === '' &&
