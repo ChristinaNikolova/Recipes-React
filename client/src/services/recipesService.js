@@ -57,7 +57,9 @@ export const create = (title, content, portions, preparationTime, cookingTime, c
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(recipe)
-    }).catch(err => console.error(err));
+    })
+    .then(res => res.json())
+    .catch(err => console.error(err));
 }
 
 export const remove = (recipeId) => {
@@ -75,7 +77,9 @@ export const like = (id) => {
         headers: {
             'Content-Type': 'application/json',
         }
-    }).catch(err => console.error(err));
+    })
+    .then(res=>res.json())
+    .catch(err => console.error(err));
 }
 
 export const dislike = (id) => {
@@ -84,7 +88,9 @@ export const dislike = (id) => {
         headers: {
             'Content-Type': 'application/json',
         }
-    }).catch(err => console.error(err));
+    })
+    .then(res=>res.json())
+    .catch(err => console.error(err));
 }
 
 export const getRecipeForUpdate = (id) => {
@@ -115,5 +121,7 @@ export const update = (id, title, content, portions, preparationTime, cookingTim
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(recipe)
-    }).catch(err => console.error(err));
+    })
+    .then(res => res.json())
+    .catch(err => console.error(err));
 }

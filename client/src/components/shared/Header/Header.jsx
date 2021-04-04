@@ -1,4 +1,5 @@
 import { Link, withRouter } from 'react-router-dom';
+import toastr from 'toastr';
 
 import * as authService from '../../../services/authService.js';
 
@@ -9,6 +10,7 @@ function Header({ loggedIn, isAdmin, history }) {
         authService
             .logout();
 
+        toastr.success('Successful logout', 'Success');
         history.push('/');
     }
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toastr from 'toastr';
 
 import Input from '../../shared/Input/Input.jsx';
 import * as authService from '../../../services/authService.js'
@@ -31,9 +32,13 @@ function Register({ history }) {
             validator.validPasswordsMatch(password, rePassword) === '') {
             authService
                 .register(username, email, password)
-                .then(() => {
+                .then((data) => {
+                    if(data['status'] !== 400){
+                    toastr.success(data['message'], 'Success');
                     history.push('/login')
                     return;
+                    }
+                    toastr.error(data['message'], 'Error');
                 });
         }
     }

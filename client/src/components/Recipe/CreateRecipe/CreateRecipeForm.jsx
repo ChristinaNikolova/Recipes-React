@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
 import * as categoriesService from '../../../services/categoriesService.js';
 import * as recipesService from '../../../services/recipesService.js';
@@ -55,8 +56,13 @@ function CreateRecipeForm({ clickHandler }) {
             validIngredients) {
             recipesService
                 .create(title, content, portions, preparationTime, cookingTime, categoryName, picture, ingredientsForRecipe)
-                .then(() => {
-                    clickHandler();
+                .then((data) => {
+                    if (data['status'] !== 400) {
+                        toastr.success(data['message'], 'Success');
+                        clickHandler();
+                        return;
+                    }
+                    toastr.error(data['message'], 'Error');
                 });
         }
     }

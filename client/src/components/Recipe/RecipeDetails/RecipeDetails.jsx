@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import toastr from 'toastr';
 
 import * as recipesService from '../../../services/recipesService.js';
 import CommentsListCurrentRecipe from '../../Comment/CommentsListCurrentRecipe/CommentsListCurrentRecipe.jsx';
@@ -15,24 +16,20 @@ function RecipeDetails({ match }) {
 
         recipesService
             .getDetails(recipeId)
-            .then(recipe => 
-                {
-                    if(isMounted)
+            .then(recipe => {
+                if (isMounted)
                     setRecipe(recipe)
-                });
+            });
 
-            return() => { isMounted = false };
+        return () => { isMounted = false };
     }, [recipe]);
 
     const addToFav = () => {
         const isFavourite = recipe.isFavourite;
-        
+
         recipesService
             .like(recipeId)
-            .then(setRecipe(state => (
-                {
-                    recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
-                })));
+            .then((data) => setNewState(data, isFavourite));
     }
 
     const removeFromFav = () => {
@@ -40,10 +37,21 @@ function RecipeDetails({ match }) {
 
         recipesService
             .dislike(recipeId)
-            .then(setRecipe(state => (
-                {
-                    recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
-                })));
+            .then((data) => setNewState(data, isFavourite));
+    }
+
+    const setNewState = (data, isFavourite) => {
+        {
+            if (data['status'] !== 400) {
+                toastr.success(data['message'], 'Success');
+                setRecipe(state => (
+                    {
+                        recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
+                    }));
+                return;
+            }
+            toastr.error(data['message'], 'Error');
+        }
     }
 
     return (

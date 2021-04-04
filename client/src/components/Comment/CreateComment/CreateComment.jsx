@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toastr from 'toastr';
 
 import Input from '../../shared/Input/Input.jsx';
 import * as commentsService from '../../../services/commentsService.js';
@@ -21,7 +22,14 @@ function CreateComment({ recipeId, clickHandler }) {
 
             commentsService
                 .create(content, recipeId)
-                .then(clickHandler());
+                .then((data) => {
+                    if(data['status'] !== 400){
+                        toastr.success(data['message'], 'Success');
+                        clickHandler();
+                        return;
+                    }
+                    toastr.error(data['message'], 'Error');
+                });
         }
     }
 
