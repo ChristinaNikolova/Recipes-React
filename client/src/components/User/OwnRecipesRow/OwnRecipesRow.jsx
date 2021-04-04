@@ -22,7 +22,7 @@ function OwnRecipesRow({ id, title, picture, categoryName, clickHandler }) {
             </td>
             <td>{categoryName}</td>
             <td><Link to={`/recipes/ingredients/${id}`}><button className="btn btn-secondary">Delete Ingredients</button></Link></td>
-            <td><button className="btn btn-warning">Update</button></td >
+            <td><Link to={`/recipes/update/${id}`}><button className="btn btn-warning">Update</button></Link></td >
             <td><button className="btn btn-danger" onClick={remove}>Delete</button></td >
         </tr>
     );

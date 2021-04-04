@@ -11,7 +11,7 @@ function IngredientAdminUpdate({ match, history }) {
     const [errorName, setErrorName] = useState('');
     const id = match.params.id;
 
-    useEffect((id) => {
+    useEffect(() => {
         ingredientsService
             .getIngredientForUpdate(id)
             .then(ingredient => setIngredient(ingredient))

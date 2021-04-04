@@ -16,6 +16,7 @@ import OwnRecipes from './components/User/OwnRecipes/OwnRecipes.jsx';
 import RecipesList from './components/Recipe/RecipesList/RecipesList.jsx';
 import CreateRecipe from './components/Recipe/CreateRecipe/CreateRecipe.jsx';
 import RecipeDetails from './components/Recipe/RecipeDetails/RecipeDetails.jsx';
+import UpdateRecipe from './components/Recipe/UpdateRecipe/UpdateRecipe.jsx';
 import RecipesCurrentCategory from './components/Recipe/RecipesCurrentCategory/RecipesCurrentCategory.jsx';
 import RecipeIngredientsList from './components/Ingredients/RecipeIngredientsList/RecipeIngredientsList.jsx';
 
@@ -62,6 +63,7 @@ function App() {
 
                 <Route path='/recipes' exact component={RecipesList}></Route>
                 <Route path='/recipes/create' component={CreateRecipe}></Route>
+                <Route path='/recipes/update/:id' component={UpdateRecipe}></Route>
                 <Route path='/recipes/details/:id' component={RecipeDetails}></Route>
                 <Route path='/recipes/current-category/:id' component={RecipesCurrentCategory}></Route>
                 <Route path='/recipes/ingredients/:id' component={RecipeIngredientsList}></Route>

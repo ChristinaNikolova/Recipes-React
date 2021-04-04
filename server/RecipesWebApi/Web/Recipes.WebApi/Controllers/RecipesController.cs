@@ -319,6 +319,7 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Update(RecipeUpdateInputModel input)
         {
+            ;
             try
             {
                 var ingredients = PrepareIngredients(input.Ingredients);

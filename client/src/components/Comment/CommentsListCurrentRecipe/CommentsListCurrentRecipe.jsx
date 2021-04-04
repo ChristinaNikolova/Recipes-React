@@ -10,7 +10,7 @@ function CommentsListCurrentRecipe({ recipeId }) {
     const [comments, setComments] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
 
-    useEffect((recipeId) => {
+    useEffect(() => {
         commentsService
             .getAllCurrentRecipe(recipeId)
             .then(comments => setComments(comments))

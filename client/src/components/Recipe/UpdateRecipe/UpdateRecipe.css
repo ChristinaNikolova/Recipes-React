@@ -1,0 +1,32 @@
+.update-form-wrapper {
+    background-color: lavender;
+}
+
+.update-form-wrapper .container {
+    background-color: lightgray;
+    padding: 10px;
+}
+
+.update-form-wrapper button {
+    margin-bottom: 10px;
+}
+
+.update-form-wrapper button:hover {
+    background-color: #78C2AD;
+    color: black;
+    cursor: pointer;
+}
+
+.custom {
+    background-color: lightblue;
+    border-color: lightblue;
+    color: black;
+}
+
+.color {
+    color: #78C2AD;
+}
+
+.bold {
+    font-weight: bold;
+}

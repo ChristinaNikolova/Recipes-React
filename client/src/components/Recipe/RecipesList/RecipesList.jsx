@@ -16,7 +16,7 @@ function RecipesList() {
         recipesService
             .all()
             .then(recipes => setRecipes(recipes));
-    }, []);
+    }, [isSearched]);
 
     const order = (orderCriteria) => {
         recipesService

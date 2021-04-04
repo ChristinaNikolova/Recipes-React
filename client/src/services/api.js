@@ -11,13 +11,15 @@ const adminBaseUrl = `${baseUrl}/admin`;
 const adminIngredientUrl = `${adminBaseUrl}/ingredients`;
 const adminCategoryUrl = `${adminBaseUrl}/categories`;
 
-const api={
+const api = {
     register: `${accountUrl}/register`,
     login: `${accountUrl}/login`,
     allCategories: `${categoriesUrl}/all`,
     allCategoriesNames: `${categoriesUrl}/allNames`,
     allRecipes: `${recipesUrl}/all`,
     createRecipe: `${recipesUrl}/create`,
+    getRecipeForUpdate: `${recipesUrl}/recipeForUpdate`,
+    updateRecipe: `${recipesUrl}/update`,
     deleteRecipe: `${recipesUrl}/delete`,
     orderRecipes: `${recipesUrl}/order`,
     detailsRecipe: `${recipesUrl}/details`,

@@ -5,13 +5,12 @@ import RecipeIngredientRow from '../RecipeIngredientRow/RecipeIngredientRow.jsx'
 
 import './RecipeIngredientsList.css';
 
-function RecipeIngredientsList(props) {
+function RecipeIngredientsList({ match }) {
     const [ingredients, setIngredients] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
+    const recipeId = match.params.id;
 
-    useEffect((props) => {
-        const recipeId = props.match.params.id;
-
+    useEffect(() => {
         ingredientsService
             .getByRecipe(recipeId)
             .then(ingredients => setIngredients(ingredients))

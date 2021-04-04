@@ -8,9 +8,9 @@ import './RecipeDetails.css';
 
 function RecipeDetails({ match }) {
     const [recipe, setRecipe] = useState({});
+    const recipeId = match.params.id;
 
-    useEffect((match) => {
-        const recipeId = match.params.id;
+    useEffect(() => {
         let isMounted = true;
 
         recipesService
@@ -28,7 +28,7 @@ function RecipeDetails({ match }) {
         const isFavourite = recipe.isFavourite;
         
         recipesService
-            .like(recipe.id)
+            .like(recipeId)
             .then(setRecipe(state => (
                 {
                     recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
@@ -39,7 +39,7 @@ function RecipeDetails({ match }) {
         const isFavourite = recipe.isFavourite;
 
         recipesService
-            .dislike(recipe.id)
+            .dislike(recipeId)
             .then(setRecipe(state => (
                 {
                     recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
@@ -134,7 +134,7 @@ function RecipeDetails({ match }) {
             </div>
             <hr className="custom-margin-left" />
             {recipe.id
-                ? <CommentsListCurrentRecipe recipeId={recipe.id} />
+                ? <CommentsListCurrentRecipe recipeId={recipeId} />
                 : null}
             <div className="fill pt-1 pb-1"></div>
         </div >

@@ -1,0 +1,22 @@
+.fonts-bold {
+    font-weight: bold;
+}
+
+.custom-color-green {
+    color: #78C2AD;
+}
+
+.current-ingredient-add .custom-danger-button:hover {
+    background-color: red;
+    color: white;
+}
+
+.required-ingredient {
+    color: red;
+}
+
+#custom-add-ingredient-button {
+    background-color: lightblue;
+    border-color: lightblue;
+    color: black;
+}

@@ -85,3 +85,34 @@ export const dislike = (id) => {
         }
     }).catch(err => console.error(err));
 }
+
+export const getRecipeForUpdate = (id) => {
+    let url = `${api.getRecipeForUpdate}/${id}`;
+
+    return fetch(url)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
+
+export const update = (id, title, content, portions, preparationTime, cookingTime, categoryName, picture, ingredients) => {
+
+    let recipe = {
+        id,
+        title,
+        content,
+        portions,
+        preparationTime,
+        cookingTime,
+        categoryName,
+        picture,
+        ingredients
+    };
+
+    return fetch(`${api.updateRecipe}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(recipe)
+    }).catch(err => console.error(err));
+}

@@ -2,10 +2,6 @@
     background-color: lavender;
 }
 
-.cursive-font-style {
-    padding: 10px;
-}
-
 .create-recipe-wrapper button {
     margin-bottom: 10px;
 }
@@ -16,30 +12,7 @@
     cursor: pointer;
 }
 
-.fonts-bold {
-    font-weight: bold;
-}
-
-#custom-add-ingredient-button {
-    background-color: lightblue;
-    border-color: lightblue;
-    color: black;
-}
-
-.create-recipe-wrapper .custom-color-green {
-    color: #78C2AD;
-}
-
 .create-recipe-wrapper .container {
     background-color: lightgray;
     padding: 10px;
-}
-
-.current-ingredient-add .custom-danger-button:hover {
-    background-color: red;
-    color: white;
-}
-
-.required-ingredient{
-    color: red;
 }
