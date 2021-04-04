@@ -37,9 +37,11 @@
         {
             try
             {
+                ;
                 //var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+                //var userId = this.userManager.GetUserId(this.User);
 
-                //await this.commentsService.CreateAsync(model.Content, model.RecipeId, user.Id);
+                //await this.commentsService.CreateAsync(model.Content, model.RecipeId, userId);
 
                 var userId = "c3a43854-bd43-409d-b368-e21733328c4b";
 

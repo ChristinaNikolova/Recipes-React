@@ -14,8 +14,8 @@ export const register = (username, email, password) => {
         },
         body: JSON.stringify(user)
     })
-    .then(res => res.json())
-    .catch(err => console.error(err));
+        .then(res => res.json())
+        .catch(err => console.error(err));
 }
 
 export const login = (email, password) => {
@@ -24,10 +24,13 @@ export const login = (email, password) => {
         password
     }
 
+    const token = getToken();
+    
     return fetch(api.login, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(user)
     })
@@ -45,4 +48,8 @@ export const isAuthenticated = () => {
 
 export const isAdmin = () => {
     return localStorage.getItem('isAdmin') === 'true' ? true : false;
+}
+
+export const getToken = () => {
+    return localStorage.getItem('token');
 }
