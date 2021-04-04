@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import toastr from 'toastr';
 
 import * as categoriesService from '../../../../services/categoriesService.js';
 
@@ -7,8 +8,16 @@ import './CategoryAdminSingleRow.css';
 function CategoryAdminSingleRow({ id, name, recipesCount, clickHandler }) {
 
     const remove = () => {
-        categoriesService.removeFromAdmin(id)
-            .then(clickHandler());
+        categoriesService
+        .removeFromAdmin(id)
+            .then((data) => {
+                if (data['status'] !== 400) {
+                    toastr.success(data['message'], 'Success');
+                    clickHandler();
+                    return;
+                }
+                toastr.error(data['message'], 'Error');
+            });
     }
 
     return (

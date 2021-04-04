@@ -319,7 +319,16 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Update(RecipeUpdateInputModel input)
         {
-            ;
+            var isTitleAlreadyExisting = await this.recipesService.IsTitleAlreadyExistingAsync(input.Title);
+
+            if (isTitleAlreadyExisting)
+            {
+                return this.BadRequest(new BadRequestViewModel
+                {
+                    Message = Messages.Error.AlreadyExistsRecipe,
+                });
+            }
+
             try
             {
                 var ingredients = PrepareIngredients(input.Ingredients);

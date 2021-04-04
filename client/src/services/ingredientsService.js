@@ -13,7 +13,9 @@ export const remove = (recipeId, ingredientId) => {
         headers: {
             'Content-Type': 'application/json',
         }
-    }).catch(err => console.error(err));;
+    })
+    .then(res=>res.json())
+    .catch(err => console.error(err));;
 }
 
 export const getAll = () => {
@@ -28,7 +30,9 @@ export const removeFromAdmin = (id) => {
         headers: {
             'Content-Type': 'application/json',
         }
-    }).catch(err => console.error(err));
+    })
+    .then(res=>res.json())
+    .catch(err => console.error(err));
 }
 
 export const getIngredientForUpdate = (id) => {
@@ -49,7 +53,9 @@ export const update = (id, name) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(ingredient)
-    }).catch(err => console.error(err));
+    })
+    .then(res=>res.json())
+    .catch(err => console.error(err));
 }
 
 export const create = (name) => {
@@ -63,5 +69,7 @@ export const create = (name) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(ingredient)
-    }).catch(err => console.error(err));
+    })
+    .then(res=>res.json())
+    .catch(err => console.error(err));
 }

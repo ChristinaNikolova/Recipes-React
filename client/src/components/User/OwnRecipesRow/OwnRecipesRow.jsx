@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import toastr from 'toastr';
 
 import * as recipesService from '../../../services/recipesService.js';
 
@@ -9,7 +10,14 @@ function OwnRecipesRow({ id, title, picture, categoryName, clickHandler }) {
     const remove = () => {
         recipesService
             .remove(id)
-            .then(clickHandler());
+            .then((data) => {
+                if (data['status'] !== 400) {
+                    toastr.success(data['message'], 'Success');
+                    clickHandler();
+                    return;
+                }
+                toastr.error(data['message'], 'Error');
+            });
     }
 
     return (

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
 import Input from '../../../shared/Input/Input.jsx';
 import * as validator from '../../../../utils/validations/ingredientValidator.js';
@@ -27,9 +28,13 @@ function IngredientAdminUpdate({ match, history }) {
 
             ingredientsService
                 .update(id, name)
-                .then(() => {
-                    history.push(`/admin/ingredients`);
-                    return;
+                .then((data) => {
+                    if (data['status'] !== 400) {
+                        toastr.success(data['message'], 'Success');
+                        history.push(`/admin/ingredients`);
+                        return;
+                    }
+                    toastr.error(data['message'], 'Error');
                 });
         }
     }

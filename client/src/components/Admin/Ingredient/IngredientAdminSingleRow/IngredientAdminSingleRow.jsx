@@ -1,12 +1,21 @@
 import { Link } from 'react-router-dom';
+import toastr from 'toastr';
 
 import * as ingredientsService from '../../../../services/ingredientsService.js';
 
 function IngredientAdminSingleRow({ id, name, recipeIngredientsCount, clickHandler }) {
 
     const remove = () => {
-        ingredientsService.removeFromAdmin(id)
-            .then(clickHandler());
+        ingredientsService
+        .removeFromAdmin(id)
+            .then((data) => {
+                if(data['status'] !== 400){
+                    toastr.success(data['message'], 'Success');
+                    clickHandler();
+                    return;
+                }
+                toastr.error(data['message'], 'Error');
+            });
     }
 
     return (

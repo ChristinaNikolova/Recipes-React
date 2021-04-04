@@ -1,5 +1,4 @@
 import api from './api.js';
-import toastr from 'toastr';
 
 export const all = () => {
     return fetch(api.allRecipes)
@@ -68,7 +67,9 @@ export const remove = (recipeId) => {
         headers: {
             'Content-Type': 'application/json',
         }
-    }).catch(err => console.error(err));
+    })
+    .then(res=>res.json())
+    .catch(err => console.error(err));
 }
 
 export const like = (id) => {

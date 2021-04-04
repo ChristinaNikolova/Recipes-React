@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
 import Input from '../../../shared/Input/Input.jsx';
 import * as categoriesService from '../../../../services/categoriesService.js';
@@ -31,9 +32,13 @@ function CategoryAdminUpdate({ match, history }) {
             validator.validPicture(picture) === '') {
             categoriesService
                 .update(id, name, picture)
-                .then(() => {
-                    history.push(`/admin/categories`);
-                    return;
+                .then((data) => {
+                    if (data['status'] !== 400) {
+                        toastr.success(data['message'], 'Success');
+                        history.push(`/admin/categories`);
+                        return;
+                    }
+                    toastr.error(data['message'], 'Error');
                 });
         }
     }

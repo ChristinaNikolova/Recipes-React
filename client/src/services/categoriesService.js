@@ -24,7 +24,9 @@ export const removeFromAdmin = (id) => {
         headers: {
             'Content-Type': 'application/json',
         }
-    }).catch(err => console.error(err));
+    })
+    .then(res=>res.json())
+    .catch(err => console.error(err));
 }
 
 export const getCategoryForUpdate = (id) => {
@@ -46,7 +48,9 @@ export const update = (id, name, picture) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(category)
-    }).catch(err => console.error(err));
+    })
+    .then(res=>res.json())
+    .catch(err => console.error(err));
 }
 
 export const create = (name, picture) => {
@@ -61,5 +65,7 @@ export const create = (name, picture) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(category)
-    }).catch(err => console.error(err));
+    })
+    .then(res=>res.json())
+    .catch(err => console.error(err));
 }
