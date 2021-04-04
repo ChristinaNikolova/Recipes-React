@@ -36,20 +36,25 @@ import './App.css';
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
-        console.log(authService.isAuthenticated());
-        setIsLoggedIn(authService.isAuthenticated());
-    }, [isLoggedIn]);
-
-    useEffect(() => {
-        console.log(authService.isAdmin());
+        console.log('auth' + authService.isAuthenticated());
+        console.log('admin' + authService.isAdmin());
         setIsAdmin(authService.isAdmin());
-    }, [isAdmin]);
+        setIsLoggedIn(authService.isAuthenticated());
+        setHasToReload(false);
+    }, [hasToReload]);
+
+    const logout = () => {
+        //setHasToReload(true);
+        authService.logout();
+        toastr.success('Successful logout', 'Success');
+    }
 
     return (
         <div className="app">
-            <Header />
+            <Header isAdmin={isAdmin} isLoggedIn={isLoggedIn} />
             <Switch>
                 <Route path='/' exact>
                     <Redirect to='/home'></Redirect>
@@ -58,9 +63,7 @@ function App() {
 
                 <Route path='/register' component={Register}></Route>
                 <Route path='/login' component={Login}></Route>
-                <Route path="/logout" render={() => {
-                    authService.logout();
-                    toastr.success('Successful logout', 'Success');
+                <Route path="/logout" render={() => { logout();
                     return <Redirect to="/" />
                 }} />
 
