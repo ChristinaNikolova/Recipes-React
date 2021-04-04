@@ -99,6 +99,17 @@
             return recipe;
         }
 
+        public async Task<string> GetIdByTitleAsync(string title)
+        {
+            var id = await this.recipesRepository
+                .All()
+                .Where(r => r.Title.ToLower() == title.ToLower())
+                .Select(r => r.Id)
+                .FirstOrDefaultAsync();
+
+            return id;
+        }
+
         public async Task<IEnumerable<T>> GetOrderAsync<T>(string criteria)
         {
             var criteriaToLower = criteria.ToLower();

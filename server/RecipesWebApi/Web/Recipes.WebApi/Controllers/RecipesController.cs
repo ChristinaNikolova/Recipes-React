@@ -323,10 +323,15 @@
 
             if (isTitleAlreadyExisting)
             {
-                return this.BadRequest(new BadRequestViewModel
+                var existingRecipeId = await this.recipesService.GetIdByTitleAsync(input.Title);
+
+                if (existingRecipeId != input.Id)
                 {
-                    Message = Messages.Error.AlreadyExistsRecipe,
-                });
+                    return this.BadRequest(new BadRequestViewModel
+                    {
+                        Message = Messages.Error.AlreadyExistsRecipe,
+                    });
+                }
             }
 
             try

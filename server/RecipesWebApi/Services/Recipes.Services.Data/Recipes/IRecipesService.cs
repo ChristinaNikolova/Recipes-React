@@ -24,5 +24,7 @@
         Task DeleteAsync(string recipeId);
 
         Task UpdateAsync(string id, string title, string content, string categoryName, int cookingTime, int preparationTime, int portions, IEnumerable<IngredientRecipeCreateDto> ingredients, string picture);
+
+        Task<string> GetIdByTitleAsync(string title);
     }
 }
