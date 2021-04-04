@@ -1,4 +1,5 @@
 import api from './api.js';
+import toastr from 'toastr';
 
 export const all = () => {
     return fetch(api.allRecipes)

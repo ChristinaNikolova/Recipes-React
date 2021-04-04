@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toastr from 'toastr';
 
 import Input from '../../shared/Input/Input.jsx';
 import * as authService from '../../../services/authService.js'
@@ -24,12 +25,17 @@ function Login({ history }) {
             authService
                 .login(email, password)
                 .then((data) => {
-                    localStorage.setItem('token', data['token']);
-                    localStorage.setItem('username', data['username']);
-                    localStorage.setItem('isAdmin', data['isAdmin']);
-                    history.push('/')
-                    return;
+                    if(data['status'] !== 400){
+                        localStorage.setItem('token', data['token']);
+                        localStorage.setItem('username', data['username']);
+                        localStorage.setItem('isAdmin', data['isAdmin']);
+                        toastr.success(data['message'], 'Success');
+                        history.push('/');
+                        return;
+                    }
+                    toastr.error(data['message'], 'Error');
                 });
+                
         }
     }
 

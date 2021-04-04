@@ -1,4 +1,5 @@
 import api from './api.js';
+import toastr from 'toastr';
 
 export const register = (username, email, password) => {
     const user = {
@@ -30,7 +31,7 @@ export const login = (email, password) => {
         body: JSON.stringify(user)
     })
         .then(res => res.json())
-        .catch(err => console.error(err));
+        .catch(err => toastr.error(err));
 }
 
 export const logout = () => {
