@@ -40,11 +40,9 @@ export const logout = () => {
 }
 
 export const isAuthenticated = () => {
-    let isAuth = false;
-    return localStorage.getItem('authToken') !== null ? isAuth : !isAuth;
+    return localStorage.getItem('token') !== null ? true : false;
 }
 
 export const isAdmin = () => {
-    let isUserAdmin = false;
-    return localStorage.getItem('isAdmin') !== 'true' ? isUserAdmin : !isUserAdmin;
+    return localStorage.getItem('isAdmin') === 'true' ? true : false;
 }

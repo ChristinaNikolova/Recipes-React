@@ -70,6 +70,7 @@
             var recipes = await this.recipesRepository
                 .All()
                 .OrderByDescending(r => r.CreatedOn)
+                .ThenBy(r => r.Title)
                 .To<T>()
                 .ToListAsync();
 

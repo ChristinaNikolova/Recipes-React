@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import toastr from 'toastr';
 
 import * as authService from './services/authService.js';
 
@@ -37,16 +38,18 @@ function App() {
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-        setIsLoggedIn(authService
-            .isAuthenticated());
+        console.log(authService.isAuthenticated());
+        setIsLoggedIn(authService.isAuthenticated());
+    }, [isLoggedIn]);
 
-        setIsAdmin(authService
-            .isAdmin());
-    }, []);
+    useEffect(() => {
+        console.log(authService.isAdmin());
+        setIsAdmin(authService.isAdmin());
+    }, [isAdmin]);
 
     return (
         <div className="app">
-            <Header loggedIn={isLoggedIn} isAdmin={isAdmin} />
+            <Header />
             <Switch>
                 <Route path='/' exact>
                     <Redirect to='/home'></Redirect>
@@ -55,6 +58,11 @@ function App() {
 
                 <Route path='/register' component={Register}></Route>
                 <Route path='/login' component={Login}></Route>
+                <Route path="/logout" render={() => {
+                    authService.logout();
+                    toastr.success('Successful logout', 'Success');
+                    return <Redirect to="/" />
+                }} />
 
                 <Route path='/categories' exact component={CategoriesList}></Route>
 
@@ -81,7 +89,7 @@ function App() {
                 <Route path="*" component={NotFound}></Route>
             </Switch>
             <Footer />
-        </div>
+        </div >
     );
 }
 

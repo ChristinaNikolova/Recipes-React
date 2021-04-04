@@ -6,7 +6,5 @@
     public class IngredientViewModel : BaseIngredientViewModel, IMapFrom<RecipeIngredient>
     {
         public string RecipeId { get; set; }
-
-        public string IngredientId { get; set; }
     }
 }
