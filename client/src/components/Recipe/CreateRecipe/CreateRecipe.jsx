@@ -15,7 +15,7 @@ function CreateRecipe({ history }) {
             <div className="container">
                 <div className="row space-top">
                     <div className="col-md-12">
-                        <h1 className="create-recipe-title cursive-font-style p-1">Create New Recipe</h1>
+                        <h1 className="cursive-font-style p-1">Create New Recipe</h1>
                     </div>
                 </div>
                 <CreateRecipeForm clickHandler={createRecipe} />

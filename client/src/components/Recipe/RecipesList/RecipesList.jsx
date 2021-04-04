@@ -32,7 +32,11 @@ function RecipesList() {
 
         recipesService
             .search(query)
-            .then(recipes => setRecipes(recipes), setIsSearched(true));
+            .then(recipes => setTimeout(() => {
+                setRecipes(recipes)
+            }, 100));
+
+        setIsSearched(true);
     }
 
     return (
