@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 
 import SingleRecipe from '../SingleRecipe/SingleRecipe.jsx'
+import * as authService from '../../../services/authService.js';
 import * as recipesService from '../../../services/recipesService.js';
 
 import './RecipesCurrentCategory.css';
 
-function RecipesCurrentCategory({ match }) {
+function RecipesCurrentCategory({ match, history }) {
     const [recipes, setRecipes] = useState([]);
     const categoryId = match.params.id;
+
+    useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/')
+        }
+    }, [])
 
     useEffect(() => {
         recipesService

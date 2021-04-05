@@ -1,19 +1,11 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
-import * as authService from '../../../../services/authService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
 
 import './CategoryAdminSingleRow.css';
 
-function CategoryAdminSingleRow({ id, name, recipesCount, clickHandler, history }) {
-    useEffect(() => {
-        if (!(authService.isAuthenticated() && authService.isAdmin())) {
-            history.push('/')
-        }
-    }, [])
-
+function CategoryAdminSingleRow({ id, name, recipesCount, clickHandler }) {
     const remove = () => {
         categoriesService
             .removeFromAdmin(id)

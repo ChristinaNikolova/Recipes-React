@@ -1,9 +1,18 @@
+import { useEffect } from 'react';
+
+import * as authService from '../../../services/authService.js';
 import UpdateRecipeForm from './UpdateRecipeForm.jsx';
 
 import './UpdateRecipe.css';
 
 function UpdateRecipe({ history, match }) {
     const recipeId = match.params.id;
+
+    useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/')
+        }
+    }, [])
 
     const updateRecipe = () => {
         history.push(`/recipes/details/${recipeId}`);

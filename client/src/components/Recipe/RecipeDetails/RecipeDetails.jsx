@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
 import * as recipesService from '../../../services/recipesService.js';
+import * as authService from '../../../services/authService.js';
 import CommentsListCurrentRecipe from '../../Comment/CommentsListCurrentRecipe/CommentsListCurrentRecipe.jsx';
 
 import './RecipeDetails.css';
@@ -18,6 +19,10 @@ class RecipeDetails extends Component {
     }
 
     componentDidMount() {
+        if (!authService.isAuthenticated()) {
+            this.props.history.push('/')
+        }
+
         const recipeId = this.props.match.params.id;
         recipesService
             .getDetails(recipeId)

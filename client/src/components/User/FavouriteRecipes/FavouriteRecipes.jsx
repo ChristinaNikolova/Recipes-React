@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 
 import * as usersService from '../../../services/usersService.js';
+import * as authService from '../../../services/authService.js';
 import FavouriteRecipesRow from '../FavouriteRecipesRow/FavouriteRecipesRow.jsx';
 
 import './FavouriteRecipes.css';
 
-function FavouriteRecipes() {
+function FavouriteRecipes({ history }) {
     const [favRecipes, setFavRecipes] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
+
+    useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/')
+        }
+    }, [])
 
     useEffect(() => {
         usersService

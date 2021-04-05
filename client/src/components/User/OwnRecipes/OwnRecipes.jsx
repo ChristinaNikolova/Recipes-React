@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 
 import * as usersService from '../../../services/usersService.js';
+import * as authService from '../../../services/authService.js';
 import OwnRecipesRow from '../OwnRecipesRow/OwnRecipesRow.jsx';
 
 import './OwnRecipes.css';
 
-function OwnRecipes() {
+function OwnRecipes({ history }) {
     const [ownRecipes, setOwnRecipes] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
+
+    useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/')
+        }
+    }, [])
 
     useEffect(() => {
         usersService

@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
 
 import * as ingredientsService from '../../../services/ingredientsService.js';
+import * as authService from '../../../services/authService.js';
 import RecipeIngredientRow from '../RecipeIngredientRow/RecipeIngredientRow.jsx';
 
 import './RecipeIngredientsList.css';
 
-function RecipeIngredientsList({ match }) {
+function RecipeIngredientsList({ match, history }) {
     const [ingredients, setIngredients] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
     const recipeId = match.params.id;
+
+    useEffect(() => {
+        if (!authService.isAuthenticated()) {
+            history.push('/')
+        }
+    }, [])
 
     useEffect(() => {
         ingredientsService

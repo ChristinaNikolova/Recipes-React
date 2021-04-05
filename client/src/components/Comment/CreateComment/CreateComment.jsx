@@ -23,7 +23,7 @@ function CreateComment({ recipeId, clickHandler }) {
             commentsService
                 .create(content, recipeId)
                 .then((data) => {
-                    if(data['status'] !== 400){
+                    if (data['status'] !== 400) {
                         toastr.success(data['message'], 'Success');
                         clickHandler();
                         return;

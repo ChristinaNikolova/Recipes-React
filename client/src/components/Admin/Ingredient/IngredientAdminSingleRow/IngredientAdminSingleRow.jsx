@@ -1,17 +1,9 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
-import * as authService from '../../../../services/authService.js';
 import * as ingredientsService from '../../../../services/ingredientsService.js';
 
-function IngredientAdminSingleRow({ id, name, recipeIngredientsCount, clickHandler, history }) {
-    useEffect(() => {
-        if (!(authService.isAuthenticated() && authService.isAdmin())) {
-            history.push('/')
-        }
-    }, [])
-
+function IngredientAdminSingleRow({ id, name, recipeIngredientsCount, clickHandler }) {
     const remove = () => {
         ingredientsService
             .removeFromAdmin(id)

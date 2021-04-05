@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
+
 import './SingleRecipe.css';
 
-function SingleRecipe({ id, title, picture, content, categoryId, categoryName, recipeLikesCount, commentsCount
-}) {
+function SingleRecipe({ id, title, picture, content, categoryId, categoryName, recipeLikesCount, commentsCount }) {
     return (
         <div className="col-lg-4">
             <div className="card mb-2 custom-card-recipe">

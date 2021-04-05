@@ -1,8 +1,16 @@
+import { useEffect } from 'react';
+
 import CreateRecipeForm from './CreateRecipeForm.jsx';
+import * as authService from '../../../services/authService.js';
 
 import './CreateRecipe.css';
 
 function CreateRecipe({ history }) {
+    useEffect(() => {
+        if (!(authService.isAuthenticated())) {
+            history.push('/')
+        }
+    }, [])
 
     const createRecipe = () => {
         history.push(`/recipes`);
