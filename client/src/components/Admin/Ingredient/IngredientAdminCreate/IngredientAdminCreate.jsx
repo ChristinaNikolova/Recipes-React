@@ -12,7 +12,7 @@ function IngredientAdminCreate({ history }) {
     const [errorName, setErrorName] = useState('');
 
     useEffect(() => {
-        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+        if (!authService.isAdmin()) {
             history.push('/')
         }
     }, [])

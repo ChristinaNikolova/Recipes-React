@@ -7,7 +7,7 @@ import './AdminHome.css';
 
 function AdminHome({ history }) {
     useEffect(() => {
-        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+        if (!authService.isAdmin()) {
             history.push('/')
         }
     }, [])

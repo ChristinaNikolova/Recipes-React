@@ -11,7 +11,7 @@ function CategoriesAdminList({ history }) {
     const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
-        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+        if (!authService.isAdmin()) {
             history.push('/')
         }
     }, [])

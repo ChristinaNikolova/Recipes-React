@@ -14,7 +14,7 @@ function IngredientAdminUpdate({ match, history }) {
     const id = match.params.id;
 
     useEffect(() => {
-        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+        if (!authService.isAdmin()) {
             history.push('/')
         }
     }, [])

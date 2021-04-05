@@ -13,7 +13,7 @@ function CategoryAdminCreate({ history }) {
     const [errorPicture, setErrorPicture] = useState('');
 
     useEffect(() => {
-        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+        if (!authService.isAdmin()) {
             history.push('/')
         }
     }, [])
