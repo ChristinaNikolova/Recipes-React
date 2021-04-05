@@ -23,14 +23,10 @@ export const login = (email, password) => {
         email,
         password
     }
-
-    const token = getToken();
-    
     return fetch(api.login, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(user)
     })

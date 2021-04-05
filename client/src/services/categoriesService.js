@@ -1,36 +1,42 @@
 import api from './api.js';
+import { requester } from './requester.js';
 
 export const all = () => {
-    return fetch(api.allCategories)
+    const url = api.allCategories;
+
+    return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
 }
 
 export const getAllNames = () => {
-    return fetch(api.allCategoriesNames)
+    const url = api.allCategoriesNames;
+
+    return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
 }
 
 export const getAllForAdmin = () => {
-    return fetch(api.adminAllCategories)
+    const url = api.adminAllCategories;
+
+    return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
 }
 
 export const removeFromAdmin = (id) => {
-    return fetch(`${api.adminDeleteCategory}/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    })
-    .then(res=>res.json())
-    .catch(err => console.error(err));
+    const url = `${api.adminDeleteCategory}/${id}`;
+
+    return requester(url, 'DELETE')
+        .then(res => res.json())
+        .catch(err => console.error(err));
 }
 
 export const getCategoryForUpdate = (id) => {
-    return fetch(`${api.adminGetCategoryForUpdate}/${id}`)
+    const url = `${api.adminGetCategoryForUpdate}/${id}`;
+
+    return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
 }
@@ -42,30 +48,22 @@ export const update = (id, name, picture) => {
         picture
     };
 
-    return fetch(`${api.adminUpdateCategory}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(category)
-    })
-    .then(res=>res.json())
-    .catch(err => console.error(err));
+    const url = `${api.adminUpdateCategory}`;
+
+    return requester(url, 'PUT', category)
+        .then(res => res.json())
+        .catch(err => console.error(err));
 }
 
 export const create = (name, picture) => {
-    let category = {
+    const category = {
         name,
         picture
     };
 
-    return fetch(api.adminCreateCategory, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(category)
-    })
-    .then(res=>res.json())
-    .catch(err => console.error(err));
+    const url = api.adminCreateCategory
+
+    return requester(url, 'POST', category)
+        .then(res => res.json())
+        .catch(err => console.error(err));
 }

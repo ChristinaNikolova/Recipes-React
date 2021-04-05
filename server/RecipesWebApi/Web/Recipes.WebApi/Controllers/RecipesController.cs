@@ -59,15 +59,11 @@
 
             try
             {
-                //var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
-
-                var userId = "c3a43854-bd43-409d-b368-e21733328c4b";
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
                 var ingredients = PrepareIngredients(input.Ingredients);
 
-                //await this.recipesService.CreateAsync(input.Title, input.Content, input.Portions, input.PreparationTime, input.CookingTime, input.CategoryName, input.Picture, ingredients, user.Id);
-
-                await this.recipesService.CreateAsync(input.Title, input.Content, input.Portions, input.PreparationTime, input.CookingTime, input.CategoryName, input.Picture, ingredients, userId);
+                await this.recipesService.CreateAsync(input.Title, input.Content, input.Portions, input.PreparationTime, input.CookingTime, input.CategoryName, input.Picture, ingredients, user.Id);
 
                 return this.Ok(new
                 {
@@ -138,13 +134,9 @@
             {
                 var recipe = await this.recipesService.GetDetailsAsync<RecipeDetailsViewModel>(id);
 
-                //var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
-                //recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
-
-                var userId = "c3a43854-bd43-409d-b368-e21733328c4b";
-
-                recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(userId, id);
+                recipe.IsFavourite = await this.recipeLikesService.IsFavouriteAsync(user.Id, id);
 
                 recipe.Ingredients = await this.recipeIngredientsService.GetIngredientByRecipeAsync<BaseIngredientViewModel>(id);
 
@@ -190,13 +182,9 @@
         {
             try
             {
-                //var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
-                //await this.recipeLikesService.LikeAsync(user.Id, id);
-
-                var userId = "c3a43854-bd43-409d-b368-e21733328c4b";
-
-                await this.recipeLikesService.LikeAsync(userId, id);
+                await this.recipeLikesService.LikeAsync(user.Id, id);
 
                 return this.Ok(new
                 {
@@ -221,13 +209,9 @@
         {
             try
             {
-                //var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
-                //await this.recipeLikesService.DislikeAsync(user.Id, id);
-
-                var userId = "c3a43854-bd43-409d-b368-e21733328c4b";
-
-                await this.recipeLikesService.DislikeAsync(userId, id);
+                await this.recipeLikesService.DislikeAsync(user.Id, id);
 
                 return this.Ok(new
                 {

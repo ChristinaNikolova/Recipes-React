@@ -1,13 +1,18 @@
 import api from './api.js';
+import { requester } from './requester.js';
 
 export const getFavourite = () => {
-    return fetch(api.favouriteRecipes)
+    const url = api.favouriteRecipes;
+
+    return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
 }
 
 export const getOwn = () => {
-    return fetch(api.ownRecipes)
+    const url = api.ownRecipes;
+
+    return requester(url, 'GET')
         .then(res => res.json())
         .catch(err => console.error(err));
 }

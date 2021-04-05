@@ -1,10 +1,10 @@
 import api from './api.js';
-
+import { requester } from './requester.js';
 
 export const getAllCurrentRecipe = (recipeId) => {
     const url = `${api.allCommentsCurrentRecipe}/${recipeId}`;
 
-    return fetch(url)
+    return requester(url, "GET")
         .then(res => res.json())
         .catch(err => console.error(err));
 }
@@ -15,13 +15,9 @@ export const create = (content, recipeId) => {
         recipeId
     };
 
-    return fetch(api.createComment, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(comment)
-    })
-    .then(res=>res.json())
-    .catch(err => console.error(err));
+    const url = api.createComment;
+
+    return requester(url, 'POST', comment)
+        .then(res => res.json())
+        .catch(err => console.error(err));
 }

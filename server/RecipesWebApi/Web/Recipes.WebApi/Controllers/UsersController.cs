@@ -36,13 +36,9 @@
         {
             try
             {
-                //var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
-                //var recipes = await this.usersService.GetFavouriteRecipesAsync<UserFavouriteRecipesViewModel>(user.Id);
-
-                var userId = "c3a43854-bd43-409d-b368-e21733328c4b";
-
-                var recipes = await this.usersService.GetFavouriteRecipesAsync<UserFavouriteRecipesViewModel>(userId);
+                var recipes = await this.usersService.GetFavouriteRecipesAsync<UserFavouriteRecipesViewModel>(user.Id);
 
                 return this.Ok(recipes);
             }
@@ -64,13 +60,9 @@
         {
             try
             {
-                //var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
+                var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
-                //var recipes = await this.usersService.GetOwnRecipesAsync<UserOwnRecipesViewModel>(user.Id);
-
-                var userId = "c3a43854-bd43-409d-b368-e21733328c4b";
-
-                var recipes = await this.usersService.GetOwnRecipesAsync<UserOwnRecipesViewModel>(userId);
+                var recipes = await this.usersService.GetOwnRecipesAsync<UserOwnRecipesViewModel>(user.Id);
 
                 return this.Ok(recipes);
             }
