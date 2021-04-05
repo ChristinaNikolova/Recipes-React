@@ -8,6 +8,7 @@ Recipes can be used to present particular blog for recipes.
 
     - register as regular user, login and logout. 
     - see all categories   
+    - see recipes in current category
     - see all recipes, filter and order them by different criteria.
     - search recipe by name
     - see recipe's detail information.
