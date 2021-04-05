@@ -1,8 +1,17 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import * as authService from '../../../services/authService.js';
 
 import './AdminHome.css';
 
-function AdminHome() {
+function AdminHome({ history }) {
+    useEffect(() => {
+        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+            history.push('/')
+        }
+    }, [])
+
     return (
         <div className="admin-home-wrapper">
             <h1 className="text-center cursive-font-style p-1">Wellcome to Administration</h1>

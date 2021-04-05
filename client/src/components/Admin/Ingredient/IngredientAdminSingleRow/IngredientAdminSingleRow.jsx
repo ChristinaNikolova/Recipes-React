@@ -1,15 +1,22 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
+import * as authService from '../../../../services/authService.js';
 import * as ingredientsService from '../../../../services/ingredientsService.js';
 
-function IngredientAdminSingleRow({ id, name, recipeIngredientsCount, clickHandler }) {
+function IngredientAdminSingleRow({ id, name, recipeIngredientsCount, clickHandler, history }) {
+    useEffect(() => {
+        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+            history.push('/')
+        }
+    }, [])
 
     const remove = () => {
         ingredientsService
-        .removeFromAdmin(id)
+            .removeFromAdmin(id)
             .then((data) => {
-                if(data['status'] !== 400){
+                if (data['status'] !== 400) {
                     toastr.success(data['message'], 'Success');
                     clickHandler();
                     return;

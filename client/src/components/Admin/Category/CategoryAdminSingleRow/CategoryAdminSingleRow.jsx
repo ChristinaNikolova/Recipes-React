@@ -1,15 +1,22 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
+import * as authService from '../../../../services/authService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
 
 import './CategoryAdminSingleRow.css';
 
-function CategoryAdminSingleRow({ id, name, recipesCount, clickHandler }) {
+function CategoryAdminSingleRow({ id, name, recipesCount, clickHandler, history }) {
+    useEffect(() => {
+        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+            history.push('/')
+        }
+    }, [])
 
     const remove = () => {
         categoriesService
-        .removeFromAdmin(id)
+            .removeFromAdmin(id)
             .then((data) => {
                 if (data['status'] !== 400) {
                     toastr.success(data['message'], 'Success');

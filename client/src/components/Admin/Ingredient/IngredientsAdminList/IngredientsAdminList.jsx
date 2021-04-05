@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 
 import * as ingredientsService from '../../../../services/ingredientsService.js';
+import * as authService from '../../../../services/authService.js';
 import IngredientAdminSingleRow from '../IngredientAdminSingleRow/IngredientAdminSingleRow.jsx';
 
 import './IngredientsAdminList.css';
 
-function IngredientsAdminList() {
+function IngredientsAdminList({ history }) {
     const [ingredients, setIngredients] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
+
+    useEffect(() => {
+        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+            history.push('/')
+        }
+    }, [])
 
     useEffect(() => {
         ingredientsService.getAll()

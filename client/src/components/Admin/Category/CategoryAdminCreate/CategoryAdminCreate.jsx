@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import Input from '../../../shared/Input/Input.jsx';
+import * as authService from '../../../../services/authService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
 import * as validator from '../../../../utils/validations/categoryValidator.js';
 
@@ -10,6 +11,12 @@ import './CategoryAdminCreate.css';
 function CategoryAdminCreate({ history }) {
     const [errorName, setErrorName] = useState('');
     const [errorPicture, setErrorPicture] = useState('');
+
+    useEffect(() => {
+        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+            history.push('/')
+        }
+    }, [])
 
     const onCreateCategorySubmitHandler = (e) => {
         e.preventDefault();
@@ -25,7 +32,7 @@ function CategoryAdminCreate({ history }) {
             categoriesService
                 .create(name, picture)
                 .then((data) => {
-                    if(data['status'] !== 400){
+                    if (data['status'] !== 400) {
                         history.push('/admin/categories');
                         toastr.success(data['message'], 'Success');
                         return;

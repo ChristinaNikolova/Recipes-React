@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import Input from '../../../shared/Input/Input.jsx';
+import * as authService from '../../../../services/authService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
 import * as validator from '../../../../utils/validations/categoryValidator.js';
 
@@ -12,6 +13,12 @@ function CategoryAdminUpdate({ match, history }) {
     const [errorName, setErrorName] = useState('');
     const [errorPicture, setErrorPicture] = useState('');
     const id = match.params.id;
+
+    useEffect(() => {
+        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+            history.push('/')
+        }
+    }, [])
 
     useEffect(() => {
         categoriesService

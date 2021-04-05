@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import Input from '../../../shared/Input/Input.jsx';
+import * as authService from '../../../../services/authService.js';
 import * as ingredientsService from '../../../../services/ingredientsService.js';
 import * as validator from '../../../../utils/validations/ingredientValidator.js';
 
@@ -9,6 +10,12 @@ import './IngredientAdminCreate.css';
 
 function IngredientAdminCreate({ history }) {
     const [errorName, setErrorName] = useState('');
+
+    useEffect(() => {
+        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+            history.push('/')
+        }
+    }, [])
 
     const onCreateIngredientSubmitHandler = (e) => {
         e.preventDefault();

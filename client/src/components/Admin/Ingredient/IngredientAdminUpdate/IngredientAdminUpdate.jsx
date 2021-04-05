@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import Input from '../../../shared/Input/Input.jsx';
+import * as authService from '../../../../services/authService.js';
 import * as validator from '../../../../utils/validations/ingredientValidator.js';
 import * as ingredientsService from '../../../../services/ingredientsService.js';
 
@@ -11,6 +12,12 @@ function IngredientAdminUpdate({ match, history }) {
     const [ingredient, setIngredient] = useState({});
     const [errorName, setErrorName] = useState('');
     const id = match.params.id;
+
+    useEffect(() => {
+        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+            history.push('/')
+        }
+    }, [])
 
     useEffect(() => {
         ingredientsService

@@ -1,6 +1,6 @@
 import { getToken } from "./authService.js";
 
-export const requester = async (url, method, data) => {
+export const requester = (url, method, data) => {
     return fetch(url, {
         method,
         headers: {
@@ -10,3 +10,6 @@ export const requester = async (url, method, data) => {
         body: data ? JSON.stringify(data) : null
     });
 };
+
+//only one header
+//admin

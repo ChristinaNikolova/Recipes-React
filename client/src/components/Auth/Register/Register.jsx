@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import Input from '../../shared/Input/Input.jsx';
@@ -12,6 +12,12 @@ function Register({ history }) {
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
     const [errorRePassword, setErrorRePassword] = useState('');
+
+    useEffect(() => {
+        if (authService.isAuthenticated()) {
+            history.push('/')
+        }
+    }, [])
 
     const onRegisterSubmitHandler = (e) => {
         e.preventDefault();
@@ -33,10 +39,10 @@ function Register({ history }) {
             authService
                 .register(username, email, password)
                 .then((data) => {
-                    if(data['status'] !== 400){
-                    toastr.success(data['message'], 'Success');
-                    history.push('/login')
-                    return;
+                    if (data['status'] !== 400) {
+                        toastr.success(data['message'], 'Success');
+                        history.push('/login')
+                        return;
                     }
                     toastr.error(data['message'], 'Error');
                 });

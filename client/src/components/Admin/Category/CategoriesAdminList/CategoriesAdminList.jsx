@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 
+import * as authService from '../../../../services/authService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
 import CategoryAdminSingleRow from '../CategoryAdminSingleRow/CategoryAdminSingleRow.jsx';
 
 import './CategoriesAdminList.css';
 
-function CategoriesAdminList() {
+function CategoriesAdminList({ history }) {
     const [categories, setCategories] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
+
+    useEffect(() => {
+        if (!(authService.isAuthenticated() && authService.isAdmin())) {
+            history.push('/')
+        }
+    }, [])
 
     useEffect(() => {
         categoriesService

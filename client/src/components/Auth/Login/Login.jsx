@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import Input from '../../shared/Input/Input.jsx';
@@ -10,6 +10,12 @@ import './Login.css';
 function Login({ history }) {
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
+
+    useEffect(() => {
+        if (authService.isAuthenticated()) {
+            history.push('/')
+        }
+    }, [])
 
     const onLoginSubmitHandler = (e) => {
         e.preventDefault();
@@ -25,7 +31,7 @@ function Login({ history }) {
             authService
                 .login(email, password)
                 .then((data) => {
-                    if(data['status'] !== 400){
+                    if (data['status'] !== 400) {
                         localStorage.setItem('token', data['token']);
                         localStorage.setItem('username', data['username']);
                         localStorage.setItem('isAdmin', data['isAdmin']);
@@ -35,7 +41,7 @@ function Login({ history }) {
                     }
                     toastr.error(data['message'], 'Error');
                 });
-                
+
         }
     }
 
