@@ -8,7 +8,7 @@ import Input from '../../shared/Input/Input.jsx';
 import CreateIngredientRecipeForm from '../../shared/IngredientRecipeForm/IngredientRecipeForm.jsx';
 
 
-function CreateRecipeForm({ clickHandler }) {
+function CreateRecipeForm({ clickHandler, isAuth }) {
     const [categories, setCategories] = useState([]);
     const [ingredientsForRecipe, setIngredientsForRecipe] = useState([]);
     const [errorTitle, setErrorTitle] = useState('');
@@ -19,6 +19,10 @@ function CreateRecipeForm({ clickHandler }) {
     const [errorPicture, setErrorPicture] = useState('');
 
     useEffect(() => {
+        if (!isAuth) {
+            return;
+        }
+
         categoriesService.getAllNames()
             .then(categories => setCategories(categories));
     }, []);

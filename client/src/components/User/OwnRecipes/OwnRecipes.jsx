@@ -12,7 +12,7 @@ function OwnRecipes({ history }) {
 
     useEffect(() => {
         if (!authService.isAuthenticated()) {
-            history.push('/')
+            history.push('/login');
         }
     }, [])
 

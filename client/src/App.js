@@ -59,11 +59,12 @@ function App() {
                 <Route path='/' exact>
                     <Redirect to='/home'></Redirect>
                 </Route>
-                <Route path='/home' component={Home}></Route>
+                <Route path='/home' component={Home} isLoggedIn={isLoggedIn} username={localStorage.getItem['username']}></Route>
 
                 <Route path='/register' component={Register}></Route>
                 <Route path='/login' component={Login}></Route>
-                <Route path="/logout" render={() => { logout();
+                <Route path="/logout" render={() => {
+                    logout();
                     return <Redirect to="/" />
                 }} />
 

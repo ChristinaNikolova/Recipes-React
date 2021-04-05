@@ -1,19 +1,12 @@
 import { useState, useEffect } from 'react';
 
 import * as categoriesService from '../../../services/categoriesService.js';
-import * as authService from '../../../services/authService.js';
 import SingleCategory from '../SingleCategory/SingleCategory.jsx';
 
 import './CategoriesList.css';
 
-function CategoriesList({ history }) {
+function CategoriesList() {
     const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/')
-        }
-    }, [])
 
     useEffect(() => {
         categoriesService

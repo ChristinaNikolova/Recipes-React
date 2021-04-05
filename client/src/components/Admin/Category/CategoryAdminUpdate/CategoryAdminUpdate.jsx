@@ -16,11 +16,10 @@ function CategoryAdminUpdate({ match, history }) {
 
     useEffect(() => {
         if (!authService.isAdmin()) {
-            history.push('/')
+            history.push('/');
+            return;
         }
-    }, [])
 
-    useEffect(() => {
         categoriesService
             .getCategoryForUpdate(id)
             .then(category => setCategory(category))

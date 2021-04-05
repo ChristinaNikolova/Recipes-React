@@ -2,22 +2,15 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as recipesService from '../../../services/recipesService.js';
-import * as authService from '../../../services/authService.js';
 import RecipesOrder from '../RecipesOrder/RecipesOrder.jsx';
 import SearchRecipe from '../SearchRecipe/SearchRecipe.jsx';
 import SingleRecipe from '../SingleRecipe/SingleRecipe.jsx';
 
 import './RecipesList.css';
 
-function RecipesList({ history }) {
+function RecipesList() {
     const [recipes, setRecipes] = useState([]);
     const [isSearched, setIsSearched] = useState(false);
-
-    useEffect(() => {
-        if (!(authService.isAuthenticated())) {
-            history.push('/')
-        }
-    }, [])
 
     useEffect(() => {
         recipesService

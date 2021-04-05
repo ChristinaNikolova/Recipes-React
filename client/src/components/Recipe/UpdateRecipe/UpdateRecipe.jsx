@@ -10,7 +10,7 @@ function UpdateRecipe({ history, match }) {
 
     useEffect(() => {
         if (!authService.isAuthenticated()) {
-            history.push('/')
+            history.push('/login');
         }
     }, [])
 

@@ -16,8 +16,8 @@ function Header({ isAdmin, isLoggedIn }) {
                         </li>
                         {!isLoggedIn && <li className="nav-item"><Link to="/login" className="nav-link">Login</Link></li>}
                         {!isLoggedIn && <li className="nav-item"><Link to="/register" className="nav-link">Register</Link></li>}
-                        {isLoggedIn && <li className="nav-item"> <Link to="/categories" className="nav-link">Categories</Link></li>}
-                        {isLoggedIn && <li className="nav-item"><Link to="/recipes" className="nav-link">Recipes</Link></li>}
+                        <li className="nav-item"> <Link to="/categories" className="nav-link">Categories</Link></li>
+                        <li className="nav-item"><Link to="/recipes" className="nav-link">Recipes</Link></li>
                         {isLoggedIn && <li className="nav-item"> <Link to="/users/own" className="nav-link">My Own Recipes</Link></li>}
                         {isLoggedIn && <li className="nav-item"><Link to="/users/favourite" className="nav-link">My Favourite Recipes</Link></li>}
                         {isLoggedIn && isAdmin && <li className="nav-item"><Link to="/admin/dashboard" className="nav-link">Administration</Link></li>}

@@ -12,11 +12,10 @@ function RecipesCurrentCategory({ match, history }) {
 
     useEffect(() => {
         if (!authService.isAuthenticated()) {
-            history.push('/')
+            history.push('/login');
+            return;
         }
-    }, [])
 
-    useEffect(() => {
         recipesService
             .getByCategory(categoryId)
             .then(recipes => setRecipes(recipes));

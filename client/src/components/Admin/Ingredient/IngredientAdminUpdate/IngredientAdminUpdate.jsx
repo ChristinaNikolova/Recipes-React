@@ -15,11 +15,10 @@ function IngredientAdminUpdate({ match, history }) {
 
     useEffect(() => {
         if (!authService.isAdmin()) {
-            history.push('/')
+            history.push('/');
+            return;
         }
-    }, [])
 
-    useEffect(() => {
         ingredientsService
             .getIngredientForUpdate(id)
             .then(ingredient => setIngredient(ingredient))

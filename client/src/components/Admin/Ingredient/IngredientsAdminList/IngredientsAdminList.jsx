@@ -9,14 +9,13 @@ import './IngredientsAdminList.css';
 function IngredientsAdminList({ history }) {
     const [ingredients, setIngredients] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
-
+    
     useEffect(() => {
         if (!authService.isAdmin()) {
-            history.push('/')
+            history.push('/');
+            return;
         }
-    }, [])
 
-    useEffect(() => {
         ingredientsService.getAll()
             .then(ingredients => setIngredients(ingredients))
             .then(setHasToReload(false));

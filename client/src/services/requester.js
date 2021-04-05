@@ -10,6 +10,3 @@ export const requester = (url, method, data) => {
         body: data ? JSON.stringify(data) : null
     });
 };
-
-//only one header
-//admin

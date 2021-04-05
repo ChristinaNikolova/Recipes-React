@@ -20,7 +20,8 @@ class RecipeDetails extends Component {
 
     componentDidMount() {
         if (!authService.isAuthenticated()) {
-            this.props.history.push('/')
+            this.props.history.push('/login');
+            return;
         }
 
         const recipeId = this.props.match.params.id;

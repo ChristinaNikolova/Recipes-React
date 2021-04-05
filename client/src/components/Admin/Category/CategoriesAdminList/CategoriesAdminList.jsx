@@ -12,11 +12,10 @@ function CategoriesAdminList({ history }) {
 
     useEffect(() => {
         if (!authService.isAdmin()) {
-            history.push('/')
+            history.push('/');
+            return;
         }
-    }, [])
 
-    useEffect(() => {
         categoriesService
             .getAllForAdmin()
             .then(categories => setCategories(categories))

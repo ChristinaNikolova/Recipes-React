@@ -7,10 +7,10 @@ import './CreateRecipe.css';
 
 function CreateRecipe({ history }) {
     useEffect(() => {
-        if (!(authService.isAuthenticated())) {
-            history.push('/')
+        if (!authService.isAuthenticated()) {
+            history.push('/login');
         }
-    }, [])
+    }, []);
 
     const createRecipe = () => {
         history.push(`/recipes`);
@@ -26,7 +26,7 @@ function CreateRecipe({ history }) {
                         <h1 className="cursive-font-style p-1">Create New Recipe</h1>
                     </div>
                 </div>
-                <CreateRecipeForm clickHandler={createRecipe} />
+                <CreateRecipeForm clickHandler={createRecipe} isAuth={authService.isAuthenticated()} />
             </div >
             <div className="fill pt-2 pb-2"></div>
         </div >
