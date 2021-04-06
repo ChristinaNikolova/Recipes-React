@@ -58,11 +58,15 @@ Recipes can be used to present particular blog for recipes.
  - Repository Pattern
 
 ## Application Configurations
- - Check connection string in appsettings.json. If you don't use SQLEXPRESS you should replace "Server=.\SQLEXPRESS..." with "Server=.;...".
+ 1. Create appsettings.json file in Data.Recipe.Data. 
 
- - Add your own secret (needed for generating JWT for authentication) in appsettings.json.
+    - Add your Connection String 
 
- - "JwtSettings": { "Secret": "Your secret here" }
+ 2. Create one more appsettings.json file in Web.Recipe.WebApi. 
+
+    - Add your Connection String
+
+    - Add your own secret (needed for generating JWT for authentication) in format: "JwtSettings": { "Secret": "Your secret here" }
 
 ## :framed_picture: Screen Shoots
 
