@@ -1,16 +1,24 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import * as authService from '../../services/authService.js';
 
 import './Home.css';
 
-function Home({ isLoggedIn, username }) {
-    console.log(isLoggedIn)
+function Home({ isLoggedIn }) {
+    const [username, setUsername] = useState('');
+
+    useEffect(() => {
+        setUsername(authService.getUsername());
+    }, []);
+
     return (
         <div className="home-wrapper">
             <div className="jumbotron">
                 {isLoggedIn
-                    ? <h1 className="display-3 cursive-font-style">Welcome to Recipes, !!{username}!</h1>
+                    ? <h1 className="display-3 cursive-font-style">Welcome to Recipes, {username}!</h1>
                     : <h1 className="display-3 cursive-font-style">Welcome to Recipes!</h1>}
-                {isLoggedIn
+                {!isLoggedIn
                     ? <div>
                         <p className="lead-home">
                             <Link to="/register" className="bold-home-link"> Register </Link> or

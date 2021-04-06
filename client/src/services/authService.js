@@ -46,6 +46,10 @@ export const isAdmin = () => {
     return localStorage.getItem('isAdmin') === 'true' ? true : false;
 }
 
+export const getUsername = () => {
+    return localStorage.getItem('username');
+}
+
 export const getToken = () => {
     return localStorage.getItem('token');
 }

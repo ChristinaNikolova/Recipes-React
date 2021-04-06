@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import toastr from 'toastr';
 
 import * as authService from './services/authService.js';
 
@@ -34,39 +33,31 @@ import NotFound from './components/shared/NotFound/NotFound.jsx';
 import './App.css';
 
 function App() {
+    const [hasToReload, setHasToReload] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
-    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
-        console.log('auth' + authService.isAuthenticated());
-        console.log('admin' + authService.isAdmin());
-        setIsAdmin(authService.isAdmin());
         setIsLoggedIn(authService.isAuthenticated());
+        setIsAdmin(authService.isAdmin());
         setHasToReload(false);
     }, [hasToReload]);
 
-    const logout = () => {
-        //setHasToReload(true);
-        authService.logout();
-        toastr.success('Successful logout', 'Success');
+    const reload = () => {
+        setHasToReload(true);
     }
 
     return (
         <div className="app">
-            <Header isAdmin={isAdmin} isLoggedIn={isLoggedIn} />
+            <Header isLoggedIn={isLoggedIn} isAdmin={isAdmin} clickHandler={reload} />
             <Switch>
                 <Route path='/' exact>
                     <Redirect to='/home'></Redirect>
                 </Route>
-                <Route path='/home' component={Home} isLoggedIn={isLoggedIn} username={localStorage.getItem['username']}></Route>
+                <Route path='/home' render={() => <Home isLoggedIn={isLoggedIn} />}></Route>
 
                 <Route path='/register' component={Register}></Route>
-                <Route path='/login' component={Login}></Route>
-                <Route path="/logout" render={() => {
-                    logout();
-                    return <Redirect to="/" />
-                }} />
+                <Route path='/login' render={() => <Login clickHandler={reload} />}></Route>
 
                 <Route path='/categories' exact component={CategoriesList}></Route>
 

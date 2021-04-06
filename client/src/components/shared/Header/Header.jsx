@@ -1,8 +1,17 @@
 import { Link, withRouter } from 'react-router-dom';
+import toastr from 'toastr';
+
+import * as authService from '../../../services/authService.js';
 
 import './Header.css';
 
-function Header({ isAdmin, isLoggedIn }) {
+function Header({ isAdmin, isLoggedIn, clickHandler }) {
+    const logout = () => {
+        authService.logout();
+        toastr.success('Successful logout', 'Success');
+        clickHandler();
+    }
+
     return (
         <div className="header-wrapper">
             <nav className="navbar navbar-expand-lg navbar-dark">
@@ -21,7 +30,7 @@ function Header({ isAdmin, isLoggedIn }) {
                         {isLoggedIn && <li className="nav-item"> <Link to="/users/own" className="nav-link">My Own Recipes</Link></li>}
                         {isLoggedIn && <li className="nav-item"><Link to="/users/favourite" className="nav-link">My Favourite Recipes</Link></li>}
                         {isLoggedIn && isAdmin && <li className="nav-item"><Link to="/admin/dashboard" className="nav-link">Administration</Link></li>}
-                        {isLoggedIn && <li className="nav-item"><Link to="/logout" className="btn btn-danger ml-1" type="button">Logout</Link></li>}
+                        {isLoggedIn && <li className="nav-item"><button className="btn btn-danger ml-1" type="button" onClick={logout}>Logout</button></li>}
                     </ul>
                 </div>
             </nav>
