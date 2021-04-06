@@ -57,6 +57,13 @@ Recipes can be used to present particular blog for recipes.
 
  - Repository Pattern
 
+## Application Configurations
+ - Check connection string in appsettings.json. If you don't use SQLEXPRESS you should replace "Server=.\SQLEXPRESS..." with "Server=.;...".
+
+ - Add your own secret (needed for generating JWT for authentication) in appsettings.json.
+
+ - "JwtSettings": { "Secret": "Your secret here" }
+
 ## :framed_picture: Screen Shoots
 
 ![Home Page](https://res.cloudinary.com/dieu4mste/image/upload/v1615017321/home_scwmf8.png)
