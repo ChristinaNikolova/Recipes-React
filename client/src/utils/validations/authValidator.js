@@ -42,4 +42,4 @@ export const validPasswordsMatch = (password, rePassword) => {
     }
 
     return ('Passwords should match.');
-}
+};
