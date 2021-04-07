@@ -32,6 +32,10 @@ Recipes can be used to present particular blog for recipes.
  - MSSQL Server 
 
  - Entity Framework Core 5.0
+ 
+ - Dependency Injection
+
+ - Repository Pattern
 
  - WebApi
  
@@ -53,9 +57,8 @@ Recipes can be used to present particular blog for recipes.
 
  - toastr
 
- - Dependency Injection
-
- - Repository Pattern
+ - Immer
+ 
 
 ## Application Configurations
  1. Create appsettings.json file in Data.Recipe.Data. 
