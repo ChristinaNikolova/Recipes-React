@@ -5,10 +5,11 @@ import * as authService from '../../../services/authService.js';
 
 import './Header.css';
 
-function Header({ isAdmin, isLoggedIn, clickHandler }) {
+function Header({ isAdmin, isLoggedIn, clickHandler, history }) {
     const logout = () => {
         authService.logout();
         toastr.success('Successful logout', 'Success');
+        history.push('/');
         clickHandler();
     }
 

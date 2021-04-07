@@ -7,7 +7,7 @@ import * as validator from '../../../utils/validations/recipeValidator.js';
 import Input from '../../shared/Input/Input.jsx';
 import CreateIngredientRecipeForm from '../../shared/IngredientRecipeForm/IngredientRecipeForm.jsx';
 
-function UpdateRecipeForm({ recipeId, clickHandler }) {
+function UpdateRecipeForm({ recipeId, clickHandler, isAuth }) {
     const [recipe, setRecipe] = useState({});
     const [ingredientsForRecipe, setIngredientsForRecipe] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -19,12 +19,14 @@ function UpdateRecipeForm({ recipeId, clickHandler }) {
     const [errorPicture, setErrorPicture] = useState('');
 
     useEffect(() => {
+        if (!isAuth) {
+            return;
+        }
+
         recipesService
             .getRecipeForUpdate(recipeId)
             .then(recipe => setRecipe(recipe));
-    }, []);
 
-    useEffect(() => {
         categoriesService.getAllNames()
             .then(categories => setCategories(categories));
     }, []);
@@ -60,7 +62,7 @@ function UpdateRecipeForm({ recipeId, clickHandler }) {
             validator.validCookingTime(cookingTime) === '' &&
             validator.validPicture(picture) === '' &&
             validIngredients) {
-                recipesService
+            recipesService
                 .update(recipeId, title, content, portions, preparationTime, cookingTime, categoryName, picture, ingredientsForRecipe)
                 .then((data) => {
                     if (data['status'] !== 400) {
@@ -88,8 +90,8 @@ function UpdateRecipeForm({ recipeId, clickHandler }) {
                         type='text'
                         name='content'
                         label='Content'
-                        value={recipe.content} 
-                        error={errorContent}/>
+                        value={recipe.content}
+                        error={errorContent} />
 
                     <Input
                         type='number'

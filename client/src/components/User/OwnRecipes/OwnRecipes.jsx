@@ -13,10 +13,9 @@ function OwnRecipes({ history }) {
     useEffect(() => {
         if (!authService.isAuthenticated()) {
             history.push('/login');
+            return;
         }
-    }, [])
 
-    useEffect(() => {
         usersService
             .getOwn()
             .then(ownRecipes => setOwnRecipes(ownRecipes))

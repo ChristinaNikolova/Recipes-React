@@ -15,7 +15,8 @@ function Register({ history }) {
 
     useEffect(() => {
         if (authService.isAuthenticated()) {
-            history.push('/')
+            history.push('/');
+            return;
         }
     }, [])
 

@@ -9,6 +9,7 @@ function CreateRecipe({ history }) {
     useEffect(() => {
         if (!authService.isAuthenticated()) {
             history.push('/login');
+            return;
         }
     }, []);
 

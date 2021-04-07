@@ -11,7 +11,7 @@ function CreateIngredientRecipeForm({ clickHandler }) {
     const [ingredients, setIngredients] = useState([]);
 
     useEffect(() => {
-        clickHandler(ingredients)
+        clickHandler(ingredients);
     }, [ingredients]);
 
     const addIngredient = () => {
@@ -63,27 +63,27 @@ function CreateIngredientRecipeForm({ clickHandler }) {
             ingredients[ingredientIndex].quantity = quantity;
         }));
 
-        setQunatityError(ingredientIndex, quantity);
+        setQuantityError(ingredientIndex, quantity);
     }
 
     const onBlurIngredientQuantityHandler = (e) => {
         const ingredientIndex = getIngredientIndex(e.target.id);
-        let quantity =ingredients[ingredientIndex]?.quantity;
+        let quantity = ingredients[ingredientIndex]?.quantity;
 
         setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
             ingredients[ingredientIndex].isTouchedQuantity = true;
         }));
 
-        setQunatityError(ingredientIndex, quantity);
+        setQuantityError(ingredientIndex, quantity);
     }
 
-    const setNameError = (ingredientIndex, name) =>{
+    const setNameError = (ingredientIndex, name) => {
         setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
             ingredients[ingredientIndex].errorName = validator.validName(name);
         }));
     }
 
-    const setQunatityError = (ingredientIndex, quantity) => {
+    const setQuantityError = (ingredientIndex, quantity) => {
         setIngredients(currentIngredient => produce(currentIngredient, ingredients => {
             ingredients[ingredientIndex].errorQuantity = validator.validQuantity(quantity);
         }));
@@ -110,13 +110,13 @@ function CreateIngredientRecipeForm({ clickHandler }) {
                             <label className="form-control-label" htmlFor={index}>Name</label>
                             <input onChange={changeIngredientNameHandler} onBlur={onBlurIngredientNameHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
-                        {ingredient.isTouchedName &&<InputError>{ingredient.errorName}</InputError>}
+                        {ingredient.isTouchedName && <InputError>{ingredient.errorName}</InputError>}
                         <div className="form-group">
                             <label className="form-control-label" htmlFor={index}>Quantity</label>
                             <input onChange={changeIngredientQuantityHandler} onBlur={onBlurIngredientQuantityHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
-                        {ingredient.isTouchedQuantity &&<InputError>{ingredient.errorQuantity}</InputError>}
-                        <button className="btn btn-danger custom-danger-button" type="button"  onClick={() => removeIngredient(index)}>Remove</button>
+                        {ingredient.isTouchedQuantity && <InputError>{ingredient.errorQuantity}</InputError>}
+                        <button className="btn btn-danger custom-danger-button" type="button" onClick={() => removeIngredient(index)}>Remove</button>
                         <hr />
                     </div>
                 )

@@ -14,10 +14,9 @@ function RecipeIngredientsList({ match, history }) {
     useEffect(() => {
         if (!authService.isAuthenticated()) {
             history.push('/login');
+            return;
         }
-    }, [])
 
-    useEffect(() => {
         ingredientsService
             .getByRecipe(recipeId)
             .then(ingredients => setIngredients(ingredients))

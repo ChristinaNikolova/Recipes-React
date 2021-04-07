@@ -8,7 +8,8 @@ import './AdminHome.css';
 function AdminHome({ history }) {
     useEffect(() => {
         if (!authService.isAdmin()) {
-            history.push('/')
+            history.push('/');
+            return;
         }
     }, [])
 

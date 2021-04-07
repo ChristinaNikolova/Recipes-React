@@ -11,6 +11,7 @@ function UpdateRecipe({ history, match }) {
     useEffect(() => {
         if (!authService.isAuthenticated()) {
             history.push('/login');
+            return;
         }
     }, [])
 
@@ -28,7 +29,7 @@ function UpdateRecipe({ history, match }) {
                         <h1 className="cursive-font-style p-1">Update Recipe</h1>
                     </div>
                 </div>
-                <UpdateRecipeForm recipeId={recipeId} clickHandler={updateRecipe} />
+                <UpdateRecipeForm recipeId={recipeId} clickHandler={updateRecipe} isAuth={authService.isAuthenticated()} />
             </div>
             <div className="fill pt-2 pb-2"></div>
         </div>

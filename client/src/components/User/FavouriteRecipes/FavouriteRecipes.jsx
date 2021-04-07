@@ -13,10 +13,9 @@ function FavouriteRecipes({ history }) {
     useEffect(() => {
         if (!authService.isAuthenticated()) {
             history.push('/login');
+            return;
         }
-    }, [])
 
-    useEffect(() => {
         usersService
             .getFavourite()
             .then(favRecipes => setFavRecipes(favRecipes))

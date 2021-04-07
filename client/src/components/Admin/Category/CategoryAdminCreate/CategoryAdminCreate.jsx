@@ -14,7 +14,8 @@ function CategoryAdminCreate({ history }) {
 
     useEffect(() => {
         if (!authService.isAdmin()) {
-            history.push('/')
+            history.push('/');
+            return;
         }
     }, [])
 

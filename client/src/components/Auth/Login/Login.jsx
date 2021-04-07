@@ -14,7 +14,8 @@ function Login({ history, clickHandler }) {
 
     useEffect(() => {
         if (authService.isAuthenticated()) {
-            history.push('/')
+            history.push('/');
+            return;
         }
     }, [])
 
