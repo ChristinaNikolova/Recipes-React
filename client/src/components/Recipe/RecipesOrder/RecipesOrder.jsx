@@ -18,9 +18,9 @@ function RecipesOrder({ clickHandler }) {
                 className="btn btn-secondary"
                 onClick={toogle}>
                 {isShown
-                    ? <i className="fas fa-hand-point-down"></i>
-                    : <i className="fas fa-hand-point-right"></i>}
-                    Order by</button>
+                    ? <i className="fas fa-hand-point-down p-2"></i>
+                    : <i className="fas fa-hand-point-right p-2"></i>}
+                       Order by</button>
 
             {isShown
                 ? <ul>
@@ -31,8 +31,7 @@ function RecipesOrder({ clickHandler }) {
                     <li
                         className="recipe-order"
                         onClick={() => toogle("new")}>
-                        <i className="fas fa-check-circle"></i>
-                                Newest to oldest</li>
+                        <i className="fas fa-check-circle"></i>Newest to oldest</li>
                     <li
                         className="recipe-order"
                         onClick={() => toogle("likes")}>
@@ -40,8 +39,7 @@ function RecipesOrder({ clickHandler }) {
                     <li
                         className="recipe-order"
                         onClick={() => toogle("comments")}>
-                        <i className="fas fa-check-circle"></i>
-                                Comments Count</li>
+                        <i className="fas fa-check-circle"></i>Comments Count</li>
                 </ul>
                 : <div></div>}
         </div>
