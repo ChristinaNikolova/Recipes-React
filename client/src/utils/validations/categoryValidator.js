@@ -19,5 +19,5 @@ export const validPicture = (picture) => {
         return '';
     }
 
-    return 'Idvalid URL.';
+    return ('Idvalid URL.');
 };

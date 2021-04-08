@@ -21,7 +21,7 @@ export const validContent = (content) => {
         return '';
     }
 
-    return `Content should be between ${recipeConstants.CONTENT_MIN_LEN} and ${recipeConstants.CONTENT_MAX_LEN} characters long.`;
+    return (`Content should be between ${recipeConstants.CONTENT_MIN_LEN} and ${recipeConstants.CONTENT_MAX_LEN} characters long.`);
 };
 
 export const validPortions = (portions) => {
@@ -32,7 +32,7 @@ export const validPortions = (portions) => {
         return '';
     }
 
-    return `Portions should be between ${recipeConstants.PORTIONS_MIN} and ${recipeConstants.PORTIONS_MAX}.`;
+    return (`Portions should be between ${recipeConstants.PORTIONS_MIN} and ${recipeConstants.PORTIONS_MAX}.`);
 };
 
 export const validPreparationTime = (preparationTime) => {
@@ -43,7 +43,7 @@ export const validPreparationTime = (preparationTime) => {
         return '';
     }
 
-    return `Prep time should be between ${recipeConstants.PREP_TIME_MIN} and ${recipeConstants.PREP_TIME_MAX}.`;
+    return (`Prep time should be between ${recipeConstants.PREP_TIME_MIN} and ${recipeConstants.PREP_TIME_MAX}.`);
 };
 
 export const validCookingTime = (cookingTime) => {
@@ -54,7 +54,7 @@ export const validCookingTime = (cookingTime) => {
         return '';
     }
 
-    return `Cook time should be between ${recipeConstants.COOK_TIME_MIN} and ${recipeConstants.COOK_TIME_MAX}.`;
+    return (`Cook time should be between ${recipeConstants.COOK_TIME_MIN} and ${recipeConstants.COOK_TIME_MAX}.`);
 };
 
 export const validPicture = (picture) => {
@@ -64,7 +64,7 @@ export const validPicture = (picture) => {
         return '';
     }
 
-    return 'Idvalid URL.';
+    return ('Idvalid URL.');
 };
 
 export const validSearchText = (content) => {
@@ -76,4 +76,4 @@ export const validSearchText = (content) => {
     }
 
     return (`Content should be at least ${recipeConstants.SEARCH_TEXT_MIN_LEN} characters long.`);
-}
+};

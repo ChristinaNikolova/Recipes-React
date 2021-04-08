@@ -52,7 +52,6 @@ class RecipeDetails extends Component {
         {
             if (data['status'] !== 400) {
                 toastr.success(data['message'], 'Success');
-
                 this.setState(state => (
                     {
                         recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })

@@ -10,7 +10,7 @@ export const getAllCurrentRecipe = (recipeId) => {
 }
 
 export const create = (content, recipeId) => {
-    let comment = {
+    const comment = {
         content,
         recipeId
     };

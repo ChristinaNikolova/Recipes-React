@@ -1,7 +1,7 @@
 import authConstants from '../constants/authConstants.js';
 
 export const validEmail = (email) => {
-    const emailRegex = new RegExp("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$")
+    const emailRegex = new RegExp("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
 
     if (email !== '' &&
         emailRegex.test(email)
@@ -9,7 +9,7 @@ export const validEmail = (email) => {
         return '';
     }
 
-    return (`Invalid email.`);
+    return ('Invalid email.');
 };
 
 export const validUsername = (username) => {

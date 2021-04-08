@@ -10,7 +10,7 @@ export const all = () => {
 }
 
 export const order = (criteria) => {
-    let url = `${api.orderRecipes}/${criteria}`;
+    const url = `${api.orderRecipes}/${criteria}`;
 
     return requester(url, 'GET')
         .then(res => res.json())
@@ -18,7 +18,7 @@ export const order = (criteria) => {
 }
 
 export const getDetails = (id) => {
-    let url = `${api.detailsRecipe}/${id}`;
+    const url = `${api.detailsRecipe}/${id}`;
 
     return requester(url, 'GET')
         .then(res => res.json())
@@ -26,7 +26,7 @@ export const getDetails = (id) => {
 }
 
 export const getByCategory = (categoryId) => {
-    let url = `${api.recipesCurrentCategory}/${categoryId}`;
+    const url = `${api.recipesCurrentCategory}/${categoryId}`;
 
     return requester(url, 'GET')
         .then(res => res.json())
@@ -34,7 +34,7 @@ export const getByCategory = (categoryId) => {
 }
 
 export const search = (query) => {
-    let url = `${api.searchRecipe}/${query}`;
+    const url = `${api.searchRecipe}/${query}`;
 
     return requester(url, 'GET')
         .then(res => res.json())
@@ -42,7 +42,7 @@ export const search = (query) => {
 }
 
 export const create = (title, content, portions, preparationTime, cookingTime, categoryName, picture, ingredients) => {
-    let recipe = {
+    const recipe = {
         title,
         content,
         portions,
@@ -85,7 +85,7 @@ export const dislike = (id) => {
 }
 
 export const getRecipeForUpdate = (id) => {
-    let url = `${api.getRecipeForUpdate}/${id}`;
+    const url = `${api.getRecipeForUpdate}/${id}`;
 
     return requester(url, 'GET')
         .then(res => res.json())
@@ -93,7 +93,7 @@ export const getRecipeForUpdate = (id) => {
 }
 
 export const update = (id, title, content, portions, preparationTime, cookingTime, categoryName, picture, ingredients) => {
-    let recipe = {
+    const recipe = {
         id,
         title,
         content,

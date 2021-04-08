@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react';
 import * as ingredientsService from '../../../../services/ingredientsService.js';
 import * as authService from '../../../../services/authService.js';
 import IngredientAdminSingleRow from '../IngredientAdminSingleRow/IngredientAdminSingleRow.jsx';
+import AdminTableHead from '../../../shared/Administration/AdminTableHead/AdminTableHead.jsx';
 
 import './IngredientsAdminList.css';
 
 function IngredientsAdminList({ history }) {
     const [ingredients, setIngredients] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
-    
+
     useEffect(() => {
         if (!authService.isAdmin()) {
             history.push('/');
@@ -33,14 +34,7 @@ function IngredientsAdminList({ history }) {
                 <h1 className="text-center cursive-font-style p-1">Ingredients</h1>
                 <hr />
                 <table className="table table-striped table-bordered table-hover custom-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Recipes Count</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                    <AdminTableHead />
                     <tbody>
                         {ingredients
                             .map(i => <IngredientAdminSingleRow

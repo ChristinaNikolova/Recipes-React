@@ -1,4 +1,4 @@
-const recipeConstants={
+const recipeConstants = {
     TITLE_MIN_LEN: 3,
     TITLE_MAX_LEN: 50,
     CONTENT_MIN_LEN: 3,
@@ -10,6 +10,6 @@ const recipeConstants={
     COOK_TIME_MIN: 1,
     COOK_TIME_MAX: 1000,
     SEARCH_TEXT_MIN_LEN: 3,
-}
+};
 
 export default recipeConstants;

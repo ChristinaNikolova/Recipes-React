@@ -5,7 +5,7 @@ export const register = (username, email, password) => {
         username,
         email,
         password
-    }
+    };
 
     return fetch(api.register, {
         method: 'POST',
@@ -22,7 +22,8 @@ export const login = (email, password) => {
     const user = {
         email,
         password
-    }
+    };
+
     return fetch(api.login, {
         method: 'POST',
         headers: {

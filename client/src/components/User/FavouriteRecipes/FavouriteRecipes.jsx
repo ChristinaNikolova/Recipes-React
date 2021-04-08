@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import * as usersService from '../../../services/usersService.js';
 import * as authService from '../../../services/authService.js';
 import FavouriteRecipesRow from '../FavouriteRecipesRow/FavouriteRecipesRow.jsx';
+import UserTableHead from '../../shared/UserTableHead/UserTableHead.jsx';
 
 import './FavouriteRecipes.css';
 
@@ -34,15 +35,7 @@ function FavouriteRecipes({ history }) {
                 <h1 className="text-center cursive-font-style p-1">My Favourite Recipes</h1>
                 <hr />
                 <table className="table table-bordered table-hover custom-table">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Picture</th>
-                            <th>Category</th>
-                            <th>Author</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                    <UserTableHead isAuthor={true} />
                     <tbody>
                         {favRecipes
                             .map(r => <FavouriteRecipesRow

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import * as usersService from '../../../services/usersService.js';
 import * as authService from '../../../services/authService.js';
 import OwnRecipesRow from '../OwnRecipesRow/OwnRecipesRow.jsx';
+import UserTableHead from '../../shared/UserTableHead/UserTableHead.jsx';
 
 import './OwnRecipes.css';
 
@@ -34,16 +35,7 @@ function OwnRecipes({ history }) {
                 <h1 className="text-center cursive-font-style p-1">My Own Recipes</h1>
                 <hr />
                 <table className="table table-bordered table-hover custom-table">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Picture</th>
-                            <th>Category</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                    <UserTableHead isAuthor={false} />
                     <tbody>
                         {ownRecipes
                             .map(r => <OwnRecipesRow

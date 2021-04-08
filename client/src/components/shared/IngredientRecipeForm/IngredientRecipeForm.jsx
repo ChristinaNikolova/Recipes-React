@@ -33,7 +33,7 @@ function CreateIngredientRecipeForm({ clickHandler }) {
         setIngredients(ingredients => ingredients.filter(x => x.id !== ingredientId));
     };
 
-    const changeIngredientNameHandler = (e) => {
+    const onChangeIngredientNameHandler = (e) => {
         const name = e.target.value;
         const ingredientIndex = getIngredientIndex(e.target.id);
 
@@ -55,7 +55,7 @@ function CreateIngredientRecipeForm({ clickHandler }) {
         setNameError(ingredientIndex, name);
     }
 
-    const changeIngredientQuantityHandler = (e) => {
+    const onChangeIngredientQuantityHandler = (e) => {
         const ingredientIndex = getIngredientIndex(e.target.id);
         const quantity = e.target.value;
 
@@ -108,12 +108,12 @@ function CreateIngredientRecipeForm({ clickHandler }) {
                         <div className="m-2 required-ingredient">* Please note, that all Ingredient's fields are required 🙂</div>
                         <div className="form-group">
                             <label className="form-control-label" htmlFor={index}>Name</label>
-                            <input onChange={changeIngredientNameHandler} onBlur={onBlurIngredientNameHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
+                            <input onChange={onChangeIngredientNameHandler} onBlur={onBlurIngredientNameHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
                         {ingredient.isTouchedName && <InputError>{ingredient.errorName}</InputError>}
                         <div className="form-group">
                             <label className="form-control-label" htmlFor={index}>Quantity</label>
-                            <input onChange={changeIngredientQuantityHandler} onBlur={onBlurIngredientQuantityHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
+                            <input onChange={onChangeIngredientQuantityHandler} onBlur={onBlurIngredientQuantityHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
                         {ingredient.isTouchedQuantity && <InputError>{ingredient.errorQuantity}</InputError>}
                         <button className="btn btn-danger custom-danger-button" type="button" onClick={() => removeIngredient(index)}>Remove</button>

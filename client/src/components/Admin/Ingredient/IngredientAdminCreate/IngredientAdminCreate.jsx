@@ -5,6 +5,7 @@ import Input from '../../../shared/Input/Input.jsx';
 import * as authService from '../../../../services/authService.js';
 import * as ingredientsService from '../../../../services/ingredientsService.js';
 import * as validator from '../../../../utils/validations/ingredientValidator.js';
+import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
 
 import './IngredientAdminCreate.css';
 
@@ -42,12 +43,7 @@ function IngredientAdminCreate({ history }) {
     return (
         <div className="create-ingredient-wrapper">
             <div className="container">
-                <div className="row space-top">
-                    <div className="col-md-12">
-                        <h1 className="cursive-font-style p-2">Create New Ingredient</h1>
-                        <hr />
-                    </div>
-                </div>
+                <AdminFormWrapper title="Create New Ingredient" />
                 <form className="create-ingredient-form" onSubmit={onCreateIngredientSubmitHandler}>
                     <div className="row space-top">
                         <div className="col-lg-8">

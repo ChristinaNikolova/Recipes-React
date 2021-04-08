@@ -5,6 +5,7 @@ import Input from '../../../shared/Input/Input.jsx';
 import * as authService from '../../../../services/authService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
 import * as validator from '../../../../utils/validations/categoryValidator.js';
+import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
 
 import './CategoryAdminUpdate.css';
 
@@ -52,12 +53,7 @@ function CategoryAdminUpdate({ match, history }) {
     return (
         <div className="update-category-wrapper">
             <div className="container">
-                <div className="row space-top">
-                    <div className="col-md-12">
-                        <h1 className="cursive-font-style p-2">Update Category</h1>
-                        <hr />
-                    </div>
-                </div>
+                <AdminFormWrapper title="Update Category" />
                 <form className="update-category-form" onSubmit={updateCategorySubmitHandler}>
                     <div className="row space-top">
                         <div className="col-lg-8">

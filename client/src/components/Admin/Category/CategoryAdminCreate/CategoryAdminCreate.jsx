@@ -5,6 +5,7 @@ import Input from '../../../shared/Input/Input.jsx';
 import * as authService from '../../../../services/authService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
 import * as validator from '../../../../utils/validations/categoryValidator.js';
+import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
 
 import './CategoryAdminCreate.css';
 
@@ -46,12 +47,7 @@ function CategoryAdminCreate({ history }) {
     return (
         <div className="create-category-wrapper">
             <div className="container">
-                <div className="row space-top">
-                    <div className="col-md-12">
-                        <h1 className="cursive-font-style p-2">Create New Category</h1>
-                        <hr />
-                    </div>
-                </div>
+                <AdminFormWrapper title="Create New Category" />
                 <form className="create-category-form" onSubmit={onCreateCategorySubmitHandler}>
                     <div className="row space-top">
                         <div className="col-lg-8">

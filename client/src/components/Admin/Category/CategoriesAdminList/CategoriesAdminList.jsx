@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import * as authService from '../../../../services/authService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
+import AdminTableHead from '../../../shared/Administration/AdminTableHead/AdminTableHead.jsx';
 import CategoryAdminSingleRow from '../CategoryAdminSingleRow/CategoryAdminSingleRow.jsx';
 
 import './CategoriesAdminList.css';
@@ -34,14 +35,7 @@ function CategoriesAdminList({ history }) {
                 <h1 className="text-center cursive-font-style p-1">Categories</h1>
                 <hr />
                 <table className="table table-striped table-bordered table-hover custom-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Recipes Count</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                    <AdminTableHead />
                     <tbody>
                         {categories.map(c => <CategoryAdminSingleRow
                             key={c.id}
