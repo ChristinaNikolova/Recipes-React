@@ -13,7 +13,7 @@ function UpdateRecipe({ history, match }) {
             history.push('/login');
             return;
         }
-    }, [])
+    }, []);
 
     const updateRecipe = () => {
         history.push(`/recipes/details/${recipeId}`);

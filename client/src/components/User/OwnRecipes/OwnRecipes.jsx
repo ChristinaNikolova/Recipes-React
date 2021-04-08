@@ -49,8 +49,7 @@ function OwnRecipes({ history }) {
                 </table>
             </div >
             <div className="fill pt-1 pb-1"></div>
-        </div >
-    );
+        </div >);
 }
 
 export default OwnRecipes;

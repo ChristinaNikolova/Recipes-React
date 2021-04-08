@@ -42,7 +42,7 @@ function Register({ history }) {
                 .then((data) => {
                     if (data['status'] !== 400) {
                         toastr.success(data['message'], 'Success');
-                        history.push('/login')
+                        history.push('/login');
                         return;
                     }
                     toastr.error(data['message'], 'Error');

@@ -6,7 +6,6 @@ import * as recipesService from '../../../services/recipesService.js';
 import './FavouriteRecipesRow.css';
 
 function FavouriteRecipesRow({ recipeId, recipeTitle, recipePicture, recipeCategoryName, recipeAuthorUserName, clickHandler }) {
-
     const removeFromFav = () => {
         recipesService
             .dislike(recipeId)
@@ -31,8 +30,7 @@ function FavouriteRecipesRow({ recipeId, recipeTitle, recipePicture, recipeCateg
             <td>{recipeCategoryName}</td>
             <td>{recipeAuthorUserName}</td>
             <td><button className="btn btn-danger" onClick={removeFromFav}>Remove</button></td>
-        </tr >
-    );
+        </tr >);
 }
 
 export default FavouriteRecipesRow;

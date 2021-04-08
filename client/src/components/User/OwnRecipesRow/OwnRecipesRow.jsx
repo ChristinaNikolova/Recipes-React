@@ -6,7 +6,6 @@ import * as recipesService from '../../../services/recipesService.js';
 import './OwnRecipesRow.css';
 
 function OwnRecipesRow({ id, title, picture, categoryName, clickHandler }) {
-
     const remove = () => {
         recipesService
             .remove(id)
@@ -32,8 +31,7 @@ function OwnRecipesRow({ id, title, picture, categoryName, clickHandler }) {
             <td><Link to={`/recipes/ingredients/${id}`}><button className="btn btn-secondary">Delete Ingredients</button></Link></td>
             <td><Link to={`/recipes/update/${id}`}><button className="btn btn-warning">Update</button></Link></td >
             <td><button className="btn btn-danger" onClick={remove}>Delete</button></td >
-        </tr>
-    );
+        </tr>);
 }
 
 export default OwnRecipesRow;

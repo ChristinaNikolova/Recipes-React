@@ -27,6 +27,7 @@ function IngredientAdminUpdate({ match, history }) {
 
     const updateIngredientSubmitHandler = (e) => {
         e.preventDefault();
+        
         const name = e.target.name.value;
 
         setErrorName(validator.validName(name));

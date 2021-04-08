@@ -23,7 +23,8 @@ function CreateRecipeForm({ clickHandler, isAuth }) {
             return;
         }
 
-        categoriesService.getAllNames()
+        categoriesService
+            .getAllNames()
             .then(categories => setCategories(categories));
     }, []);
 

@@ -17,7 +17,8 @@ function IngredientsAdminList({ history }) {
             return;
         }
 
-        ingredientsService.getAll()
+        ingredientsService
+            .getAll()
             .then(ingredients => setIngredients(ingredients))
             .then(setHasToReload(false));
     }, [hasToReload]);
