@@ -75,7 +75,7 @@ function RecipesList() {
                                 id={r.id}
                                 title={r.title}
                                 picture={r.picture}
-                                content={r.content}
+                                shortContent={r.shortContent}
                                 categoryId={r.categoryId}
                                 categoryName={r.categoryName}
                                 recipeLikesCount={r.recipeLikesCount}

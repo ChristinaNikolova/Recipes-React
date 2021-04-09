@@ -11,6 +11,9 @@
 
         public string Content { get; set; }
 
+        public string ShortContent
+            => this.Content.Substring(0, 30);
+
         public string Picture { get; set; }
 
         public string CategoryId { get; set; }
