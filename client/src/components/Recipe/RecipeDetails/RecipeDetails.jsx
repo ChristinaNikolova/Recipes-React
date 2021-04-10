@@ -11,7 +11,7 @@ import './RecipeDetails.css';
 class RecipeDetails extends Component {
     constructor(props) {
         super(props)
-
+        
         this.state = {
             recipe: {}
         };
