@@ -61,6 +61,8 @@ Recipes can be used to present particular blog for recipes.
  
 
 ## Application Configurations
+ #### To start server: 
+ 
  1. Create appsettings.json file in Data.Recipe.Data. 
 
     - Add your Connection String 
