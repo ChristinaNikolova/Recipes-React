@@ -52,6 +52,7 @@ function RecipesList() {
                 {!isSearched
                     ? <RecipesOrder clickHandler={order} />
                     : null}
+                    
                 <div className="row">
                     <div className="col-md-12">
                         {!isSearched

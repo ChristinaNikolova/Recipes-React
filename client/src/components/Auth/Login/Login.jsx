@@ -40,7 +40,6 @@ function Login({ history, clickHandler }) {
                         toastr.success(data['message'], 'Success');
                         clickHandler();
                         history.push('/');
-
                         return;
                     }
                     toastr.error(data['message'], 'Error');

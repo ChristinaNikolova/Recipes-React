@@ -9,7 +9,6 @@ import CommentsListCurrentRecipe from '../../Comment/CommentsListCurrentRecipe/C
 import './RecipeDetails.css';
 
 class RecipeDetails extends Component {
-
     constructor(props) {
         super(props)
 
