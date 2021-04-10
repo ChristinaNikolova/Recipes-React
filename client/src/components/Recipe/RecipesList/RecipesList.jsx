@@ -52,7 +52,7 @@ function RecipesList() {
                 {!isSearched
                     ? <RecipesOrder clickHandler={order} />
                     : null}
-                    
+
                 <div className="row">
                     <div className="col-md-12">
                         {!isSearched
@@ -63,7 +63,8 @@ function RecipesList() {
                     <div className="col-md-6 custom-position-resipes-list">
                         <Link to="/recipes/create"
                             className="btn btn-primary btn-lg mt-4 text-center create-recipe-btn"
-                            role="button">Create new recipe</Link>
+                            role="button">Create new recipe
+                        </Link>
                     </div>
                     <div className="col-md-3"></div>
                 </div>
@@ -80,8 +81,7 @@ function RecipesList() {
                                 categoryId={r.categoryId}
                                 categoryName={r.categoryName}
                                 recipeLikesCount={r.recipeLikesCount}
-                                commentsCount={r.commentsCount}
-                            />)
+                                commentsCount={r.commentsCount} />)
                         : <h4 className="col-lg-12 text-center nothing-found cursive-font-style">Nothing found!</h4>
                     }
                 </div>

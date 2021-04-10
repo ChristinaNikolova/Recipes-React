@@ -7,7 +7,6 @@ function RecipesOrder({ clickHandler }) {
 
     const toogle = (criteria) => {
         const prevState = isShown;
-
         setIsShown(!prevState);
         clickHandler(criteria);
     }
