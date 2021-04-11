@@ -29,7 +29,8 @@ function UpdateRecipeForm({ recipeId, clickHandler, isAuth }) {
 
         categoriesService
             .getAllNames()
-            .then(categories => setCategories(categories));
+            .then(categories => setCategories(categories))
+            .catch(err => console.error(err));
     }, []);
 
     const updateIngredients = (ingredients) => {

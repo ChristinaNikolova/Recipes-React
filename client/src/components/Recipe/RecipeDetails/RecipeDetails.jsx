@@ -26,7 +26,8 @@ class RecipeDetails extends Component {
         const recipeId = this.props.match.params.id;
         recipesService
             .getDetails(recipeId)
-            .then(recipe => this.setState({ recipe: recipe }));
+            .then(recipe => this.setState({ recipe: recipe }))
+            .catch(err => console.error(err));
     }
 
     addToFav() {
@@ -35,7 +36,8 @@ class RecipeDetails extends Component {
 
         recipesService
             .like(recipeId)
-            .then((data) => this.setNewState(data, isFavourite));
+            .then((data) => this.setNewState(data, isFavourite))
+            .catch(err => console.error(err));
     }
 
     removeFromFav() {
@@ -44,7 +46,8 @@ class RecipeDetails extends Component {
 
         recipesService
             .dislike(recipeId)
-            .then((data) => this.setNewState(data, isFavourite));
+            .then((data) => this.setNewState(data, isFavourite))
+            .catch(err => console.error(err));
     }
 
     setNewState(data, isFavourite) {

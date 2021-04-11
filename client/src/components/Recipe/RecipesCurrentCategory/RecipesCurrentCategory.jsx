@@ -18,7 +18,8 @@ function RecipesCurrentCategory({ match, history }) {
 
         recipesService
             .getByCategory(categoryId)
-            .then(recipes => setRecipes(recipes));
+            .then(recipes => setRecipes(recipes))
+            .catch(err => console.error(err));
     }, []);
 
     const categoryName = recipes[0]

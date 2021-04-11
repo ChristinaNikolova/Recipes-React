@@ -20,7 +20,8 @@ function OwnRecipes({ history }) {
         usersService
             .getOwn()
             .then(ownRecipes => setOwnRecipes(ownRecipes))
-            .then(setHasToReload(false));
+            .then(setHasToReload(false))
+            .catch(err => console.error(err));
     }, [hasToReload]);
 
     const reload = () => {

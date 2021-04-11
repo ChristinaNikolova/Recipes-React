@@ -20,7 +20,8 @@ function RecipeIngredientsList({ match, history }) {
         ingredientsService
             .getByRecipe(recipeId)
             .then(ingredients => setIngredients(ingredients))
-            .then(setHasToReload(false));
+            .then(setHasToReload(false))
+            .catch(err => console.error(err));
     }, [hasToReload]);
 
     const reload = () => {

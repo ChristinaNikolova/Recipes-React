@@ -24,6 +24,7 @@ function CategoryAdminUpdate({ match, history }) {
         categoriesService
             .getCategoryForUpdate(id)
             .then(category => setCategory(category))
+            .catch(err => console.error(err));
     }, []);
 
     const updateCategorySubmitHandler = (e) => {

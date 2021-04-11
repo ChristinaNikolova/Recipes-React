@@ -23,6 +23,7 @@ function IngredientAdminUpdate({ match, history }) {
         ingredientsService
             .getIngredientForUpdate(id)
             .then(ingredient => setIngredient(ingredient))
+            .catch(err => console.error(err));
     }, []);
 
     const updateIngredientSubmitHandler = (e) => {

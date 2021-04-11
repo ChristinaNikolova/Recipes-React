@@ -20,7 +20,8 @@ function FavouriteRecipes({ history }) {
         usersService
             .getFavourite()
             .then(favRecipes => setFavRecipes(favRecipes))
-            .then(setHasToReload(false));
+            .then(setHasToReload(false))
+            .catch(err => console.error(err));
     }, [hasToReload]);
 
     const reload = () => {

@@ -15,13 +15,15 @@ function RecipesList() {
     useEffect(() => {
         recipesService
             .all()
-            .then(recipes => setRecipes(recipes));
+            .then(recipes => setRecipes(recipes))
+            .catch(err => console.error(err));
     }, [isSearched]);
 
     const order = (orderCriteria) => {
         recipesService
             .order(orderCriteria)
-            .then(recipes => setRecipes(recipes));
+            .then(recipes => setRecipes(recipes))
+            .catch(err => console.error(err));
     }
 
     const search = (query) => {
@@ -34,7 +36,8 @@ function RecipesList() {
             .search(query)
             .then(recipes => setTimeout(() => {
                 setRecipes(recipes)
-            }, 100));
+            }, 100))
+            .catch(err => console.error(err));
 
         setIsSearched(true);
     }

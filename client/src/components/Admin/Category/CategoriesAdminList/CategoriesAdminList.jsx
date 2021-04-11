@@ -20,7 +20,8 @@ function CategoriesAdminList({ history }) {
         categoriesService
             .getAllForAdmin()
             .then(categories => setCategories(categories))
-            .then(setHasToReload(false));
+            .then(setHasToReload(false))
+            .catch(err => console.error(err));
     }, [hasToReload]);
 
     const reload = () => {

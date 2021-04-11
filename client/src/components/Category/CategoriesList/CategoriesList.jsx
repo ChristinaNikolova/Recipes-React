@@ -11,7 +11,9 @@ function CategoriesList() {
     useEffect(() => {
         categoriesService
             .all()
-            .then(categories => setCategories(categories));
+            .then(categories => setCategories(categories))
+            .catch(err => console.error(err));
+
     }, []);
 
     return (

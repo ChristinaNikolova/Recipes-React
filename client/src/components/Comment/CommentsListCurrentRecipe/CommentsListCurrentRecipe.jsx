@@ -14,7 +14,8 @@ function CommentsListCurrentRecipe({ recipeId }) {
         commentsService
             .getAllCurrentRecipe(recipeId)
             .then(comments => setComments(comments))
-            .then(setHasToReload(false));
+            .then(setHasToReload(false))
+            .catch(err => console.error(err));
     }, [hasToReload]);
 
     const reload = () => {
