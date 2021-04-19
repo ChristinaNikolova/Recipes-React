@@ -58,6 +58,8 @@ Recipes can be used to present particular blog for recipes.
  - toastr
 
  - Immer
+
+ - ShortId
  
 
 ## Application Configurations
