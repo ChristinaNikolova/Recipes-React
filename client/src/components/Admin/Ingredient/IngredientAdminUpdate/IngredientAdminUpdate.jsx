@@ -28,7 +28,7 @@ function IngredientAdminUpdate({ match, history }) {
 
     const updateIngredientSubmitHandler = (e) => {
         e.preventDefault();
-        
+
         const name = e.target.name.value;
 
         setErrorName(validator.validName(name));
@@ -37,12 +37,12 @@ function IngredientAdminUpdate({ match, history }) {
             ingredientsService
                 .update(id, name)
                 .then((data) => {
-                    if (data['status'] !== 400) {
-                        toastr.success(data['message'], 'Success');
-                        history.push(`/admin/ingredients`);
+                    if (data['status'] === 400) {
+                        toastr.error(data['message'], 'Error');
                         return;
                     }
-                    toastr.error(data['message'], 'Error');
+                    toastr.success(data['message'], 'Success');
+                    history.push(`/admin/ingredients`);
                 });
         }
     }

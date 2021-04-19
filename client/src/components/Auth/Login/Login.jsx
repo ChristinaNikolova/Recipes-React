@@ -33,16 +33,16 @@ function Login({ history, clickHandler }) {
             authService
                 .login(email, password)
                 .then((data) => {
-                    if (data['status'] !== 400) {
-                        localStorage.setItem('token', data['token']);
-                        localStorage.setItem('username', data['username']);
-                        localStorage.setItem('isAdmin', data['isAdmin']);
-                        toastr.success(data['message'], 'Success');
-                        clickHandler();
-                        history.push('/');
+                    if (data['status'] === 400) {
+                        toastr.error(data['message'], 'Error');
                         return;
                     }
-                    toastr.error(data['message'], 'Error');
+                    localStorage.setItem('token', data['token']);
+                    localStorage.setItem('username', data['username']);
+                    localStorage.setItem('isAdmin', data['isAdmin']);
+                    toastr.success(data['message'], 'Success');
+                    clickHandler();
+                    history.push('/');
                 });
 
         }

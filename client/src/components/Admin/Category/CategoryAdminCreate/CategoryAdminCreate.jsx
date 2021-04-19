@@ -34,12 +34,12 @@ function CategoryAdminCreate({ history }) {
             categoriesService
                 .create(name, picture)
                 .then((data) => {
-                    if (data['status'] !== 400) {
-                        history.push('/admin/categories');
-                        toastr.success(data['message'], 'Success');
+                    if (data['status'] === 400) {
+                        toastr.error(data['message'], 'Error');
                         return;
                     }
-                    toastr.error(data['message'], 'Error');
+                    history.push('/admin/categories');
+                    toastr.success(data['message'], 'Success');
                 });
         }
     }

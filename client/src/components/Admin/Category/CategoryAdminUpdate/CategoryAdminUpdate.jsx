@@ -41,12 +41,12 @@ function CategoryAdminUpdate({ match, history }) {
             categoriesService
                 .update(id, name, picture)
                 .then((data) => {
-                    if (data['status'] !== 400) {
-                        toastr.success(data['message'], 'Success');
-                        history.push(`/admin/categories`);
+                    if (data['status'] === 400) {
+                        toastr.error(data['message'], 'Error');
                         return;
                     }
-                    toastr.error(data['message'], 'Error');
+                    toastr.success(data['message'], 'Success');
+                    history.push(`/admin/categories`);
                 });
         }
     }

@@ -11,7 +11,7 @@ import './RecipeDetails.css';
 class RecipeDetails extends Component {
     constructor(props) {
         super(props)
-        
+
         this.state = {
             recipe: {}
         };
@@ -52,15 +52,15 @@ class RecipeDetails extends Component {
 
     setNewState(data, isFavourite) {
         {
-            if (data['status'] !== 400) {
-                toastr.success(data['message'], 'Success');
-                this.setState(state => (
-                    {
-                        recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
-                    }));
+            if (data['status'] === 400) {
+                toastr.error(data['message'], 'Error');
                 return;
             }
-            toastr.error(data['message'], 'Error');
+            toastr.success(data['message'], 'Success');
+            this.setState(state => (
+                {
+                    recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
+                }));
         }
     }
 

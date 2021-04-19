@@ -10,12 +10,12 @@ function CategoryAdminSingleRow({ id, name, recipesCount, clickHandler }) {
         categoriesService
             .removeFromAdmin(id)
             .then((data) => {
-                if (data['status'] !== 400) {
-                    toastr.success(data['message'], 'Success');
-                    clickHandler();
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
                     return;
                 }
-                toastr.error(data['message'], 'Error');
+                toastr.success(data['message'], 'Success');
+                clickHandler();
             });
     }
 

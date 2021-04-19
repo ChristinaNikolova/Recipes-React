@@ -30,12 +30,12 @@ function IngredientAdminCreate({ history }) {
             ingredientsService
                 .create(name)
                 .then((data) => {
-                    if (data['status'] !== 400) {
-                        toastr.success(data['message'], 'Success');
-                        history.push(`/admin/ingredients`);
+                    if (data['status'] === 400) {
+                        toastr.error(data['message'], 'Error');
                         return;
                     }
-                    toastr.error(data['message'], 'Error');
+                    toastr.success(data['message'], 'Success');
+                    history.push(`/admin/ingredients`);
                 });
         }
     }

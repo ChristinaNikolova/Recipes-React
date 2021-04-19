@@ -67,12 +67,12 @@ function UpdateRecipeForm({ recipeId, clickHandler, isAuth }) {
             recipesService
                 .update(recipeId, title, content, portions, preparationTime, cookingTime, categoryName, picture, ingredientsForRecipe)
                 .then((data) => {
-                    if (data['status'] !== 400) {
-                        toastr.success(data['message'], 'Success');
-                        clickHandler();
+                    if (data['status'] === 400) {
+                        toastr.error(data['message'], 'Error');
                         return;
                     }
-                    toastr.error(data['message'], 'Error');
+                    toastr.success(data['message'], 'Success');
+                    clickHandler();
                 });
         }
     }
