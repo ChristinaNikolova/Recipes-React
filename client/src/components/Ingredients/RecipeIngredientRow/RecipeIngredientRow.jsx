@@ -11,6 +11,7 @@ function RecipeIngredientRow({ ingredientId, recipeId, ingredientName, quantity,
                     toastr.error(data['message'], 'Error');
                     return;
                 }
+                
                 toastr.success(data['message'], 'Success');
                 clickHandler();
             });

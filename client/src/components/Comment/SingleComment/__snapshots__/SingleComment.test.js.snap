@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render SingleComment component 1`] = `
+<article
+  className="post post-content"
+>
+  <div
+    className="single-comment-wripper"
+  >
+    <p
+      className="comment-content"
+    />
+    <hr />
+    <div
+      className="info"
+    >
+      <i
+        className="fas fa-calendar-alt"
+      />
+       
+    </div>
+    <div
+      className="info"
+    >
+      <i
+        className="fas fa-user"
+      />
+       
+    </div>
+  </div>
+</article>
+`;

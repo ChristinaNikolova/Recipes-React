@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render SingleCategory component 1`] = `
+<div
+  className="col-lg-4 custom-card-category"
+>
+  <div
+    className="card mb-2"
+  >
+    <h3
+      className="card-header category-title cursive-font-style"
+    />
+    <img
+      alt="category-pic"
+      className="img-category"
+    />
+    <ul
+      className="list-group list-group-flush"
+    >
+      <li
+        className="list-group-item"
+      >
+        <i
+          className="fas fa-book mr-1"
+        />
+        Recipes in category: 
+      </li>
+    </ul>
+    <div
+      className="card-body"
+    >
+      <Link
+        to="/recipes/current-category/undefined"
+      >
+        <button
+          className="btn btn-secondary button-category"
+        >
+          See recipes
+        </button>
+      </Link>
+    </div>
+  </div>
+</div>
+`;

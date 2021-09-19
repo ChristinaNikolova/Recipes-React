@@ -14,6 +14,7 @@ function OwnRecipesRow({ id, title, picture, categoryName, clickHandler }) {
                     toastr.error(data['message'], 'Error');
                     return;
                 }
+                
                 toastr.success(data['message'], 'Success');
                 clickHandler();
             });
