@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoriesList should render CategoriesList component 1`] = `
+<div
+  className="categories-wrapper"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="col-md-12"
+    >
+      <h1
+        className="text-center pt-2 cursive-font-style"
+      >
+        All Categories
+      </h1>
+      <hr />
+    </div>
+    <div
+      className="row"
+    />
+  </div>
+</div>
+`;

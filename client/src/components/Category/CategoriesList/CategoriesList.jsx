@@ -13,7 +13,6 @@ function CategoriesList() {
             .all()
             .then(categories => setCategories(categories))
             .catch(err => console.error(err));
-
     }, []);
 
     return (
