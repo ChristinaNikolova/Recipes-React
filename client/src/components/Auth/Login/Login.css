@@ -1,16 +1,12 @@
 .login-wrapper button {
     margin-bottom: 10px;
     background-color: #6c757d;
-
-
 }
 
 .login-wrapper button:hover {
     background-color: #78C2AD;
     color: black;
     cursor: pointer;
-
-
 }
 
 .login-wrapper {
