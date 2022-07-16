@@ -1,6 +1,7 @@
 .recipe-details-img {
-    max-width: 100%;
-    max-height: 150%;
+    width: 550px;
+    height: 500px;
+    object-fit: cover;
     border: 0.1rem hidden;
     padding: 10px;
     background-color: white;

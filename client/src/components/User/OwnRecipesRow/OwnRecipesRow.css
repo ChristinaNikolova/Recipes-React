@@ -1,6 +1,7 @@
 .pic-own-recipe {
-    max-width: 40%;
-    max-height: 200px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
     border: 0.1rem hidden;
     background-color: white;
 }
