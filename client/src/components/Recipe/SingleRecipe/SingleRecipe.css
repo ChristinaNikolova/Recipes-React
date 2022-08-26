@@ -11,6 +11,11 @@
     width: 150px;
 }
 
+.custom-card-recipe {
+    margin-bottom: 20px;
+    width: 32%;
+}
+
 .custom-card-recipe .card-header {
     background-color: #54BAB9;
 }
