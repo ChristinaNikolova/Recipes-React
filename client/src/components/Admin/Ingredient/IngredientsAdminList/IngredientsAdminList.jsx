@@ -31,11 +31,11 @@ function IngredientsAdminList({ history }) {
     }
 
     return (
-        <div className="all-ingredients-wrapper">
+        <section id="admin-ingredients" className="section">
             <div className="container">
-                <h1 className="text-center cursive-font-style p-1">Ingredients</h1>
+                <h1 className="title text-center cursive-font-style">Ingredients</h1>
                 <hr />
-                <table className="table table-striped table-bordered table-hover custom-table">
+                <table className="table table-striped table-bordered table-hover">
                     <AdminTableHead />
                     <tbody>
                         {ingredients
@@ -46,9 +46,9 @@ function IngredientsAdminList({ history }) {
                                 clickHandler={reload} />)}
                     </tbody>
                 </table>
-                <div className="fill pb-1 pt-1"></div>
-            </div >
-        </div >);
+            </div>
+        </section>
+    );
 }
 
 export default IngredientsAdminList;

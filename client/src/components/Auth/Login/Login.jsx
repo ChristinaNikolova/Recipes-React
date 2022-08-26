@@ -6,8 +6,6 @@ import Input from '../../shared/Input/Input.jsx';
 import * as authService from '../../../services/authService.js'
 import * as validator from '../../../utils/validations/authValidator.js';
 
-import './Login.css';
-
 function Login({ history, clickHandler }) {
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
@@ -49,31 +47,26 @@ function Login({ history, clickHandler }) {
     }
 
     return (
-        <div className="login-wrapper">
-            <div className="fill pt-2 pb-2"></div>
+        <section id="login" className="section">
             <div className="container">
-                <h1 className="cursive-font-style p-1">Sign In</h1>
-                <div className="row">
-                    <div className="col-lg-10">
-                        <form className="mt-2" onSubmit={onLoginSubmitHandler}>
-                            <Input
-                                type='email'
-                                name='email'
-                                label='Email'
-                                error={errorEmail} />
+                <h1 className="title cursive-font-style">Sign In</h1>
+                <form className="form" onSubmit={onLoginSubmitHandler}>
+                    <Input
+                        type='email'
+                        name='email'
+                        label='Email'
+                        error={errorEmail} />
 
-                            <Input
-                                type='password'
-                                name='password'
-                                label='Password'
-                                error={errorPassword} />
+                    <Input
+                        type='password'
+                        name='password'
+                        label='Password'
+                        error={errorPassword} />
 
-                            <button className="btn btn-dark" type="submit">Sign In</button>
-                        </form>
-                    </div>
-                </div >
+                    <button className="custom-btn" type="submit">Sign In</button>
+                </form>
             </div >
-        </div >
+        </section >
     );
 }
 

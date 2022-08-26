@@ -5,7 +5,7 @@ import * as authService from '../../../services/authService.js';
 import OwnRecipesRow from '../OwnRecipesRow/OwnRecipesRow.jsx';
 import UserTableHead from '../../shared/UserTableHead/UserTableHead.jsx';
 
-import './OwnRecipes.css';
+import './OwnRecipes.css'
 
 function OwnRecipes({ history }) {
     const [ownRecipes, setOwnRecipes] = useState([]);
@@ -31,9 +31,9 @@ function OwnRecipes({ history }) {
     }
 
     return (
-        <div className="own-recipes-wrapper" >
+        <section id="own-recipes" className="section">
             <div className="container">
-                <h1 className="text-center cursive-font-style p-1">My Own Recipes</h1>
+                <h1 className="title text-center cursive-font-style">My Own Recipes</h1>
                 <hr />
                 <table className="table table-bordered table-hover custom-table">
                     <UserTableHead isAuthor={false} />
@@ -49,8 +49,8 @@ function OwnRecipes({ history }) {
                     </tbody>
                 </table>
             </div >
-            <div className="fill pt-1 pb-1"></div>
-        </div >);
+        </section >
+    );
 }
 
 export default OwnRecipes;

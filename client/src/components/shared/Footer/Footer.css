@@ -1,6 +1,27 @@
-div .custom-footer {
-    background-color: #78C2AD;
-    color: white;
-    margin-left: 0;
-    margin-right: 0;
+.footer {
+    background-color: #54BAB9;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E9DAC1;
+    font-size: 20px;
+}
+
+.footer-content {
+    margin-bottom: unset;
+}
+
+.footer-content a {
+    font-size: 20px;
+    color: #E9DAC1;
+    margin-bottom: unset;
+    letter-spacing: .8px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+    transition: all 400ms ease-in-out;
+}
+
+.footer-content a:hover {
+    color: #F7ECDE;
+    text-decoration: none;
 }

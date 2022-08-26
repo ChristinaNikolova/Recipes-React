@@ -18,11 +18,11 @@ function IngredientAdminSingleRow({ id, name, recipeIngredientsCount, clickHandl
     }
 
     return (
-        <tr>
+        <tr className=''>
             <td>{name}</td>
             <td>{recipeIngredientsCount}</td>
-            <td><Link to={`/admin/ingredients/update/${id}`}><button className="btn btn-warning">Update</button></Link></td>
-            <td><button className="btn btn-danger" onClick={remove}>Delete</button></td >
+            <td><Link to={`/admin/ingredients/update/${id}`}><button className="special-btn warning">Update</button></Link></td>
+            <td><button className="special-btn danger" onClick={remove}>Delete</button></td >
         </tr >
     );
 }

@@ -43,11 +43,8 @@ function RecipesList() {
     }
 
     return (
-        <div className="recipes-wrapper">
+        <section id="recipes" className="section">
             <div className="container">
-                <div className="fill pt-1 pb-1"></div>
-                <hr className="hr-fill" />
-
                 <SearchRecipe
                     clickHandler={search}
                     isSearched={isSearched} />
@@ -56,23 +53,17 @@ function RecipesList() {
                     ? <RecipesOrder clickHandler={order} />
                     : null}
 
-                <div className="row">
-                    <div className="col-md-12">
-                        {!isSearched
-                            ? <h1 className="text-center mb-0 pt-2 cursive-font-style">All Recipes</h1>
-                            : <h1 className="text-center mb-0 pt-2 cursive-font-style">Searched Recipes Result</h1>}
-                    </div>
-                    <div className="col-md-3"></div>
-                    <div className="col-md-6 custom-position-resipes-list">
-                        <Link to="/recipes/create"
-                            className="btn btn-primary btn-lg mt-4 text-center create-recipe-btn"
-                            role="button">Create new recipe
-                        </Link>
-                    </div>
-                    <div className="col-md-3"></div>
+                <div className="recipes-title-wrapper">
+                    {!isSearched
+                        ? <h1 className="title cursive-font-style">All Recipes</h1>
+                        : <h1 className="title cursive-font-style">Searched Recipes Result</h1>}
+                    <Link to="/recipes/create"
+                        className="custom-btn"
+                        role="button">Create new recipe
+                    </Link>
                 </div>
                 <hr />
-                <div className="row">
+                <div className="recipes-wrapper">
                     {recipes.length > 0
                         ? recipes
                             .map(r => <SingleRecipe
@@ -85,11 +76,11 @@ function RecipesList() {
                                 categoryName={r.categoryName}
                                 recipeLikesCount={r.recipeLikesCount}
                                 commentsCount={r.commentsCount} />)
-                        : <h4 className="col-lg-12 text-center nothing-found cursive-font-style">Nothing found!</h4>
+                        : <h4 className="title nothing-found cursive-font-style">Nothing found!</h4>
                     }
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

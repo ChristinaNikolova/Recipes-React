@@ -11,7 +11,7 @@ function RecipeIngredientRow({ ingredientId, recipeId, ingredientName, quantity,
                     toastr.error(data['message'], 'Error');
                     return;
                 }
-                
+
                 toastr.success(data['message'], 'Success');
                 clickHandler();
             });
@@ -21,7 +21,7 @@ function RecipeIngredientRow({ ingredientId, recipeId, ingredientName, quantity,
         <tr>
             <td>{ingredientName}</td>
             <td>{quantity}</td>
-            <td><button className="btn btn-danger" onClick={remove}>Delete</button></td>
+            <td><button className="special-btn danger" onClick={remove}>Delete</button></td>
         </tr >
     );
 }

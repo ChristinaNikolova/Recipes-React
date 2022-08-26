@@ -1,56 +1,51 @@
-.error-wrapper {
-    background-color: lavender;
-}
-
-.mainbox {
-    background-color: #78C2AD;
+.not-found-wrapper {
+    background-color: #F7ECDE;
     margin: auto;
     height: 600px;
     width: 600px;
     position: relative;
+    color: #54BAB9;
 }
 
 .err {
-    color: #ffffff;
-    font-family: 'Nunito Sans', sans-serif;
+    
     font-size: 11rem;
     position: absolute;
     left: 20%;
     top: 8%;
 }
 
-.mainbox .far {
+.not-found-wrapper .far {
     position: absolute;
     font-size: 8.5rem;
     left: 42%;
     top: 15%;
-    color: #ffffff;
 }
 
 .err2 {
-    color: #ffffff;
-    font-family: 'Nunito Sans', sans-serif;
     font-size: 11rem;
     position: absolute;
     left: 68%;
     top: 8%;
 }
 
-.msg {
+.not-found-msg{
     text-align: center;
-    font-family: 'Nunito Sans', sans-serif;
     font-size: 1.6rem;
     position: absolute;
     left: 16%;
     top: 45%;
     width: 75%;
+    color: #000;
 }
 
 .home-link {
-    text-decoration: none;
-    color: white;
+    color: #54BAB9;
+    transition: all 400ms ease-in-out;
+    font-weight: bold;
 }
 
 .home-link:hover {
-    text-decoration: underline;
+    color: #9ED2C6;
+    text-decoration: none;
 }

@@ -1,22 +1,22 @@
-.fonts-bold {
+.ingredient-label {
     font-weight: bold;
 }
 
 .custom-color-green {
-    color: #78C2AD;
-}
-
-.current-ingredient-add .custom-danger-button:hover {
-    background-color: red;
-    color: white;
+    color: #54BAB9;
+    font-weight: 600;
 }
 
 .required-ingredient {
     color: red;
+    margin: 10px;
+    font-size: 14px;
 }
 
-#custom-add-ingredient-button {
-    background-color: lightblue;
-    border-color: lightblue;
-    color: black;
+.ingredient-article .special-btn {
+    width: 15%;
+}
+
+.ingredient-article .custom-btn.warning {
+    margin-left: 20px;
 }

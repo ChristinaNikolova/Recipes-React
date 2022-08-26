@@ -1,8 +1,38 @@
-.recipe-order:hover {
-    color: #78C2AD;
-    cursor: pointer;
+#recipe-order {
+    padding: 10px;
 }
 
-.order-wrapper .fa-check-circle {
-    color: #78C2AD;
+#recipe-order .fa-check-circle {
+    color: #54BAB9;
+}
+
+#recipe-order button i {
+    margin-right: 10px;
+}
+
+#recipe-order button {
+    transition: all 400ms ease-in-out;
+    border: none;
+}
+
+#recipe-order button:hover {
+    background-color: #9ED2C6;
+}
+
+.recipe-order-ul {
+    padding: 10px;
+}
+
+.recipe-order-li {
+    padding: 2px;
+    transition: all 400ms ease-in-out;
+}
+
+.recipe-order-li i {
+    margin-right: 8px;
+}
+
+.recipe-order-li:hover {
+    color: #9ED2C6;
+    cursor: pointer;
 }

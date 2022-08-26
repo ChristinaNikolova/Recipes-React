@@ -4,8 +4,6 @@ import * as commentsService from '../../../services/commentsService.js';
 import CreateComment from '../CreateComment/CreateComment.jsx';
 import SingleComment from '../SingleComment/SingleComment.jsx';
 
-import './CommentsListCurrentRecipe.css';
-
 function CommentsListCurrentRecipe({ recipeId }) {
     const [comments, setComments] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
@@ -25,7 +23,7 @@ function CommentsListCurrentRecipe({ recipeId }) {
     }
 
     return (
-        <div className="comments-list-wrapper" >
+        <section id="comments">
             <CreateComment
                 clickHandler={reload}
                 recipeId={recipeId} />
@@ -36,7 +34,7 @@ function CommentsListCurrentRecipe({ recipeId }) {
                     formattedCreatedOn={c.formattedCreatedOn}
                     clientUserName={c.clientUserName} />)}
             </div>
-        </div >
+        </section>
     );
 
 }

@@ -1,15 +1,4 @@
-.pic-own-recipe {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border: 0.1rem hidden;
-    background-color: white;
-}
-
-.title-own-recipe {
-    color: #78C2AD
-}
-
-.title-own-recipe:hover {
-    cursor: pointer;
+.own-recipes-row .special-btn.danger,
+.own-recipes-row .special-btn.warning {
+    width: 100%;
 }

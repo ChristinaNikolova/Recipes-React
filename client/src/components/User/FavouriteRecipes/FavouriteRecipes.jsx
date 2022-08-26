@@ -5,7 +5,7 @@ import * as authService from '../../../services/authService.js';
 import FavouriteRecipesRow from '../FavouriteRecipesRow/FavouriteRecipesRow.jsx';
 import UserTableHead from '../../shared/UserTableHead/UserTableHead.jsx';
 
-import './FavouriteRecipes.css';
+import './FavouriteRecipes.css'
 
 function FavouriteRecipes({ history }) {
     const [favRecipes, setFavRecipes] = useState([]);
@@ -31,9 +31,9 @@ function FavouriteRecipes({ history }) {
     }
 
     return (
-        <div className="favourite-recipes-wrapper">
+        <section id="favourite-recipes" className="section">
             <div className="container">
-                <h1 className="text-center cursive-font-style p-1">My Favourite Recipes</h1>
+                <h1 className="title text-center cursive-font-style">My Favourite Recipes</h1>
                 <hr />
                 <table className="table table-bordered table-hover custom-table">
                     <UserTableHead isAuthor={true} />
@@ -49,9 +49,8 @@ function FavouriteRecipes({ history }) {
                                 clickHandler={reload} />)}
                     </tbody>
                 </table>
-            </div >
-            <div className="fill pt-1 pb-1"></div>
-        </div >
+            </div>
+        </section>
     );
 }
 

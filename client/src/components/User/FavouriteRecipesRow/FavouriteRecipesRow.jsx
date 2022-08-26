@@ -3,8 +3,6 @@ import toastr from 'toastr';
 
 import * as recipesService from '../../../services/recipesService.js';
 
-import './FavouriteRecipesRow.css';
-
 function FavouriteRecipesRow({ recipeId, recipeTitle, recipePicture, recipeCategoryName, recipeAuthorUserName, clickHandler }) {
     const removeFromFav = () => {
         recipesService
@@ -22,14 +20,14 @@ function FavouriteRecipesRow({ recipeId, recipeTitle, recipePicture, recipeCateg
     return (
         <tr>
             <td>
-                <Link to={`/recipes/details/${recipeId}`} className="custom-title-fav-recipe"><h6>{recipeTitle}</h6></Link>
+                <Link to={`/recipes/details/${recipeId}`} className="td-link">{recipeTitle}</Link>
             </td>
             <td>
-                <img className="pic-fav-recipe" src={recipePicture} alt="recipe-pic" />
+                <img className="table-pic" src={recipePicture} alt="recipe-pic" />
             </td>
             <td>{recipeCategoryName}</td>
             <td>{recipeAuthorUserName}</td>
-            <td><button className="btn btn-danger" onClick={removeFromFav}>Remove</button></td>
+            <td><button className="special-btn danger" onClick={removeFromFav}>Remove</button></td>
         </tr >);
 }
 

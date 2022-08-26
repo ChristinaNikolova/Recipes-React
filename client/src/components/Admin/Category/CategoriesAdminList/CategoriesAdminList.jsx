@@ -31,11 +31,10 @@ function CategoriesAdminList({ history }) {
     }
 
     return (
-        <div className="all-category-wrapper">
+        <section id="admin-categories" className="section">
             <div className="container">
-                <h1 className="text-center cursive-font-style p-1">Categories</h1>
-                <hr />
-                <table className="table table-striped table-bordered table-hover custom-table">
+                <h1 className="title text-center cursive-font-style">Categories</h1>
+                <table className="table table-striped table-bordered table-hover">
                     <AdminTableHead />
                     <tbody>
                         {categories.map(c => <CategoryAdminSingleRow
@@ -46,9 +45,8 @@ function CategoriesAdminList({ history }) {
                             clickHandler={reload} />)}
                     </tbody>
                 </table>
-            </div >
-            <div className="fill pb-1 pt-1"></div>
-        </div >
+            </div>
+        </section>
     );
 }
 

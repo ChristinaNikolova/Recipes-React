@@ -5,8 +5,6 @@ import Input from '../../shared/Input/Input.jsx';
 import * as authService from '../../../services/authService.js'
 import * as validator from '../../../utils/validations/authValidator.js';
 
-import './Register.css';
-
 function Register({ history }) {
     const [errorUsername, setErrorUsername] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
@@ -51,43 +49,38 @@ function Register({ history }) {
     }
 
     return (
-        <div className="register-wrapper">
-            <div className="fill pt-2 pb-2"></div>
+        <section id="register" className="section">
             <div className="container">
-                <h1 className="p-1 cursive-font-style">Register</h1>
-                <div className="row">
-                    <div className="col-lg-10">
-                        <form onSubmit={onRegisterSubmitHandler}>
-                            <Input
-                                type='text'
-                                name='username'
-                                label='Username'
-                                error={errorUsername} />
+                <h1 className="title cursive-font-style">Register</h1>
+                <form className="form" onSubmit={onRegisterSubmitHandler}>
+                    <Input
+                        type='text'
+                        name='username'
+                        label='Username'
+                        error={errorUsername} />
 
-                            <Input
-                                type='email'
-                                name='email'
-                                label='Email'
-                                error={errorEmail} />
+                    <Input
+                        type='email'
+                        name='email'
+                        label='Email'
+                        error={errorEmail} />
 
-                            <Input
-                                type='password'
-                                name='password'
-                                label='Password'
-                                error={errorPassword} />
+                    <Input
+                        type='password'
+                        name='password'
+                        label='Password'
+                        error={errorPassword} />
 
-                            <Input
-                                type='password'
-                                name='repeatPassword'
-                                label='Repeat password'
-                                error={errorRePassword} />
+                    <Input
+                        type='password'
+                        name='repeatPassword'
+                        label='Repeat password'
+                        error={errorRePassword} />
 
-                            <button className="btn btn-dark" type="submit" > Register</button >
-                        </form >
-                    </div >
-                </div >
-            </div >
-        </div >
+                    <button className="custom-btn" type="submit"> Register</button >
+                </form>
+            </div>
+        </section>
     );
 }
 

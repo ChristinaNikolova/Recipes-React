@@ -3,11 +3,9 @@ import toastr from 'toastr';
 
 import Input from '../../../shared/Input/Input.jsx';
 import * as authService from '../../../../services/authService.js';
+import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
 import * as categoriesService from '../../../../services/categoriesService.js';
 import * as validator from '../../../../utils/validations/categoryValidator.js';
-import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
-
-import './CategoryAdminCreate.css';
 
 function CategoryAdminCreate({ history }) {
     const [errorName, setErrorName] = useState('');
@@ -45,30 +43,26 @@ function CategoryAdminCreate({ history }) {
     }
 
     return (
-        <div className="create-category-wrapper">
+        <section id="admin-category-create" className="section">
             <div className="container">
                 <AdminFormWrapper title="Create New Category" />
-                <form className="create-category-form" onSubmit={onCreateCategorySubmitHandler}>
-                    <div className="row space-top">
-                        <div className="col-lg-8">
-                            <Input
-                                type='text'
-                                name='name'
-                                label='Name'
-                                error={errorName} />
+                <form className="form" onSubmit={onCreateCategorySubmitHandler}>
+                    <Input
+                        type='text'
+                        name='name'
+                        label='Name'
+                        error={errorName} />
 
-                            <Input
-                                type='url'
-                                name='picture'
-                                label='Picture'
-                                error={errorPicture} />
+                    <Input
+                        type='url'
+                        name='picture'
+                        label='Picture'
+                        error={errorPicture} />
 
-                            <button className="btn btn-secondary" type="submit">Create</button>
-                        </div>
-                    </div >
-                </form >
+                    <button className="custom-btn" type="submit">Create</button>
+                </form>
             </div>
-        </div >
+        </section>
     );
 }
 

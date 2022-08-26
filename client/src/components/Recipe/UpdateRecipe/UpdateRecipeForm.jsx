@@ -78,64 +78,60 @@ function UpdateRecipeForm({ recipeId, clickHandler, isAuth }) {
     }
 
     return (
-        <form onSubmit={onUpdateRecipeSubmitHandler}>
-            <div className="row space-top">
-                <div className="col-lg-8">
-                    <Input
-                        type='text'
-                        name='title'
-                        label='Title'
-                        value={recipe.title}
-                        error={errorTitle} />
+        <form class="form" onSubmit={onUpdateRecipeSubmitHandler}>
+            <Input
+                type='text'
+                name='title'
+                label='Title'
+                value={recipe.title}
+                error={errorTitle} />
 
-                    <Input
-                        type='text'
-                        name='content'
-                        label='Content'
-                        value={recipe.content}
-                        error={errorContent} />
+            <Input
+                type='text'
+                name='content'
+                label='Content'
+                value={recipe.content}
+                error={errorContent} />
 
-                    <Input
-                        type='number'
-                        name='portions'
-                        label='Portions'
-                        value={recipe.portions}
-                        error={errorPortions} />
+            <Input
+                type='number'
+                name='portions'
+                label='Portions'
+                value={recipe.portions}
+                error={errorPortions} />
 
-                    <Input
-                        type='number'
-                        name='preparationTime'
-                        label='Preparation Time in minutes'
-                        value={recipe.preparationTime}
-                        error={errorPrepTime} />
+            <Input
+                type='number'
+                name='preparationTime'
+                label='Preparation Time in minutes'
+                value={recipe.preparationTime}
+                error={errorPrepTime} />
 
-                    <Input
-                        type='number'
-                        name='cookingTime'
-                        label='Cooking Time in minutes'
-                        value={recipe.cookingTime}
-                        error={errorCookTime} />
+            <Input
+                type='number'
+                name='cookingTime'
+                label='Cooking Time in minutes'
+                value={recipe.cookingTime}
+                error={errorCookTime} />
 
-                    <div className="form-group">
-                        <label className="form-control-label" htmlFor="categoryName">Category</label>
-                        <select className="form-control" id="categoryName">
-                            {categories.map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
-                            <option value={recipe.categoryId}>{recipe.categoryName}</option>
-                        </select>
-                    </div>
-
-                    <Input
-                        type='url'
-                        name='picture'
-                        label='Picture url'
-                        value={recipe.picture}
-                        error={errorPicture} />
-                    <hr />
-                    <CreateIngredientRecipeForm clickHandler={updateIngredients} />
-                    <hr />
-                    <button className="btn btn-secondary" type="submit">Update</button>
-                </div>
+            <div className="form-group">
+                <label className="form-control-label" htmlFor="categoryName">Category</label>
+                <select className="form-control" id="categoryName">
+                    {categories.map(c => <option key={c.id} value={c.name}>{c.name}</option>)}
+                    <option value={recipe.categoryId}>{recipe.categoryName}</option>
+                </select>
             </div>
+
+            <Input
+                type='url'
+                name='picture'
+                label='Picture url'
+                value={recipe.picture}
+                error={errorPicture} />
+            <hr />
+            <CreateIngredientRecipeForm clickHandler={updateIngredients} />
+            <hr />
+            <button className="custom-btn" type="submit">Update</button>
         </form>
     );
 }

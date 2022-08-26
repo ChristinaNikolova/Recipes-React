@@ -14,24 +14,24 @@ function OwnRecipesRow({ id, title, picture, categoryName, clickHandler }) {
                     toastr.error(data['message'], 'Error');
                     return;
                 }
-                
+
                 toastr.success(data['message'], 'Success');
                 clickHandler();
             });
     }
 
     return (
-        <tr>
+        <tr className='own-recipes-row'>
             <td>
-                <Link to={`/recipes/details/${id}`}><h6 className="title-own-recipe">{title}</h6></Link>
+                <Link to={`/recipes/details/${id}`} className="td-link">{title}</Link>
             </td >
             <td>
-                <img className="pic-own-recipe" src={picture} alt="recipe-pic" />
+                <img className="table-pic" src={picture} alt="recipe-pic" />
             </td>
             <td>{categoryName}</td>
-            <td><Link to={`/recipes/ingredients/${id}`}><button className="btn btn-secondary">Delete Ingredients</button></Link></td>
-            <td><Link to={`/recipes/update/${id}`}><button className="btn btn-warning">Update</button></Link></td >
-            <td><button className="btn btn-danger" onClick={remove}>Delete</button></td >
+            <td><Link to={`/recipes/ingredients/${id}`}><button className="special-btn danger">Delete Ingredients</button></Link></td>
+            <td><Link to={`/recipes/update/${id}`}><button className="special-btn warning">Update</button></Link></td >
+            <td><button className="special-btn danger" onClick={remove}>Delete</button></td >
         </tr>);
 }
 

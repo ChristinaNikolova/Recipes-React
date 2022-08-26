@@ -1,4 +1,9 @@
-.recipe-details-img {
+#recipe-details {
+    padding-bottom: 40px;
+    height: auto;
+}
+
+.recipe-details-content-data-img {
     width: 550px;
     height: 500px;
     object-fit: cover;
@@ -7,48 +12,83 @@
     background-color: white;
 }
 
-.recipe-details-wrapper .fa-heart:hover {
+#recipe-details .fa-heart:hover {
     cursor: pointer;
 }
 
-.recipe-details-wrapper .fa-users,
-.recipe-details-wrapper .fa-utensils,
-.recipe-details-wrapper .fa-clock,
-.recipe-details-wrapper .fa-book,
-.recipe-details-wrapper .fa-check {
-    color: #78C2AD;
-    font-weight: bold;
+.recipe-details-wrapper {
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-.recipe-details-wrapper {
-    background-color: lavender;
+.recipe-details-content-data {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.recipe-details-content-data-ul li {
+    margin-bottom: 20px;
+}
+
+.recipe-details-content-data .recipe-details-content-data-wrapper:nth-child(2) .recipe-details-content-data-ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 12px;
+    font-size: 17px;
+    color: #54BAB9;
+}
+
+.recipe-prepare-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.recipe-prepare-title {
+    color: #54BAB9;
+    font-size: 30px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.recipe-prepare-desc{
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+#recipe-details .fa-book,
+#recipe-details .fa-check,
+#recipe-details .fa-clock,
+#recipe-details .fa-users,
+#recipe-details .fa-utensils {
+    color: #54BAB9;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .feature-title {
     font-weight: bold;
-    color: #78C2AD;
+    color: #54BAB9;
 }
 
 .item-title {
-    color: #78C2AD;
+    color: #54BAB9;
 }
 
 .recipe-details-wrapper hr {
     margin-right: 20px;
 }
 
-.custom-margin-left {
-    margin-left: 20px;
-}
-
 .meta {
     text-align: center;
-    color: #78C2AD;
+    color: #54BAB9;
     font-size: 18px;
 }
 
 .like-text {
-    color: #78C2AD;
+    color: #54BAB9;
     font-style: italic;
     font-weight: 200;
 }

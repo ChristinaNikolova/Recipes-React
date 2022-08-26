@@ -41,25 +41,21 @@ function IngredientAdminCreate({ history }) {
     }
 
     return (
-        <div className="create-ingredient-wrapper">
+        <section id="admin-ingredient-create" className="section">
             <div className="container">
                 <AdminFormWrapper title="Create New Ingredient" />
-                <form className="create-ingredient-form" onSubmit={onCreateIngredientSubmitHandler}>
-                    <div className="row space-top">
-                        <div className="col-lg-8">
-                            <div className="form-group">
-                                <Input
-                                    type='text'
-                                    name='name'
-                                    label='Name'
-                                    error={errorName} />
-                            </div>
-                            <button className="btn btn-secondary" type="submit" >Create</button>
-                        </div>
-                    </div >
-                </form >
-            </div >
-        </div >
+                <form className="form" onSubmit={onCreateIngredientSubmitHandler}>
+                    <div className="form-group">
+                        <Input
+                            type='text'
+                            name='name'
+                            label='Name'
+                            error={errorName} />
+                    </div>
+                    <button className="custom-btn" type="submit" >Create</button>
+                </form>
+            </div>
+        </section>
     );
 }
 

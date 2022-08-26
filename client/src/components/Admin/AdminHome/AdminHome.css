@@ -3,33 +3,29 @@
     font-weight: bold;
 }
 
-.admin-home-wrapper {
-    background-color: lavender;
-    height: 650px;
-}
-
-.hr-admin-dashboard {
+.admin-hr-dashboard {
     margin: 20px;
 }
 
-.custom-font-li li {
-    list-style-type: circle;
-    font-family: 'Akaya Telivigala', cursive;
-    color: #78C2AD;
-    font-size: 24px;
+.admin-ul {
+    text-align: center;
 }
 
-.remove-font {
-    color: white;
-    font-size: 16px;
-    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif
+.admin-li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
 }
 
-.admin-home-wrapper .create-admin-area {
-    background-color: #78C2AD;
-    border-color: #78C2AD;
+.admin-li-wrapper .custom-btn:first-of-type {
+    margin-right: 20px;
 }
 
-.all-admin-area {
-    border-color: #5A6268;
+.admin-li-title {
+    color: #54BAB9;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
 }

@@ -1,3 +1,4 @@
-.own-recipes-wrapper {
-    background-color: lavender;
+#own-recipes {
+    padding-bottom: 40px;
+    height: auto;
 }

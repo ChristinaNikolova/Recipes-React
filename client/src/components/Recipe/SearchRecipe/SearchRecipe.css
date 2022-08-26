@@ -1,15 +1,17 @@
 .remove button {
     margin-bottom: 10px;
+    border: none;
+    transition: all 400ms ease-in-out;
 }
 
 .remove button:hover {
-    background-color: #78C2AD;
-    color: black;
+    background-color: #54BAB9;
     cursor: pointer;
 }
 
 .custom-danger {
     margin-left: 0px;
+    border: none;
 }
 
 .remove .custom-danger:hover {

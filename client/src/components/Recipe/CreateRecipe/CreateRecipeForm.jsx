@@ -122,7 +122,7 @@ function CreateRecipeForm({ clickHandler, isAuth }) {
                     <hr />
                     <CreateIngredientRecipeForm clickHandler={updateIngredients} />
                     <hr />
-                    <button className="btn btn-secondary" type="submit">Create</button >
+                    <button className="custom-btn" type="submit">Create</button >
                 </div >
             </div >
         </form >

@@ -48,26 +48,22 @@ function IngredientAdminUpdate({ match, history }) {
     }
 
     return (
-        <div className="update-ingredient-wrapper">
+        <section id="admin-ingredient-update" className="section">
             <div className="container">
                 <AdminFormWrapper title="Update Ingredient" />
-                <form className="update-ingredient-form" onSubmit={updateIngredientSubmitHandler}>
-                    <div className="row space-top">
-                        <div className="col-lg-8">
-                            <div className="form-group">
-                                <Input
-                                    type='text'
-                                    name='name'
-                                    label='Name'
-                                    value={ingredient.name}
-                                    error={errorName} />
-                            </div>
-                            <button className="btn btn-secondary" type="submit">Update</button>
-                        </div>
-                    </div >
-                </form >
-            </div >
-        </div >
+                <form className="form" onSubmit={updateIngredientSubmitHandler}>
+                    <div className="form-group">
+                        <Input
+                            type='text'
+                            name='name'
+                            label='Name'
+                            value={ingredient.name}
+                            error={errorName} />
+                    </div>
+                    <button className="custom-btn" type="submit">Update</button>
+                </form>
+            </div>
+        </section>
     );
 }
 

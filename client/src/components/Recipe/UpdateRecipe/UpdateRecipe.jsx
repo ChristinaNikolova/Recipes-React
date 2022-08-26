@@ -21,18 +21,12 @@ function UpdateRecipe({ history, match }) {
     }
 
     return (
-        <div className="update-form-wrapper">
-            <div className="fill pt-2 pb-2"></div>
+        <section id="recipe-update" className="section">
             <div className="container">
-                <div className="row space-top">
-                    <div className="col-md-12">
-                        <h1 className="cursive-font-style p-1">Update Recipe</h1>
-                    </div>
-                </div>
+                <h1 className="title cursive-font-style">Update Recipe</h1>
                 <UpdateRecipeForm recipeId={recipeId} clickHandler={updateRecipe} isAuth={authService.isAuthenticated()} />
             </div>
-            <div className="fill pt-2 pb-2"></div>
-        </div>
+        </section>
     );
 }
 

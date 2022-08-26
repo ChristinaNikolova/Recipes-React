@@ -4,18 +4,19 @@ import './SingleCategory.css';
 
 function SingleCategory({ id, name, picture, recipesCount }) {
     return (
-        <div className="col-lg-4 custom-card-category">
-            <div className="card mb-2">
-                <h3 className="card-header category-title cursive-font-style">{name}</h3>
-                <img className="img-category" src={picture} alt="category-pic"></img>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
+        <div className="custom-card-category">
+            <div className="card">
+                <h3 className="card-header cursive-font-style">{name}</h3>
+                <img className="category-img" src={picture} alt="category-pic"></img>
+                <ul className='category--recipe-count'>
+                    <li>
                         <i className="fas fa-book mr-1"></i>
-                        Recipes in category: {recipesCount}</li>
+                        Recipes in category: {recipesCount}
+                    </li>
                 </ul>
                 <div className="card-body">
                     <Link to={`/recipes/current-category/${id}`}>
-                        <button className="btn btn-secondary button-category">See recipes</button>
+                        <button className="custom-btn">See recipes</button>
                     </Link>
                 </div>
             </div>

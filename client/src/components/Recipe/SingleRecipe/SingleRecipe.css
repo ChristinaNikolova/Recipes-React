@@ -1,24 +1,18 @@
 .img-recipe {
     width: 100%;
     height: 300px;
+    object-fit: cover;
     border: 0.1rem hidden;
     padding: 10px;
     background-color: white;
 }
 
-.card-body .button-recipe {
-    margin-bottom: 10px;
-}
-
-.card-body .button-recipe:hover {
-    background-color: #78C2AD;
-    border-color: #78C2AD;
-    color: black;
-    cursor: pointer;
+.card-body .custom-btn {
+    width: 150px;
 }
 
 .custom-card-recipe .card-header {
-    background-color: #78C2AD;
+    background-color: #54BAB9;
 }
 
 .recipe-title {
@@ -30,6 +24,6 @@
 .recipe-details .fa-book,
 .recipe-details .fa-comments,
 .recipe-details .fa-heart {
-    color: #78C2AD;
+    color: #54BAB9;
     margin-right: 10px;
 }

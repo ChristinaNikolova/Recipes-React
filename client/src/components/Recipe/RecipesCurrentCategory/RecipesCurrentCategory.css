@@ -1,9 +1,10 @@
-.recipes-current-category-wrapper {
-    background-color: lavender;
+#recipes-currect-category h1 {
+    text-align: center;
 }
 
-.recipes-in-category {
-    text-transform: uppercase;
-    font-style: italic;
-    color: #78C2AD;
+.recipes-currect-category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }

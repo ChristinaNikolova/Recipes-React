@@ -1,3 +1,12 @@
-.categories-wrapper {
-    background-color: lavender;
+#categories {
+    height: auto;
+    padding-bottom: 40px;
+}
+
+.categories-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }

@@ -7,8 +7,6 @@ import * as categoriesService from '../../../../services/categoriesService.js';
 import * as validator from '../../../../utils/validations/categoryValidator.js';
 import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
 
-import './CategoryAdminUpdate.css';
-
 function CategoryAdminUpdate({ match, history }) {
     const [category, setCategory] = useState({});
     const [errorName, setErrorName] = useState('');
@@ -52,32 +50,28 @@ function CategoryAdminUpdate({ match, history }) {
     }
 
     return (
-        <div className="update-category-wrapper">
+        <section id="admin-category-update" className="section">
             <div className="container">
                 <AdminFormWrapper title="Update Category" />
-                <form className="update-category-form" onSubmit={updateCategorySubmitHandler}>
-                    <div className="row space-top">
-                        <div className="col-lg-8">
-                            <Input
-                                type='text'
-                                name='name'
-                                label='Name'
-                                value={category.name}
-                                error={errorName} />
+                <form className="form" onSubmit={updateCategorySubmitHandler}>
+                    <Input
+                        type='text'
+                        name='name'
+                        label='Name'
+                        value={category.name}
+                        error={errorName} />
 
-                            <Input
-                                type='url'
-                                name='picture'
-                                label='Picture'
-                                value={category.picture}
-                                error={errorPicture} />
+                    <Input
+                        type='url'
+                        name='picture'
+                        label='Picture'
+                        value={category.picture}
+                        error={errorPicture} />
 
-                            <button className="btn btn-secondary" type="submit">Update</button>
-                        </div>
-                    </div >
+                    <button className="custom-btn" type="submit">Update</button>
                 </form >
             </div >
-        </div >
+        </section >
     );
 }
 

@@ -98,14 +98,14 @@ function CreateIngredientRecipeForm({ clickHandler }) {
     }
 
     return (
-        <div>
-            <label className="fonts-bold">Ingredients: </label>
+        <article className="ingredient-article">
+            <label className="ingredient-label">Ingredients: </label>
             {ingredients.map((ingredient, ingredientIndex) => {
                 const index = `ingredients[${ingredientIndex}]`;
                 return (
                     <div className="current-ingredient-add" key={ingredient.id}>
                         <label className="form-control-label custom-color-green">Ingredient: </label>
-                        <div className="m-2 required-ingredient">* Please note, that all Ingredient's fields are required 🙂</div>
+                        <div className="required-ingredient">* Please note, that all Ingredient's fields are required 🙂</div>
                         <div className="form-group">
                             <label className="form-control-label" htmlFor={index}>Name</label>
                             <input onChange={onChangeIngredientNameHandler} onBlur={onBlurIngredientNameHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
@@ -116,13 +116,13 @@ function CreateIngredientRecipeForm({ clickHandler }) {
                             <input onChange={onChangeIngredientQuantityHandler} onBlur={onBlurIngredientQuantityHandler} className="form-control" key={() => produce()} id={`${index}`} type="text" />
                         </div>
                         {ingredient.isTouchedQuantity && <InputError>{ingredient.errorQuantity}</InputError>}
-                        <button className="btn btn-danger custom-danger-button" type="button" onClick={() => removeIngredient(index)}>Remove</button>
+                        <button className="special-btn danger" type="button" onClick={() => removeIngredient(index)}>Remove</button>
                         <hr />
                     </div>
                 )
             })}
-            <button id="custom-add-ingredient-button" type="button" className="btn btn-primary ml-2" onClick={addIngredient}> Add ingredient</button >
-        </div>
+            <button className="custom-btn warning" type="button" onClick={addIngredient}> Add ingredient</button >
+        </article>
     );
 }
 

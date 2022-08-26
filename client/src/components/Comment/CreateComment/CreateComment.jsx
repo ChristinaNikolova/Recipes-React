@@ -34,21 +34,20 @@ function CreateComment({ recipeId, clickHandler }) {
     }
 
     return (
-        <div className="create-comment-wrapper">
-            <h2 className="cursive-font-style comments-title">Comments</h2>
-            <div className="post post-content">
-                <h5 className="comments-title-second-title">Leave comment</h5>
-                <form className="comment-form" onSubmit={onCreateCommentSubmitHandler}>
-                    <Input
-                        type='text'
-                        name='content'
-                        label=''
-                        placeholder='Write you comment...'
-                        error={errorMessage} />
-                    <button type="submit" className="btn btn-secondary mt-2 add-comment-button" > Add Comment</button >
-                </form>
-            </div>
-        </div>
+        <section id="comment-create" className="section">
+            <h2 className="title cursive-font-style">Comments</h2>
+            <h5 className="comment-create-second-title">Leave comment</h5>
+            <form className="form" onSubmit={onCreateCommentSubmitHandler}>
+                <Input
+                    type='text'
+                    name='content'
+                    label=''
+                    placeholder='Write you comment...'
+                    error={errorMessage} />
+                <button type="submit" className="custom-btn"> Add Comment</button>
+            </form>
+            <hr />
+        </section>
     );
 }
 

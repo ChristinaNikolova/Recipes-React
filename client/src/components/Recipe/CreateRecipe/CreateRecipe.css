@@ -1,18 +1,6 @@
-.create-recipe-wrapper {
-    background-color: lavender;
-}
-
-.create-recipe-wrapper button {
-    margin-bottom: 10px;
-}
-
-.create-recipe-wrapper button:hover {
-    background-color: #78C2AD;
-    color: black;
-    cursor: pointer;
-}
-
-.create-recipe-wrapper .container {
-    background-color: lightgray;
-    padding: 10px;
+#create-recipe {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+    height: auto;
 }

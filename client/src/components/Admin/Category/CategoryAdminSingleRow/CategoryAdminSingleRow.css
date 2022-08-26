@@ -1,8 +1,12 @@
-.custom-title {
-    color: #78C2AD
+.table-row a {
+    color: #54BAB9;
+    font-size: 20px;
+    font-weight: 600;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
 }
 
-.custom-title:hover {
+.table-row a:hover {
     cursor: pointer;
-    color: #78C2AD;
+    color: #54BAB9;
+    text-decoration: none;
 }

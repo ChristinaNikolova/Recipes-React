@@ -26,7 +26,7 @@ function SingleRecipe({ id, title, picture, shortContent, categoryId, categoryNa
                         Comments: {commentsCount}</li>
                 </ul>
                 <div className="card-body">
-                    <Link to={`/recipes/details/${id}`}><button className="btn btn-secondary button-recipe">See the recipe</button></Link>
+                    <Link to={`/recipes/details/${id}`}><button className="custom-btn">See the recipe</button></Link>
                 </div>
             </div>
         </div>

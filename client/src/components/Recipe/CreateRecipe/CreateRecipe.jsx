@@ -19,18 +19,12 @@ function CreateRecipe({ history }) {
     }
 
     return (
-        <div className="create-recipe-wrapper" >
-            <div className="fill pt-2 pb-2"></div>
+        <section id="create-recipe" className="section">
             <div className="container">
-                <div className="row space-top">
-                    <div className="col-md-12">
-                        <h1 className="cursive-font-style p-1">Create New Recipe</h1>
-                    </div>
-                </div>
+                <h1 className="title cursive-font-style">Create New Recipe</h1>
                 <CreateRecipeForm clickHandler={createRecipe} isAuth={authService.isAuthenticated()} />
-            </div >
-            <div className="fill pt-2 pb-2"></div>
-        </div >
+            </div>
+        </section>
     );
 }
 

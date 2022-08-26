@@ -16,13 +16,11 @@ function CategoriesList() {
     }, []);
 
     return (
-        <div className="categories-wrapper">
+        <section id="categories" className="section">
             <div className="container">
-                <div className="col-md-12">
-                    <h1 className="text-center pt-2 cursive-font-style">All Categories</h1>
-                    <hr />
-                </div>
-                <div className="row">
+                <h1 className="title text-center cursive-font-style">All Categories</h1>
+                <hr />
+                <div className="categories-list">
                     {categories
                         .map(c => <SingleCategory
                             key={c.id}
@@ -32,7 +30,7 @@ function CategoriesList() {
                             recipesCount={c.recipesCount} />)}
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

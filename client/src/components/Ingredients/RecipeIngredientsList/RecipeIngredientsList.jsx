@@ -4,8 +4,6 @@ import * as ingredientsService from '../../../services/ingredientsService.js';
 import * as authService from '../../../services/authService.js';
 import RecipeIngredientRow from '../RecipeIngredientRow/RecipeIngredientRow.jsx';
 
-import './RecipeIngredientsList.css';
-
 function RecipeIngredientsList({ match, history }) {
     const [ingredients, setIngredients] = useState([]);
     const [hasToReload, setHasToReload] = useState(false);
@@ -31,10 +29,9 @@ function RecipeIngredientsList({ match, history }) {
     }
 
     return (
-        <div className="recipe-ingredients-wrapper">
+        <section id="recipe-ingredient-list" className="section">
             <div className="container">
-                <h1 className="text-center cursive-font-style p-1">Ingredients</h1>
-                <hr />
+                <h1 className="title text-center cursive-font-style">Ingredients</h1>
                 <table className="table table-bordered table-hover custom-table">
                     <thead>
                         <tr>
@@ -55,9 +52,8 @@ function RecipeIngredientsList({ match, history }) {
                                     clickHandler={reload} />)}
                     </tbody>
                 </table>
-            </div >
-            <div className="fill pt-1 pb-1"></div>
-        </div >
+            </div>
+        </section>
     );
 }
 

@@ -1,7 +1,51 @@
-.header-wrapper {
-    background-color: #78C2AD;
+.header {
+    background-color: #54BAB9;
+    height: 5rem;
 }
 
-.navbar-brand {
-    margin-bottom: 5px;
+.header a {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+    transition: all 400ms ease-in-out;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 80px;
+    padding-right: 80px;
+    height: 5rem;
+}
+
+.header-ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: unset;
+}
+
+.nav-link {
+    color: #E9DAC1;
+    font-size: 20px;
+}
+
+.header-brand {
+    color: #E9DAC1;
+    font-weight: bolder;
+    font-size: 28px;
+    letter-spacing: 1.5px;
+}
+
+.nav-link:hover,
+.header-brand:hover {
+    color: #F7ECDE;
+}
+
+.header-brand:hover {
+    text-decoration: none;
+}
+
+.header .special-btn {
+    width: 100%;
 }

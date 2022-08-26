@@ -1,8 +1,16 @@
-.info {
-    font-size: 14px;
-    color: #999999;
+.single-comment {
+    background-color: #F7ECDE;
+    margin: 20px;
+    padding: 20px;
 }
 
-.comment-content {
-    font-size: 20px;
+.single-comment-content{
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.single-comment-info {
+    color: #54BAB9;
+    margin-bottom: 15px;
+    font-weight: bold;
 }

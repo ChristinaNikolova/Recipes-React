@@ -27,13 +27,11 @@ function RecipesCurrentCategory({ match, history }) {
         : null;
 
     return (
-        <div className="recipes-current-category-wrapper">
+        <section id="recipes-currect-category" className="section">
             <div className="container">
-                <div className="col-md-12">
-                    <h1 className="text-center p-1 cursive-font-style">Recipes in <span className="recipes-in-category">{categoryName}</span> category: </h1>
-                    <hr />
-                </div>
-                <div className="row">
+                <h1 className="title cursive-font-style">Recipes in <span className="recipes-in-category">{categoryName}</span> category: </h1>
+                <hr />
+                <div className="recipes-currect-category-list">
                     {recipes
                         .map(r => <SingleRecipe
                             key={r.id}
@@ -46,7 +44,7 @@ function RecipesCurrentCategory({ match, history }) {
                             commentsCount={r.commentsCount} />)}
                 </div>
             </div>
-        </div>
+        </section>
     );
 
 }

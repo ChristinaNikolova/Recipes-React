@@ -2,9 +2,10 @@ import './Footer.css';
 
 function Footer() {
     return (
-        <div className="row custom-footer">
-            <div className="col-md-12 text-center">Recipes&copy; - {new Date().getFullYear()}</div>
-        </div>
+        <footer className="footer">
+            <p className="footer-content">
+                <a href="https://github.com/ChristinaNikolova/Recipes---React" target="_blank">Recipes&copy;</a> - {new Date().getFullYear()}</p>
+        </footer>
     );
 }
 

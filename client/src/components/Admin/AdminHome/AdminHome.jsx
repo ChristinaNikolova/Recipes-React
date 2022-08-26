@@ -14,28 +14,30 @@ function AdminHome({ history }) {
     }, [])
 
     return (
-        <div className="admin-home-wrapper">
-            <h1 className="text-center cursive-font-style p-1">Welcome to Administration</h1>
-            <hr className="hr-admin-dashboard" />
-            <div>
-                <ul className="custom-font-li">
-                    <li className="bold-admin-dashboard m-1">
+        <section id="admin-home" className="section">
+            <h1 className="title text-center cursive-font-style">Welcome to Administration</h1>
+            <hr className="admin-hr-dashboard" />
+            <ul className="admin-ul">
+                <li className="admin-li">
+                    <div className="admin-li-title">
                         Categories
-                    <div className="mt-2 mb-2">
-                            <Link to="/admin/categories"><button className="btn btn-secondary mr-2 remove-font all-admin-area">All Categories</button></Link>
-                            <Link to="/admin/categories/create"><button className="btn btn-primary mr-2 remove-font create-admin-area">Create Category</button></Link>
-                        </div>
-                    </li>
-                    <li className="bold-admin-dashboard m-1">
+                    </div>
+                    <div className="admin-li-wrapper">
+                        <Link to="/admin/categories"><button className="custom-btn">All Categories</button></Link>
+                        <Link to="/admin/categories/create"><button className="custom-btn">Create Category</button></Link>
+                    </div>
+                </li>
+                <li className="admin-li">
+                    <div className="admin-li-title">
                         Ingredients
-                    <div className="mt-2 mb-2">
-                            <Link to="/admin/ingredients"><button className="btn btn-secondary mr-2 remove-font all-admin-area">All Ingredients</button></Link>
-                            <Link to="/admin/ingredients/create"><button className="btn btn-primary mr-2 remove-font create-admin-area">Create Ingredient</button></Link>
-                        </div>
-                    </li >
-                </ul >
-            </div >
-        </div >
+                    </div>
+                    <div className="admin-li-wrapper">
+                        <Link to="/admin/ingredients"><button className="custom-btn">All Ingredients</button></Link>
+                        <Link to="/admin/ingredients/create"><button className="custom-btn">Create Ingredient</button></Link>
+                    </div>
+                </li>
+            </ul>
+        </section>
     );
 }
 
