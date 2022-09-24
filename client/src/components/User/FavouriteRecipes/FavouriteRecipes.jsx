@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
 import * as usersService from '../../../services/usersService.js';
 import * as authService from '../../../services/authService.js';
+import * as recipesService from '../../../services/recipesService.js';
+
 import FavouriteRecipesRow from '../FavouriteRecipesRow/FavouriteRecipesRow.jsx';
 import UserTableHead from '../../shared/UserTableHead/UserTableHead.jsx';
 
@@ -9,25 +12,33 @@ import './FavouriteRecipes.css'
 
 function FavouriteRecipes({ history }) {
     const [favRecipes, setFavRecipes] = useState([]);
-    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         if (!authService.isAuthenticated()) {
             history.push('/login');
             return;
         }
+        loadFavRecipes();
+    }, [history]);
 
+    const removeFromFav = (recipeId) => {
+        recipesService
+            .dislike(recipeId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                }
+                loadFavRecipes();
+                toastr.success(data['message'], 'Success');
+            });
+    }
+
+    const loadFavRecipes = () => {
         usersService
             .getFavourite()
             .then(favRecipes => setFavRecipes(favRecipes))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true);
-        }, 250);
     }
 
     return (
@@ -46,7 +57,7 @@ function FavouriteRecipes({ history }) {
                                 recipePicture={r.recipePicture}
                                 recipeCategoryName={r.recipeCategoryName}
                                 recipeAuthorUserName={r.recipeAuthorUserName}
-                                clickHandler={reload} />)}
+                                clickHandler={removeFromFav} />)}
                     </tbody>
                 </table>
             </div>

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
 import * as authService from '../../../../services/authService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
+
 import AdminTableHead from '../../../shared/Administration/AdminTableHead/AdminTableHead.jsx';
 import CategoryAdminSingleRow from '../CategoryAdminSingleRow/CategoryAdminSingleRow.jsx';
 
@@ -9,7 +11,6 @@ import './CategoriesAdminList.css';
 
 function CategoriesAdminList({ history }) {
     const [categories, setCategories] = useState([]);
-    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         if (!authService.isAdmin()) {
@@ -17,17 +18,27 @@ function CategoriesAdminList({ history }) {
             return;
         }
 
+        loadCategories();
+    }, []);
+
+    const remove = (categoryId) => {
+        categoriesService
+            .removeFromAdmin(categoryId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                }
+                loadCategories();
+                toastr.success(data['message'], 'Success');
+            });
+    }
+
+    const loadCategories = () => {
         categoriesService
             .getAllForAdmin()
             .then(categories => setCategories(categories))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true);
-        }, 250);
     }
 
     return (
@@ -42,7 +53,7 @@ function CategoriesAdminList({ history }) {
                             id={c.id}
                             name={c.name}
                             recipesCount={c.recipesCount}
-                            clickHandler={reload} />)}
+                            clickHandler={remove} />)}
                     </tbody>
                 </table>
             </div>

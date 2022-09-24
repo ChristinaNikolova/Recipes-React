@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
+import * as recipesService from '../../../services/recipesService.js';
 import * as usersService from '../../../services/usersService.js';
 import * as authService from '../../../services/authService.js';
+
 import OwnRecipesRow from '../OwnRecipesRow/OwnRecipesRow.jsx';
 import UserTableHead from '../../shared/UserTableHead/UserTableHead.jsx';
 
@@ -9,25 +12,33 @@ import './OwnRecipes.css'
 
 function OwnRecipes({ history }) {
     const [ownRecipes, setOwnRecipes] = useState([]);
-    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         if (!authService.isAuthenticated()) {
             history.push('/login');
             return;
         }
+        loadUserRecipes();
+    }, []);
 
+    const remove = (recipeId) => {
+        recipesService
+            .remove(recipeId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                }
+                loadUserRecipes();
+                toastr.success(data['message'], 'Success');
+            });
+    }
+
+    const loadUserRecipes = () => {
         usersService
             .getOwn()
             .then(ownRecipes => setOwnRecipes(ownRecipes))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true);
-        }, 250);
     }
 
     return (
@@ -45,7 +56,7 @@ function OwnRecipes({ history }) {
                                 title={r.title}
                                 picture={r.picture}
                                 categoryName={r.categoryName}
-                                clickHandler={reload} />)}
+                                clickHandler={remove} />)}
                     </tbody>
                 </table>
             </div >

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
 import * as ingredientsService from '../../../../services/ingredientsService.js';
 import * as authService from '../../../../services/authService.js';
+
 import IngredientAdminSingleRow from '../IngredientAdminSingleRow/IngredientAdminSingleRow.jsx';
 import AdminTableHead from '../../../shared/Administration/AdminTableHead/AdminTableHead.jsx';
 
@@ -9,25 +11,33 @@ import './IngredientsAdminList.css';
 
 function IngredientsAdminList({ history }) {
     const [ingredients, setIngredients] = useState([]);
-    const [hasToReload, setHasToReload] = useState(false);
 
     useEffect(() => {
         if (!authService.isAdmin()) {
             history.push('/');
             return;
         }
+        loadIngredients();
+    }, []);
 
+    const remove = (ingredientId) => {
+        ingredientsService
+            .removeFromAdmin(ingredientId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                }
+                loadIngredients();
+                toastr.success(data['message'], 'Success');
+            });
+    }
+
+    const loadIngredients = () => {
         ingredientsService
             .getAll()
             .then(ingredients => setIngredients(ingredients))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true);
-        }, 250);
     }
 
     return (
@@ -43,7 +53,7 @@ function IngredientsAdminList({ history }) {
                                 key={i.id} id={i.id}
                                 name={i.name}
                                 recipeIngredientsCount={i.recipeIngredientsCount}
-                                clickHandler={reload} />)}
+                                clickHandler={remove} />)}
                     </tbody>
                 </table>
             </div>

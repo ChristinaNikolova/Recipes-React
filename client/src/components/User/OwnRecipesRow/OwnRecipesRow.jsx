@@ -1,25 +1,8 @@
 import { Link } from 'react-router-dom';
-import toastr from 'toastr';
-
-import * as recipesService from '../../../services/recipesService.js';
 
 import './OwnRecipesRow.css';
 
 function OwnRecipesRow({ id, title, picture, categoryName, clickHandler }) {
-    const remove = () => {
-        recipesService
-            .remove(id)
-            .then((data) => {
-                if (data['status'] === 400) {
-                    toastr.error(data['message'], 'Error');
-                    return;
-                }
-
-                toastr.success(data['message'], 'Success');
-                clickHandler();
-            });
-    }
-
     return (
         <tr className='own-recipes-row'>
             <td>
@@ -31,7 +14,7 @@ function OwnRecipesRow({ id, title, picture, categoryName, clickHandler }) {
             <td>{categoryName}</td>
             <td><Link to={`/recipes/ingredients/${id}`}><button className="special-btn danger">Delete Ingredients</button></Link></td>
             <td><Link to={`/recipes/update/${id}`}><button className="special-btn warning">Update</button></Link></td >
-            <td><button className="special-btn danger" onClick={remove}>Delete</button></td >
+            <td><button className="special-btn danger" onClick={() => clickHandler(id)}>Delete</button></td >
         </tr>);
 }
 

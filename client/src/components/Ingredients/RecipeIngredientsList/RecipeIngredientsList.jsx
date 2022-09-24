@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import toastr from 'toastr';
 
 import * as ingredientsService from '../../../services/ingredientsService.js';
 import * as authService from '../../../services/authService.js';
@@ -6,7 +7,6 @@ import RecipeIngredientRow from '../RecipeIngredientRow/RecipeIngredientRow.jsx'
 
 function RecipeIngredientsList({ match, history }) {
     const [ingredients, setIngredients] = useState([]);
-    const [hasToReload, setHasToReload] = useState(false);
     const recipeId = match.params.id;
 
     useEffect(() => {
@@ -15,17 +15,27 @@ function RecipeIngredientsList({ match, history }) {
             return;
         }
 
+        loadIngredients();
+    }, []);
+
+    const remove = (ingredientId) => {
+        ingredientsService
+            .remove(recipeId, ingredientId)
+            .then((data) => {
+                if (data['status'] === 400) {
+                    toastr.error(data['message'], 'Error');
+                    return;
+                }
+                loadIngredients();
+                toastr.success(data['message'], 'Success');
+            });
+    }
+
+    const loadIngredients = () => {
         ingredientsService
             .getByRecipe(recipeId)
             .then(ingredients => setIngredients(ingredients))
-            .then(setHasToReload(false))
             .catch(err => console.error(err));
-    }, [hasToReload]);
-
-    const reload = () => {
-        setTimeout(() => {
-            setHasToReload(true);
-        }, 250);
     }
 
     return (
@@ -49,7 +59,7 @@ function RecipeIngredientsList({ match, history }) {
                                     recipeId={i.recipeId}
                                     ingredientName={i.ingredientName}
                                     quantity={i.quantity}
-                                    clickHandler={reload} />)}
+                                    clickHandler={remove} />)}
                     </tbody>
                 </table>
             </div>
