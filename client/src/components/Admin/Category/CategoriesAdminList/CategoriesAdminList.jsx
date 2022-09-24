@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
-import * as authService from '../../../../services/authService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
 
 import AdminTableHead from '../../../shared/Administration/AdminTableHead/AdminTableHead.jsx';
@@ -9,15 +8,10 @@ import CategoryAdminSingleRow from '../CategoryAdminSingleRow/CategoryAdminSingl
 
 import './CategoriesAdminList.css';
 
-function CategoriesAdminList({ history }) {
+function CategoriesAdminList() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        if (!authService.isAdmin()) {
-            history.push('/');
-            return;
-        }
-
         loadCategories();
     }, []);
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import toastr from 'toastr';
 
 import * as recipesService from '../../../services/recipesService.js';
-import * as authService from '../../../services/authService.js';
+
 import CommentsListCurrentRecipe from '../../Comment/CommentsListCurrentRecipe/CommentsListCurrentRecipe.jsx';
 
 import './RecipeDetails.css';
@@ -18,11 +18,6 @@ class RecipeDetails extends Component {
     }
 
     componentDidMount() {
-        if (!authService.isAuthenticated()) {
-            this.props.history.push('/login');
-            return;
-        }
-
         const recipeId = this.props.match.params.id;
         recipesService
             .getDetails(recipeId)
@@ -51,19 +46,17 @@ class RecipeDetails extends Component {
     }
 
     setNewState(data, isFavourite) {
-        {
-            if (data['status'] === 400) {
-                toastr.error(data['message'], 'Error');
-                return;
-            }
-            toastr.success(data['message'], 'Success');
-            this.setState(state => (
-                {
-                    recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
-                }));
-        }
-    }
 
+        if (data['status'] === 400) {
+            toastr.error(data['message'], 'Error');
+            return;
+        }
+        toastr.success(data['message'], 'Success');
+        this.setState(state => (
+            {
+                recipe: Object.assign({}, state.recipe, { isFavourite: !isFavourite })
+            }));
+    }
 
     render() {
         const recipe = this.state.recipe;

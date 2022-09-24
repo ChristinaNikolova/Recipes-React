@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import * as usersService from '../../../services/usersService.js';
-import * as authService from '../../../services/authService.js';
 import * as recipesService from '../../../services/recipesService.js';
 
 import FavouriteRecipesRow from '../FavouriteRecipesRow/FavouriteRecipesRow.jsx';
@@ -10,16 +9,12 @@ import UserTableHead from '../../shared/UserTableHead/UserTableHead.jsx';
 
 import './FavouriteRecipes.css'
 
-function FavouriteRecipes({ history }) {
+function FavouriteRecipes() {
     const [favRecipes, setFavRecipes] = useState([]);
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        }
         loadFavRecipes();
-    }, [history]);
+    }, []);
 
     const removeFromFav = (recipeId) => {
         recipesService

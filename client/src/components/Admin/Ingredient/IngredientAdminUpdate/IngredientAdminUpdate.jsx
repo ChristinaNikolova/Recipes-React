@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
-import Input from '../../../shared/Input/Input.jsx';
-import * as authService from '../../../../services/authService.js';
 import * as validator from '../../../../utils/validations/ingredientValidator.js';
 import * as ingredientsService from '../../../../services/ingredientsService.js';
+
+import Input from '../../../shared/Input/Input.jsx';
 import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
 
 import './IngredientAdminUpdate.css';
@@ -15,11 +15,6 @@ function IngredientAdminUpdate({ match, history }) {
     const id = match.params.id;
 
     useEffect(() => {
-        if (!authService.isAdmin()) {
-            history.push('/');
-            return;
-        }
-
         ingredientsService
             .getIngredientForUpdate(id)
             .then(ingredient => setIngredient(ingredient))

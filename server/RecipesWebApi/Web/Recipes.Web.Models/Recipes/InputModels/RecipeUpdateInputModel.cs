@@ -6,5 +6,7 @@
     public class RecipeUpdateInputModel : RecipeInputModel, IMapFrom<Recipe>
     {
         public string Id { get; set; }
+
+        public string AuthorId { get; set; }
     }
 }

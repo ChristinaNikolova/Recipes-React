@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import * as authService from './services/authService.js';
+import { AuthProvider } from './contexts/AuthContexts.jsx';
 
 import Header from './components/shared/Header/Header.jsx';
 import Footer from './components/shared/Footer/Footer.jsx';
@@ -30,61 +29,182 @@ import CategoryAdminCreate from './components/Admin/Category/CategoryAdminCreate
 
 import NotFound from './components/shared/NotFound/NotFound.jsx';
 
+import GuestRoute from './components/common/GuestRoute.jsx';
+import PrivateRoute from './components/common/PrivateRoute.jsx';
+import AdminRoute from './components/common/AdminRoute.jsx';
+
 import './App.css';
 
 function App() {
-    const [hasToReload, setHasToReload] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
-
-    useEffect(() => {
-        setIsLoggedIn(authService.isAuthenticated());
-        setIsAdmin(authService.isAdmin());
-        setHasToReload(false);
-    }, [hasToReload]);
-
-    const reload = () => {
-        setHasToReload(true);
-    }
-
     return (
-        <div className="app">
-            <Header isLoggedIn={isLoggedIn} isAdmin={isAdmin} clickHandler={reload} />
-            <Switch>
-                <Route path='/' exact>
-                    <Redirect to='/home'></Redirect>
-                </Route>
-                <Route path='/home' render={() => <Home isLoggedIn={isLoggedIn} />}></Route>
+        <AuthProvider>
+            <div className="app">
+                <Header />
+                <Switch>
+                    <Route path='/' exact>
+                        <Redirect to='/home'></Redirect>
+                    </Route>
+                    <Route path='/home' component={Home}></Route>
 
-                <Route path='/register' component={Register}></Route>
-                <Route path='/login' render={() => <Login clickHandler={reload} />}></Route>
+                    <Route
+                        path='/register'
+                        render={(props) => (
+                            <GuestRoute>
+                                <Register {...props} />
+                            </GuestRoute>
+                        )}>
+                    </Route>
 
-                <Route path='/categories' exact component={CategoriesList}></Route>
+                    <Route
+                        path='/login'
+                        render={(props) => (
+                            <GuestRoute>
+                                <Login {...props} />
+                            </GuestRoute>
+                        )}>
+                    </Route>
 
-                <Route path='/users/favourite' exact component={FavouriteRecipes}></Route>
-                <Route path='/users/own' exact component={OwnRecipes}></Route>
+                    <Route path='/categories' exact component={CategoriesList}></Route>
 
-                <Route path='/recipes' exact component={RecipesList}></Route>
-                <Route path='/recipes/create' component={CreateRecipe}></Route>
-                <Route path='/recipes/update/:id' component={UpdateRecipe}></Route>
-                <Route path='/recipes/details/:id' component={RecipeDetails}></Route>
-                <Route path='/recipes/current-category/:id' component={RecipesCurrentCategory}></Route>
-                <Route path='/recipes/ingredients/:id' component={RecipeIngredientsList}></Route>
+                    <Route
+                        path='/users/favourite'
+                        exact
+                        render={() => (
+                            <PrivateRoute>
+                                <FavouriteRecipes />
+                            </PrivateRoute>
+                        )}>
+                    </Route>
 
-                <Route path='/admin/dashboard' component={AdminHome}></Route>
+                    <Route
+                        path='/users/own'
+                        exact
+                        render={() => (
+                            <PrivateRoute>
+                                <OwnRecipes />
+                            </PrivateRoute>
+                        )}>
+                    </Route>
 
-                <Route path='/admin/ingredients' exact component={IngredientsAdminList}></Route>
-                <Route path='/admin/ingredients/create' exact component={IngredientAdminCreate}></Route>
-                <Route path='/admin/ingredients/update/:id' component={IngredientAdminUpdate}></Route>
+                    <Route path='/recipes' exact component={RecipesList}></Route>
 
-                <Route path='/admin/categories' exact component={CategoriesAdminList}></Route>
-                <Route path='/admin/categories/create' exact component={CategoryAdminCreate}></Route>
-                <Route path='/admin/categories/update/:id' component={CategoryAdminUpdate}></Route>
+                    <Route
+                        path='/recipes/create'
+                        render={(props) => (
+                            <PrivateRoute>
+                                <CreateRecipe {...props} />
+                            </PrivateRoute>
+                        )}>
+                    </Route>
 
-                <Route path="*" component={NotFound}></Route>
-            </Switch>
-            <Footer />
-        </div >
+                    <Route
+                        path='/recipes/update/:id'
+                        render={(props) => (
+                            <PrivateRoute>
+                                <UpdateRecipe {...props} />
+                            </PrivateRoute>
+                        )}>
+                    </Route>
+
+                    <Route
+                        path='/recipes/details/:id'
+                        render={(props) => (
+                            <PrivateRoute>
+                                <RecipeDetails {...props} />
+                            </PrivateRoute>
+                        )}>
+                    </Route>
+
+                    <Route
+                        path='/recipes/current-category/:id'
+                        render={(props) => (
+                            <PrivateRoute>
+                                <RecipesCurrentCategory {...props} />
+                            </PrivateRoute>
+                        )}>
+                    </Route>
+
+                    <Route
+                        path='/recipes/ingredients/:id'
+                        render={(props) => (
+                            <PrivateRoute>
+                                <RecipeIngredientsList {...props} />
+                            </PrivateRoute>
+                        )}>
+                    </Route>
+
+                    <Route
+                        path='/admin/dashboard'
+                        render={() => (
+                            <AdminRoute>
+                                <AdminHome />
+                            </AdminRoute>
+                        )}>
+                    </Route>
+
+                    <Route
+                        path='/admin/ingredients'
+                        exact
+                        render={() => (
+                            <AdminRoute>
+                                <IngredientsAdminList />
+                            </AdminRoute>
+                        )}>
+                    </Route>
+
+                    <Route
+                        path='/admin/ingredients/create'
+                        exact
+                        render={(props) => (
+                            <AdminRoute>
+                                <IngredientAdminCreate {...props} />
+                            </AdminRoute>
+                        )}>
+                    </Route>
+
+                    <Route
+                        path='/admin/ingredients/update/:id'
+                        render={(props) => (
+                            <AdminRoute>
+                                <IngredientAdminUpdate {...props} />
+                            </AdminRoute>
+                        )}>
+                    </Route>
+
+                    <Route
+                        path='/admin/categories'
+                        exact
+                        render={() => (
+                            <AdminRoute>
+                                <CategoriesAdminList />
+                            </AdminRoute>
+                        )}>
+                    </Route>
+
+                    <Route
+                        path='/admin/categories/create'
+                        exact
+                        render={(props) => (
+                            <AdminRoute>
+                                <CategoryAdminCreate {...props} />
+                            </AdminRoute>
+                        )}>
+                    </Route>
+
+                    <Route
+                        path='/admin/categories/update/:id'
+                        render={(props) => (
+                            <AdminRoute>
+                                <CategoryAdminUpdate {...props} />
+                            </AdminRoute>
+                        )}>
+                    </Route>
+
+                    <Route path="*" component={NotFound}></Route>
+                </Switch>
+                <Footer />
+            </div>
+        </AuthProvider >
     );
 }
 

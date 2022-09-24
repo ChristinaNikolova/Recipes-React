@@ -39,18 +39,6 @@ export const logout = () => {
     return localStorage.clear();
 }
 
-export const isAuthenticated = () => {
-    return localStorage.getItem('token') !== null ? true : false;
-}
-
-export const isAdmin = () => {
-    return localStorage.getItem('isAdmin') === 'true' ? true : false;
-}
-
-export const getUsername = () => {
-    return localStorage.getItem('username');
-}
-
 export const getToken = () => {
-    return localStorage.getItem('token');
+    return JSON.parse(localStorage.getItem('auth')).token;
 }

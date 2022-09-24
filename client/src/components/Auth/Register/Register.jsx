@@ -1,22 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import toastr from 'toastr';
 
-import Input from '../../shared/Input/Input.jsx';
 import * as authService from '../../../services/authService.js'
 import * as validator from '../../../utils/validations/authValidator.js';
+import { AuthContext } from '../../../contexts/AuthContexts.jsx';
+
+import Input from '../../shared/Input/Input.jsx';
 
 function Register({ history }) {
+    const { userLogin } = useContext(AuthContext);
     const [errorUsername, setErrorUsername] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
     const [errorRePassword, setErrorRePassword] = useState('');
-
-    useEffect(() => {
-        if (authService.isAuthenticated()) {
-            history.push('/');
-            return;
-        }
-    }, [])
 
     const onRegisterSubmitHandler = (e) => {
         e.preventDefault();
@@ -42,8 +38,9 @@ function Register({ history }) {
                         toastr.error(data['message'], 'Error');
                         return;
                     }
+                    userLogin(data);
+                    history.push('/');
                     toastr.success(data['message'], 'Success');
-                    history.push('/login');
                 });
         }
     }

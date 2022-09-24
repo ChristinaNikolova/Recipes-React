@@ -4,11 +4,11 @@ import toastr from 'toastr';
 import * as categoriesService from '../../../services/categoriesService.js';
 import * as recipesService from '../../../services/recipesService.js';
 import * as validator from '../../../utils/validations/recipeValidator.js';
+
 import Input from '../../shared/Input/Input.jsx';
 import CreateIngredientRecipeForm from '../../shared/IngredientRecipeForm/IngredientRecipeForm.jsx';
 
-
-function CreateRecipeForm({ clickHandler, isAuth }) {
+function CreateRecipeForm({ clickHandler }) {
     const [categories, setCategories] = useState([]);
     const [ingredientsForRecipe, setIngredientsForRecipe] = useState([]);
     const [errorTitle, setErrorTitle] = useState('');
@@ -19,10 +19,6 @@ function CreateRecipeForm({ clickHandler, isAuth }) {
     const [errorPicture, setErrorPicture] = useState('');
 
     useEffect(() => {
-        if (!isAuth) {
-            return;
-        }
-
         categoriesService
             .getAllNames()
             .then(categories => setCategories(categories))

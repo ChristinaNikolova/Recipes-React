@@ -1,21 +1,16 @@
-import { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useState, useContext } from 'react';
 import toastr from 'toastr';
 
-import Input from '../../shared/Input/Input.jsx';
-import * as authService from '../../../services/authService.js'
 import * as validator from '../../../utils/validations/authValidator.js';
+import { AuthContext } from '../../../contexts/AuthContexts.jsx';
+import * as authService from '../../../services/authService.js'
 
-function Login({ history, clickHandler }) {
+import Input from '../../shared/Input/Input.jsx';
+
+function Login({ history }) {
+    const { userLogin } = useContext(AuthContext);
     const [errorEmail, setErrorEmail] = useState('');
     const [errorPassword, setErrorPassword] = useState('');
-
-    useEffect(() => {
-        if (authService.isAuthenticated()) {
-            history.push('/');
-            return;
-        }
-    }, [])
 
     const onLoginSubmitHandler = (e) => {
         e.preventDefault();
@@ -35,11 +30,8 @@ function Login({ history, clickHandler }) {
                         toastr.error(data['message'], 'Error');
                         return;
                     }
-                    localStorage.setItem('token', data['token']);
-                    localStorage.setItem('username', data['username']);
-                    localStorage.setItem('isAdmin', data['isAdmin']);
+                    userLogin(data);
                     toastr.success(data['message'], 'Success');
-                    clickHandler();
                     history.push('/');
                 });
 
@@ -70,4 +62,4 @@ function Login({ history, clickHandler }) {
     );
 }
 
-export default withRouter(Login);
+export default Login;

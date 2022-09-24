@@ -1,18 +1,8 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import * as authService from '../../../services/authService.js';
 
 import './AdminHome.css';
 
-function AdminHome({ history }) {
-    useEffect(() => {
-        if (!authService.isAdmin()) {
-            history.push('/');
-            return;
-        }
-    }, [])
-
+function AdminHome() {
     return (
         <section id="admin-home" className="section">
             <h1 className="title text-center cursive-font-style">Welcome to Administration</h1>

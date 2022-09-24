@@ -3,21 +3,16 @@ import toastr from 'toastr';
 
 import * as recipesService from '../../../services/recipesService.js';
 import * as usersService from '../../../services/usersService.js';
-import * as authService from '../../../services/authService.js';
 
 import OwnRecipesRow from '../OwnRecipesRow/OwnRecipesRow.jsx';
 import UserTableHead from '../../shared/UserTableHead/UserTableHead.jsx';
 
 import './OwnRecipes.css'
 
-function OwnRecipes({ history }) {
+function OwnRecipes() {
     const [ownRecipes, setOwnRecipes] = useState([]);
 
     useEffect(() => {
-        if (!authService.isAuthenticated()) {
-            history.push('/login');
-            return;
-        }
         loadUserRecipes();
     }, []);
 

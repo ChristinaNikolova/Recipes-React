@@ -7,7 +7,7 @@ import * as validator from '../../../utils/validations/recipeValidator.js';
 import Input from '../../shared/Input/Input.jsx';
 import CreateIngredientRecipeForm from '../../shared/IngredientRecipeForm/IngredientRecipeForm.jsx';
 
-function UpdateRecipeForm({ recipeId, clickHandler, isAuth }) {
+function UpdateRecipeForm({ recipeId, clickHandler }) {
     const [recipe, setRecipe] = useState({});
     const [ingredientsForRecipe, setIngredientsForRecipe] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -19,10 +19,6 @@ function UpdateRecipeForm({ recipeId, clickHandler, isAuth }) {
     const [errorPicture, setErrorPicture] = useState('');
 
     useEffect(() => {
-        if (!isAuth) {
-            return;
-        }
-
         recipesService
             .getRecipeForUpdate(recipeId)
             .then(recipe => setRecipe(recipe));

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
-import Input from '../../../shared/Input/Input.jsx';
-import * as authService from '../../../../services/authService.js';
 import * as categoriesService from '../../../../services/categoriesService.js';
 import * as validator from '../../../../utils/validations/categoryValidator.js';
+
+import Input from '../../../shared/Input/Input.jsx';
 import AdminFormWrapper from '../../../shared/Administration/AdminFormWrapper/AdminFormWrapper.jsx';
 
 function CategoryAdminUpdate({ match, history }) {
@@ -14,11 +14,6 @@ function CategoryAdminUpdate({ match, history }) {
     const id = match.params.id;
 
     useEffect(() => {
-        if (!authService.isAdmin()) {
-            history.push('/');
-            return;
-        }
-
         categoriesService
             .getCategoryForUpdate(id)
             .then(category => setCategory(category))

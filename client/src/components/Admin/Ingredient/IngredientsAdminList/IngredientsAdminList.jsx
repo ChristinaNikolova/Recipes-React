@@ -2,21 +2,16 @@ import { useState, useEffect } from 'react';
 import toastr from 'toastr';
 
 import * as ingredientsService from '../../../../services/ingredientsService.js';
-import * as authService from '../../../../services/authService.js';
 
 import IngredientAdminSingleRow from '../IngredientAdminSingleRow/IngredientAdminSingleRow.jsx';
 import AdminTableHead from '../../../shared/Administration/AdminTableHead/AdminTableHead.jsx';
 
 import './IngredientsAdminList.css';
 
-function IngredientsAdminList({ history }) {
+function IngredientsAdminList() {
     const [ingredients, setIngredients] = useState([]);
 
     useEffect(() => {
-        if (!authService.isAdmin()) {
-            history.push('/');
-            return;
-        }
         loadIngredients();
     }, []);
 
