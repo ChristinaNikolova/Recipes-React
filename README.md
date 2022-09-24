@@ -77,7 +77,7 @@ Recipes can be used to present particular blog for recipes.
 
 ## :framed_picture: Screen Shoots
 
-![Home Page](https://res.cloudinary.com/dieu4mste/image/upload/v1615017321/home_scwmf8.png)
-![All Recipes](https://res.cloudinary.com/dieu4mste/image/upload/v1615017320/allRecipes_usbtvt.png)
-![Notification](https://res.cloudinary.com/dieu4mste/image/upload/v1615017317/toastr_nkzhqc.png)
-![Create Recipe](https://res.cloudinary.com/dieu4mste/image/upload/v1615017657/form_oqdmid.png)
+![Home Page](https://res.cloudinary.com/dieu4mste/image/upload/v1662041222/home_mv0t9a.png)
+![Details Recipe](https://res.cloudinary.com/dieu4mste/image/upload/v1662041222/details_qbzvbd.png)
+![My recipes](https://res.cloudinary.com/dieu4mste/image/upload/v1662041222/my_recipes_xsj3pg.png)
+![Create Recipe](https://res.cloudinary.com/dieu4mste/image/upload/v1662041221/create_recipe_mcdshr.png)
